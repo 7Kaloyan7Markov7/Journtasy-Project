@@ -2,7 +2,7 @@
 
 This is my project.
 
-## Features 
+## Features
 
--Six playable characters
--Dynamically changed rooms
+- Six playable characters
+- Dynamically changed rooms
