@@ -3,5 +3,5 @@
 This is my project.
 
 ## Features 
-Six playable characters
+Six playable characters\n
 Dynamically changed rooms
