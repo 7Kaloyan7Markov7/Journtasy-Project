@@ -1,21 +1,17 @@
 import pygame
 
+
 class Room:
-    def __init__(self, background, player, enemies, obstacles):
+    def __init__(self, background, entity_list):
         self.background = background
-        self.player = player
-        self.enemies = enemies
-        self.obstacles = obstacles
+        self.entity_list = entity_list
 
     def render(self, screen):
         screen.blit(self.background, (0,0))
-        self.player.render(screen)
+        
+        for entity in self.entity_list:
+            entity.render()
 
-        for enemy in self.enemies:
-            enemy.render(screen)
-
-        for obstacle in self.obstacles:
-            obstacle.render(screen)
-
-    def update():
-        pass
+    def update(self):
+        for entity in self.entity_list:
+            entity.update()

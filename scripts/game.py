@@ -1,4 +1,6 @@
 import pygame
+from asset_manager import AssetManager
+
 
 class Game:
     def __init__(self):
@@ -8,7 +10,7 @@ class Game:
         self.running = True
 
     def main_loop(self):
-        self.load_assets()
+        AssetManager.load_assets()
 
         while self.running:
             self.input_handler()
