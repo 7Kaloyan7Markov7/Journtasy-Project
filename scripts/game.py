@@ -30,7 +30,8 @@ class Game:
         ...
 
     def render(self):
-        ...
+        image = pygame.image.load("assets/background_grass.jpg").convert_alpha()
+        self.screen.blit(image, (0, 0))
 
 game = Game()
 game.main_loop()
