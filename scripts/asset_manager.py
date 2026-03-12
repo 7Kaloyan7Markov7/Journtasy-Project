@@ -55,17 +55,34 @@ class AssetManager:
         animations[Direction.RIGHT] = AssetManager.get_all_frames(sprite_file_paths[3], const.PLAYER_SPRITE_WIDTH, const.PLAYER_SPRITE_HEIGHT, 3, const.PLAYER_FRAME_COUNT, const.PLAYER_FRAME_SPACE)
 
         return animations
+    
+    @staticmethod
+    def load():
+        for player_id in const.PLAYABLE_CHARACTER_IDS:
+            AssetManager.player_animations[player_id] = AssetManager.load_player_animations(player_id)
+        for projectile_id in const.PROJECTILE_IDS:
+            AssetManager.projectile_animations[projectile_id] = AssetManager.load_projectile_animations(projectile_id)
 
     @staticmethod
     def load_projectile_animations(entity_id):
+        animations = {}
+
+        sprite_file_paths = const.PROJECTILE_SPRITE_FILES[entity_id] #returns a list of file paths
+
+        animations[Direction.DOWN] = AssetManager.get_all_frames(sprite_file_paths[0], const.PROJECTILE_WIDTH, const.PROJECTILE_HEIGHT, 3, const.PROJECTILE_FRAME_COUNT, const.PROJECTILE_FRAME_SPACE)
+        animations[Direction.UP] = AssetManager.get_all_frames(sprite_file_paths[1], const.PROJECTILE_WIDTH, const.PROJECTILE_HEIGHT, 3, const.PROJECTILE_FRAME_COUNT, const.PROJECTILE_FRAME_SPACE)
+        animations[Direction.LEFT] = AssetManager.get_all_frames(sprite_file_paths[2], const.PROJECTILE_WIDTH, const.PROJECTILE_HEIGHT, 3, const.PROJECTILE_FRAME_COUNT, const.PROJECTILE_FRAME_SPACE)
+        animations[Direction.RIGHT] = AssetManager.get_all_frames(sprite_file_paths[3], const.PROJECTILE_WIDTH, const.PROJECTILE_HEIGHT, 3, const.PROJECTILE_FRAME_COUNT, const.PROJECTILE_FRAME_SPACE)
+
+        return animations
+
+
+    @staticmethod
+    def load_enemy_animations():
         ...
 
     @staticmethod
-    def load_enemy_animations(entity_id):
-        ...
-
-    @staticmethod
-    def load_obstacle_animations(entity_id):
+    def load_obstacle_animations():
         ...
 
     @staticmethod
