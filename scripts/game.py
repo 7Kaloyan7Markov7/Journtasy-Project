@@ -1,13 +1,17 @@
 import pygame
 from asset_manager import AssetManager
+from scene_manager import SceneManager
+from input_manager import InputManager
 
 
 class Game:
-    def __init__(self):
+    def __init__(self, scene_manager, input_manager):
         pygame.init()
         self.screen = pygame.display.set_mode((800,600))
         self.clock = pygame.time.Clock()
         self.running = True
+        self.scene_manager = scene_manager
+        self.input_manager = self.input_manager
 
     def main_loop(self):
         AssetManager.load_assets()
@@ -25,14 +29,14 @@ class Game:
             if event.type == pygame.QUIT:
                 self.running = False
 
-    def load_assets(self):
+    def load_game(self):
         ...
 
-    def update(self):
+    def update_game(self):
         ...
 
-    def render(self):
-        image = pygame.image.load("assets/background_grass.jpg").convert_alpha()
+    def render_game(self):
+        image = pygame.image.load("assets/background_grass.png").convert_alpha()
         self.screen.blit(image, (0, 0))
 
 game = Game()

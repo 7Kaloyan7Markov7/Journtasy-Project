@@ -7,7 +7,7 @@ class Room:
         self.entity_list = entity_list
 
     def render(self, screen):
-        screen.blit(self.background, (0,0))
+        self.background.render()
         
         for entity in self.entity_list:
             entity.render()
