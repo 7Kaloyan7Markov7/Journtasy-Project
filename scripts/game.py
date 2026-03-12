@@ -11,10 +11,9 @@ class Game:
         self.clock = pygame.time.Clock()
         self.running = True
         self.scene_manager = scene_manager
-        self.input_manager = self.input_manager
+        self.input_manager = input_manager
 
     def main_loop(self):
-        AssetManager.load_assets()
 
         while self.running:
             self.input_handler()
@@ -39,5 +38,5 @@ class Game:
         image = pygame.image.load("assets/background_grass.png").convert_alpha()
         self.screen.blit(image, (0, 0))
 
-game = Game()
+game = Game(1,2)
 game.main_loop()
