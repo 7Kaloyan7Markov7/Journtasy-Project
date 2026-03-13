@@ -1,12 +1,13 @@
 from game_scene import GameScene
 from main_menu_scene import MainMenu
-from pause_scene import PauseScene
 
 
 class SceneManager:
     def __init__(self, current_scene):
         self.current_scene = current_scene
-        self.is_paused = True
+
+    def create_scene(self):
+        ...
 
     def change_scene(self):
         ...

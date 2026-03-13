@@ -41,7 +41,7 @@ class AssetManager:
         return image
 
     @staticmethod
-    def load_4_direction_animations(entity_id, sprite_file_dict, frame_width, frame_height, scale, frame_count, frame_space):
+    def load_four_direction_animations(entity_id, sprite_file_dict, frame_width, frame_height, scale, frame_count, frame_space):
         animations = {}
         sprite_file_paths = sprite_file_dict[entity_id]
 
@@ -53,7 +53,7 @@ class AssetManager:
         return animations
 
     @staticmethod
-    def load_2_direction_animations(entity_id, sprite_file_dict, frame_width, frame_height, scale, frame_count, frame_space):
+    def load_two_direction_animations(entity_id, sprite_file_dict, frame_width, frame_height, scale, frame_count, frame_space):
         animations = {}
         sprite_file_paths = sprite_file_dict[entity_id]
 
@@ -64,7 +64,7 @@ class AssetManager:
 
     @staticmethod
     def load_player_animations(entity_id):
-        return AssetManager.load_4_direction_animations(
+        return AssetManager.load_four_direction_animations(
             entity_id,
             const.PLAYER_SPRITE_FILES,
             const.PLAYER_SPRITE_WIDTH,
@@ -76,7 +76,7 @@ class AssetManager:
 
     @staticmethod
     def load_projectile_animations(entity_id):
-        return AssetManager.load_4_direction_animations(
+        return AssetManager.load_four_direction_animations(
             entity_id,
             const.PROJECTILE_SPRITE_FILES,
             const.PROJECTILE_WIDTH,
@@ -88,7 +88,7 @@ class AssetManager:
 
     @staticmethod
     def load_enemy_animations(entity_id):
-        return AssetManager.load_4_direction_animations(
+        return AssetManager.load_four_direction_animations(
             entity_id,
             const.ENEMY_SPRITE_FILES,
             const.ENEMY_WIDTH,
@@ -100,7 +100,7 @@ class AssetManager:
 
     @staticmethod
     def load_weapon_animations(entity_id):
-        return AssetManager.load_2_direction_animations(
+        return AssetManager.load_two_direction_animations(
             entity_id,
             const.WEAPON_SPRITE_FILES,
             const.WEAPON_WIDTH,

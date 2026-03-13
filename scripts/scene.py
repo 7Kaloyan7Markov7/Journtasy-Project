@@ -1,9 +1,11 @@
-class Scene:
-    def __init__(self, room):
-        self.room = room
+from abc import ABC, abstractmethod
 
+
+class Scene(ABC):
+    @abstractmethod
     def update(self):
-        self.room.update()
-
-    def render(self):
-        self.room.render()
+        pass
+    
+    @abstractmethod
+    def render(self, screen):
+        pass
