@@ -5,38 +5,32 @@ from input_manager import InputManager
 
 
 class Game:
-    def __init__(self, scene_manager, input_manager):
+    def __init__(self, scene_manager, input_manager, event_handler):
         pygame.init()
         self.screen = pygame.display.set_mode((800,600))
         self.clock = pygame.time.Clock()
         self.running = True
         self.scene_manager = scene_manager
         self.input_manager = input_manager
+        self.event_handler = event_handler
 
     def main_loop(self):
 
         while self.running:
-            self.input_handler()
-            self.update()
-            self.render() 
+            self.update_game()
+            self.render_game() 
             self.clock .tick(60)
 
         pygame.quit()
-
-    def input_handler(self): 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                self.running = False
 
     def load_game(self):
         ...
 
     def update_game(self):
-        ...
+        self.input_manager.update()
+        self.event_handler.handle(self.scene_manager.current_scene, self.input_manager)
+        self.scene_manager.update_scene()
 
     def render_game(self):
-        image = pygame.image.load("assets/background_grass.png").convert_alpha()
-        self.screen.blit(image, (0, 0))
-
-game = Game(1,2)
-game.main_loop()
+        self.scene_manager.render_scene(self.screen)
+        pygame.display.flip()

@@ -15,8 +15,5 @@ class SceneManager:
     def update_scene(self):
         self.current_scene.update()
 
-    def render_scene(self):
-        self.current_scene.render()
-
-    def pause_switch(self):
-        self.is_paused = not self.is_paused
+    def render_scene(self, screen):
+        self.current_scene.render(screen)
