@@ -2,15 +2,15 @@ from enum import Enum, auto
 
 
 class Direction(Enum):
-    LEFT = auto()
-    RIGHT = auto()
-    UP = auto()
-    DOWN = auto()
-    NO_DIRECTION = auto()
+    LEFT = 0
+    RIGHT = 1
+    UP = 2
+    DOWN = 3
+    NO_DIRECTION = 4
 
 class State(Enum):
-    IDLE = auto()
-    MOVING = auto()
-    ATTACKING = auto()
-    DEAD = auto()
-    NO_STATE = auto()
+    IDLE = 0
+    MOVING = 1
+    ATTACKING = 2
+    DEAD = 3
+    NO_STATE = 4

@@ -15,5 +15,8 @@ class EventHandler:
 
     def quit_game_menu_event(self, scene, user_input):
         ...
+    
+    def handle(self, game):
+        ...
 
     

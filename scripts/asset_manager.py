@@ -15,11 +15,11 @@ class AssetManager:
     def crop_sprite(frames, frame_index, frame_width, frame_height, scale, frame_space):
         canvas = pygame.Surface((frame_width,frame_height)).convert_alpha() #creates a surface to draw on
         canvas.blit(frames, const.TOP_LEFT_CORNER , (frame_index * (frame_width + frame_space), 0, frame_width, frame_height)) #crops the n-th frame from the sprite sheet
-        image = pygame.transform.scale(canvas, (frame_width * scale, frame_height * scale)) #makes additional sprite transformation
+        scaled_canvas = pygame.transform.scale(canvas, (frame_width * scale, frame_height * scale)) #makes additional sprite transformation
        #image.set_colorkey(color)
        # #makes the background transparent, so only the sprite is left
 
-        return image
+        return scaled_canvas
     
     @staticmethod
     def get_all_frames(file_path, frame_width, frame_height, scale, frame_count, frame_space):
@@ -113,12 +113,12 @@ class AssetManager:
     @staticmethod
     def load_backgrounds():
         for background_id, path in const.BACKGROUND_PATHS.items():
-            AssetManager.backgrounds[background_id] = AssetManager.load_image(path, scale=const.BACKGROUND_SCALE, alpha=False)
+            AssetManager.backgrounds[background_id] = AssetManager.load_image(path, scale=const.BACKGROUND_SCALE)
 
     @staticmethod
     def load_obstacle_images():
         for obstacle_id, path in const.OBSTACLE_IMAGE_FILES.items():
-            AssetManager.obstacle_images[obstacle_id] = AssetManager.load_image(path, scale=const.OBSTACLE_SCALE, alpha=True)
+            AssetManager.obstacle_images[obstacle_id] = AssetManager.load_image(path, scale=const.OBSTACLE_SCALE)
 
     @staticmethod
     def load():

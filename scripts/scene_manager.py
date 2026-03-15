@@ -3,7 +3,8 @@ from main_menu_scene import MainMenu
 
 
 class SceneManager:
-    def __init__(self, current_scene):
+    def __init__(self, current_scene, scene_generator):
+        self.scene_generator =  scene_generator
         self.current_scene = current_scene
 
     def create_scene(self):

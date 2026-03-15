@@ -2,4 +2,12 @@ import character
 
 
 class Player(character):
-    pass
+    def __init__(self):
+        ...
+
+
+    def update(self):
+        ...
+
+    def render(self):
+        ...

@@ -19,5 +19,8 @@ class Entity(ABC):
     def update(self):
         pass
 
+    @abstractmethod
     def render(self, screen):
         pass
+
+    
