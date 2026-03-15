@@ -6,7 +6,7 @@ class DungeonManager:
         self.dungeon_generator = dungeon_generator
 
     def create_room(self):
-       new_room = self.dungeon_generator.generate_room()
+       new_room = self.dungeon_generator.generate()
        self.generated_rooms[self.room_count] = new_room
        room_count += 1
     
@@ -16,5 +16,3 @@ class DungeonManager:
     @property
     def get_current_room(self):
         return self.current_room
-
-    

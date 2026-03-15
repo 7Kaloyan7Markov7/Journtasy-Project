@@ -6,8 +6,8 @@ class Scene(ABC):
 
     @abstractmethod
     def update(self):
-        pass
+        raise NotImplementedError
     
     @abstractmethod
     def render(self, screen):
-        pass
+        raise NotImplementedError

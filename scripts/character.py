@@ -1,12 +1,18 @@
-from entity import Entity
 from abc import abstractmethod
+
+from entity import Entity
 
 
 class Character(Entity):
-    def __init__(self, entity_id, state, position, velocity, current_frame, hitbox, stats):
-        super().__init__(entity_id, state, position, velocity, current_frame, hitbox)
+    def __init__(self, entity_id, position, velocity, hitbox, stats):
+        super().__init__(entity_id, position, velocity, hitbox)
         self.stats = stats
         self.alive = True
+        self.sprites = {}
+
+    @abstractmethod
+    def kill_character(self):
+        ...
 
     @abstractmethod
     def take_damage(self, damage):

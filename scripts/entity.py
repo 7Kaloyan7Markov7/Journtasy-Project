@@ -1,7 +1,6 @@
 from pygame import Vector2, Rect
 from enums import Direction, State
 from abc import ABC, abstractmethod
-from asset_manager import AssetManager
 
 
 class Entity(ABC):
