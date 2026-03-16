@@ -1,5 +1,4 @@
 from scene import Scene
-from asset_manager import AssetManager
 from button import Button
 from background_generator import BackgroundGenerator
 import constants as const
@@ -8,13 +7,27 @@ import constants as const
 class MainMenu(Scene):
     scene_id = const.MAIN_MENU_ID
     def __init__(self):
-        self.start_button = Button(const.START_BUTTON_TEXT, const.START_BUTTON_ID)
-        self.exit_button = Button(const.EXIT_BUTTON_TEXT, const.EXIT_BUTTON_ID)
-        self.background = BackgroundGenerator.generate()
+        self._start_button = Button(const.START_BUTTON_TEXT, const.START_BUTTON_ID)
+        self._exit_button = Button(const.EXIT_BUTTON_TEXT, const.EXIT_BUTTON_ID)
+        self._background = BackgroundGenerator.generate()
 
-    def update(self):
-        ...
+    @property
+    def start_button(self):
+        return self._start_button
+    
+    @property
+    def exit_button(self):
+        return self._exit_button
+    
+
+    def update(self, position):
+        if(self.start_button.is_clicked(position)):
+            ...
+        if(self.exit_button.is_clicked(position)):
+            ...
+
 
     def render(self, screen):
+        self.background.render(screen)
         self.start_button.render(screen)
         self.exit_button.render(screen)

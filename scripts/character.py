@@ -5,8 +5,8 @@ from entity import Entity
 
 
 class Character(Entity):
-    def __init__(self, entity_id, position, velocity, hitbox, level):
-        super().__init__(entity_id, position, velocity, hitbox)
+    def __init__(self, entity_id, position, speed, level):
+        super().__init__(entity_id, position, speed)
         self.stats = Stats(entity_id, level)
         self.sprites = {}
 

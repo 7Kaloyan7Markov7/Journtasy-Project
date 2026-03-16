@@ -1,17 +1,25 @@
-import pygame
-
 from character import Character
 from asset_manager import AssetManager
+from hitbox import HitBox
+import constants as const
 
 
 class Enemy(Character):
-    def __init__(self, entity_id, position, velocity, hitbox):
-        super().__init__(entity_id, position, velocity, hitbox)
-        self.sprites = AssetManager.get_enemy_animations(entity_id)
+    def __init__(self, entity_id, position, speed):
+        super().__init__(entity_id, position, speed)
+
+        self._sprites = AssetManager.get_enemy_animations(entity_id)
+
+        hitbox_data = const.HITBOX_DATA[const.ENEMY_ID][entity_id]
+        self._hitbox = HitBox(position, hitbox_data[0], hitbox_data[1])
+
+    @property
+    def hitbox(self):
+        return self._hitbox
 
     @property
     def current_image(self):
-        return self.sprites[self.direction][self.current_frame_index]
+        return self._sprites[self.direction][self.current_frame_index]
 
     def update(self):
         ...
