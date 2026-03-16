@@ -1,8 +1,6 @@
 import pygame 
+
 import constants as const
-
-
-import pygame
 
 
 class InputManager:

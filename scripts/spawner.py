@@ -22,9 +22,6 @@ class Spawner:
         random_id = const.ENEMY_IDS[randint(0, len(const.ENEMY_IDS) - 1)]
         return self.enemy_generator.generate(random_id)
 
-    
-
-
     def spawn_obstacle(self):
         ...
 

@@ -10,7 +10,7 @@ import constants as const
 class Game:
     def __init__(self):
         pygame.init()
-        self.screen = pygame.display.set_mode((800,600))
+        self.screen = pygame.display.set_mode((const.SCREEN_WIDTH,const.SCREEN_HEIGHT))
         self.clock = pygame.time.Clock()
         self.running = True
         self.scene_manager = SceneManager()
