@@ -1,17 +1,20 @@
 from scene import Scene
 from asset_manager import AssetManager
+from button import Button
+from background_generator import BackgroundGenerator
 import constants as const
 
 
 class MainMenu(Scene):
     scene_id = const.MAIN_MENU_ID
-    def __init__(self, start_button, quit_button, background):
-        self.start_button = start_button
-        self.quit_button = quit_button
-        self.background = background
+    def __init__(self):
+        self.start_button = Button(const.START_BUTTON_TEXT, const.START_BUTTON_ID)
+        self.exit_button = Button(const.EXIT_BUTTON_TEXT, const.EXIT_BUTTON_ID)
+        self.background = BackgroundGenerator.generate()
 
     def update(self):
-        pass
+        ...
 
     def render(self, screen):
-        pass
+        self.start_button.render(screen)
+        self.exit_button.render(screen)

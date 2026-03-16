@@ -11,11 +11,11 @@ class Obstacle(Entity):
         self.is_blocking = is_blocking
 
     @property
-    def get_image(self):
+    def image (self):
         return self.sprites
 
     def update(self):
         ...
 
     def render(self, screen):
-        screen.blit(self.sprites, self.position)
+        screen.blit(self.image, self.position)
