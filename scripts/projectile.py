@@ -1,3 +1,5 @@
+import pygame
+
 from entity import Entity
 from asset_manager import AssetManager
 

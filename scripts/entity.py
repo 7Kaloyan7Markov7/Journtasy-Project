@@ -21,5 +21,3 @@ class Entity(ABC):
     @abstractmethod
     def render(self, screen):
         pass
-
-    
