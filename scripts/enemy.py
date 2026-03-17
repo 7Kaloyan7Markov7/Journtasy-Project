@@ -5,8 +5,8 @@ import constants as const
 
 
 class Enemy(Character):
-    def __init__(self, entity_id, position, speed):
-        super().__init__(entity_id, position, speed)
+    def __init__(self, entity_id, position, speed, level):
+        super().__init__(entity_id, position, speed, level)
 
         self._sprites = AssetManager.get_enemy_animations(entity_id)
 
@@ -14,15 +14,11 @@ class Enemy(Character):
         self._hitbox = HitBox(position, hitbox_data[0], hitbox_data[1])
 
     @property
-    def hitbox(self):
-        return self._hitbox
-
-    @property
     def current_image(self):
         return self._sprites[self.direction][self.current_frame_index]
 
     def update(self):
-        ...
+        super().update()
 
     def render(self, screen):
         screen.blit(self.current_image, self.position)

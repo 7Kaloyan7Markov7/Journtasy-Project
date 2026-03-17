@@ -1,0 +1,11 @@
+from random import randint, getrandbits
+
+from generator import Generator
+from obstacle import Obstacle
+import constants as const
+
+class ObstacleGenerator(Generator):
+    def generate(self):
+        random_id = const.OBSTACLE_IDS[randint(0, len(const.OBSTACLE_IDS) - 1)]
+        position = (randint(0, const.SCREEN_WIDTH), randint(0, const.SCREEN_HEIGHT))
+        return Obstacle(random_id, position, const.SPEED_DATA[const.ENEMY_ID][random_id], bool(getrandbits(1)))

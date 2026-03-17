@@ -19,12 +19,13 @@ class MainMenu(Scene):
     def exit_button(self):
         return self._exit_button
     
+    @property
+    def background(self):
+        return self._background
+    
 
-    def update(self, position):
-        if(self.start_button.is_clicked(position)):
-            ...
-        if(self.exit_button.is_clicked(position)):
-            ...
+    def update(self):
+        ...
 
 
     def render(self, screen):

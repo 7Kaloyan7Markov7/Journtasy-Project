@@ -8,7 +8,7 @@ from constants import BACKGROUND_IDS
 
 class BackgroundGenerator(Generator):
     def generate(self):
-        background_id = BACKGROUND_IDS[randint(0, len(BACKGROUND_IDS) - 1)]
-        background = Background(background_id)
+        random_id = BACKGROUND_IDS[randint(0, len(BACKGROUND_IDS) - 1)]
+        background = Background(random_id)
 
         return background

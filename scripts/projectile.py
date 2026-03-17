@@ -8,16 +8,13 @@ class Projectile(Entity):
     def __init__(self, entity_id, position, speed):
         super().__init__(entity_id, position, speed)
         self._sprites = AssetManager.get_projectile_animations(entity_id)
+
         hitbox_data = const.HITBOX_DATA[const.PROJECTILE_ID][entity_id]
         self._hitbox = HitBox(position, hitbox_data[0], hitbox_data[1])
 
     @property
     def current_image(self):
         return self._sprites[self.direction][self.current_frame_index]
-    
-    @property
-    def hitbox(self):
-       return self._hitbox
 
     def update(self):
         ...

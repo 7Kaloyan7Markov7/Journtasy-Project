@@ -13,10 +13,6 @@ class Weapon(Entity):
         self._hitbox = HitBox(position, hitbox_data[0], hitbox_data[1])
 
     @property
-    def hitbox(self):
-        return self._hitbox
-
-    @property
     def current_image(self):
         return self._sprites[self.direction][self.current_frame_index]
 

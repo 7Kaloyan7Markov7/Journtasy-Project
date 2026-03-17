@@ -1,6 +1,7 @@
 TOP_LEFT_CORNER = (0, 0)
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
+FIRST_LEVEL = 1
 
 
 # =========================

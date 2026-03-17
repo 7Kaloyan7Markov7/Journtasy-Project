@@ -7,25 +7,25 @@ from entity import Entity
 class Character(Entity):
     def __init__(self, entity_id, position, speed, level):
         super().__init__(entity_id, position, speed)
-        self.stats = Stats(entity_id, level)
-        self.sprites = {}
-
+        self._stats = Stats(entity_id, level)
+        self._sprites = {}
+        
     @property
     def level(self):
-        return self.stats.level
+        return self._stats.level
     
     @level.setter
     def level(self, new_level):
-        self.stats.level = new_level
+        self._stats.level = new_level
 
     def update(self):
-        self.stats.update()
+        self._stats.update()
 
     def level_up(self):
-        self.stats.level_up()
+        self._stats.level_up()
 
     def take_damage(self, damage):
-        self.stats.take_damage(damage)
+        self._stats.take_damage(damage)
 
     @abstractmethod
     def attack(self):

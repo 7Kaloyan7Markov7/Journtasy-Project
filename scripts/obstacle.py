@@ -10,7 +10,7 @@ class Obstacle(Entity):
         self._image = AssetManager.get_obstacle_image(entity_id)
         self._is_blocking = is_blocking
         hitbox_data = const.HITBOX_DATA[const.OBSTACLE_ID][entity_id]
-        self.hitbox = HitBox(position, hitbox_data[0], hitbox_data[1])
+        self._hitbox = HitBox(position, hitbox_data[0], hitbox_data[1])
 
     @property
     def image(self):
