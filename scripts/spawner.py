@@ -1,23 +1,16 @@
 from random import randint
 
-from entity import Entity
-from player import Player
-from enemy import Enemy
-from projectile import Projectile
-from weapon import Weapon
-from obstacle import Obstacle
-from stats import Stats
 from enemy_generator import EnemyGenerator
 from player_generator import PlayerGenerator
+from obstacle_generator import ObstacleGenerator
+from projectile_generator import ProjectileGenerator
 import constants as const
 
 
 class Spawner:
     def __init__(self):
         self._enemy_generator = EnemyGenerator()
-        self._obstacle_generator = None
-        self._projectile_generator = None
-        self._weapon_generator = None
+        self._obstacle_generator = ObstacleGenerator()
 
     def spawn_player(self, choice):
         player_generator = PlayerGenerator(choice)
@@ -27,10 +20,11 @@ class Spawner:
         return self._enemy_generator.generate()
 
     def spawn_obstacle(self):
-        ...
-
-    def spawn_projectile(self):
-        ...
+        return self._obstacle_generator.generate()
+    
+    def spawn_projectile(self, sender):
+        projectile_generator = ProjectileGenerator(sender)
+        return projectile_generator.generate()
 
     def spawn_entities(self):
         entity_list = []
