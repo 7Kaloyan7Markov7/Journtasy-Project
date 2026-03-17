@@ -1,18 +1,40 @@
-class DungeonManager:
-    def __init__(self, dungeon_generator):
-        self.generated_rooms = {}
-        self.room_count = 0
-        self.current_room = None
-        self.dungeon_generator = dungeon_generator
+from dungeon_generator import DungeonGenerator
+import constants as const
 
-    def create_room(self):
-       new_room = self.dungeon_generator.generate()
-       self.generated_rooms[self.room_count] = new_room
-       room_count += 1
-    
-    def change_room(self, new_room):
-        self.current_room = new_room
+class DungeonManager:
+    def __init__(self, player_choice):
+        self._generated_rooms = {}
+        self._room_count = 0
+        self._dungeon_generator = DungeonGenerator()
+        self._current_room = self._dungeon_generator.generate_first_room(player_choice)
+        self.player_choice = player_choice
 
     @property
-    def get_current_room(self):
-        return self.current_room
+    def room_count(self):
+        return self._room_count
+    
+    @property
+    def current_room(self):
+        return self._current_room
+    
+    @property
+    def generated_rooms(self):
+        return self._generated_rooms
+    
+    def move_player_to_room(self, new_room):
+        for entity in self.current_room.entity_list:
+            if entity.entity_id == self.player_choice:
+                taken_player = entity 
+                break
+
+        self.current_room.entity_list.remove(taken_player)
+        new_room.entity_list.append(taken_player)
+
+    def create_room(self):
+       new_room = self._dungeon_generator.generate()
+       self._generated_rooms[self.room_count] = new_room
+       self._room_count += 1
+    
+    def change_room(self, new_room):
+        self.move_player_to_room(new_room)
+        self._current_room = new_room

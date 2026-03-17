@@ -1,4 +1,5 @@
 from input_manager import InputManager
+from dungeon_manager import DungeonManager
 import constants as const
 
 
@@ -19,4 +20,6 @@ class EventHandler:
     def handle(self, game):
         ...
 
+    def change_room_event(self):
+        ...
     

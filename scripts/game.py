@@ -10,12 +10,12 @@ import constants as const
 class Game:
     def __init__(self):
         pygame.init()
-        self.screen = pygame.display.set_mode((const.SCREEN_WIDTH,const.SCREEN_HEIGHT))
-        self.clock = pygame.time.Clock()
-        self.running = True
-        self.scene_manager = SceneManager()
-        self.input_manager = InputManager()
-        self.event_handler = EventHandler()
+        self._screen = pygame.display.set_mode((const.SCREEN_WIDTH,const.SCREEN_HEIGHT))
+        self._clock = pygame.time.Clock()
+        self._running = True
+        self._scene_manager = SceneManager()
+        self._input_manager = InputManager()
+        self._event_handler = EventHandler()
 
     def main_loop(self):
 
@@ -31,10 +31,10 @@ class Game:
         AssetManager.load()    
 
     def update_game(self):
-        self.input_manager.update()
-        self.event_handler.handle(self)
-        self.scene_manager.update_scene()
+        self._input_manager.update()
+        self._event_handler.handle(self)
+        self._scene_manager.update_scene()
 
     def render_game(self):
-        self.scene_manager.render_scene(self.screen)
+        self._scene_manager.render_scene(self.screen)
         pygame.display.flip()
