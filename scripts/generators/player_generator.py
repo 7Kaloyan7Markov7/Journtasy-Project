@@ -1,6 +1,6 @@
 from scripts.generators.generator import Generator
 from scripts.entities.player import Player
-import scripts.constants.constants as const
+import scripts.config.constants as const
 
 
 class PlayerGenerator(Generator):

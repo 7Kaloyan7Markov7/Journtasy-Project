@@ -16,15 +16,7 @@ class Game:
         self._scene_manager = SceneManager()
         self._input_manager = InputManager()
         self._event_handler_manager = EventHandlerManager()
-
-    @property
-    def scene_manager(self):
-        return self._scene_manager
-    
-    @property
-    def input_manager(self):
-        return self._scene_manager
-    
+ 
     @property
     def running(self):
         return self._running
@@ -39,7 +31,7 @@ class Game:
         while self.running:
             self.update_game()
             self.render_game()
-            self.clock.tick(const.SIXTY_FPS)
+            self._clock.tick(const.SIXTY_FPS)
 
         pygame.quit()
 

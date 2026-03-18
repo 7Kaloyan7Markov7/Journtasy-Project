@@ -3,7 +3,7 @@ from scripts.handlers.handler import Handler
 from scripts.handlers.gameplay_handler import GameplayHandler
 from scripts.handlers.character_selection_handler import CharSelHandler
 from scripts.handlers.menu_handler import MenuHandler
-import scripts.constants.constants as const
+import scripts.config.constants as const
 
 
 class EventHandlerManager(Handler):

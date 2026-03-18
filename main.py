@@ -1,4 +1,4 @@
-from scripts.game.game import Game
+from game import Game
 
 #start?
 

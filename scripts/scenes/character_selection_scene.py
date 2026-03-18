@@ -1,6 +1,6 @@
 from scripts.scenes.scene import Scene
 from scripts.building_blocks.button import Button
-import scripts.constants.constants as const
+import scripts.config.constants as const
 
 
 class CharacterSelection(Scene):

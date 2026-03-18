@@ -1,7 +1,7 @@
 from scripts.generators.generator import Generator
 from scripts.entities.projectile import Projectile
 from scripts.entities.character import Character
-import scripts.constants.constants as const
+import scripts.config.constants as const
 
 
 class ProjectileGenerator(Generator):

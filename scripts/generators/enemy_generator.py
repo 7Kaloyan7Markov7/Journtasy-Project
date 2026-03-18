@@ -2,7 +2,7 @@ from random import randint
 
 from scripts.generators.generator import Generator
 from scripts.entities.enemy import Enemy
-import scripts.constants.constants as const
+import scripts.config.constants as const
 
 class EnemyGenerator(Generator):
     def generate(self):

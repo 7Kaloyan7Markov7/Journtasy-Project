@@ -2,7 +2,7 @@ from random import randint, getrandbits
 
 from scripts.generators.generator import Generator
 from scripts.entities.obstacle import Obstacle
-import scripts.constants.constants as const
+import scripts.config.constants as const
 
 class ObstacleGenerator(Generator):
     def generate(self):

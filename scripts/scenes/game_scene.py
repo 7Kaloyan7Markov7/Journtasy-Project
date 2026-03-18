@@ -1,5 +1,5 @@
 from scripts.scenes.scene import Scene
-import scripts.constants.constants as const
+import scripts.config.constants as const
 
 
 class GameScene(Scene):

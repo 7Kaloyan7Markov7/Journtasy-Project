@@ -1,6 +1,6 @@
 from scripts.handlers.handler import Handler
 from scripts.enums.enums import Direction
-import scripts.constants.constants as const
+import scripts.config.constants as const
 
 
 class GameplayHandler(Handler):

@@ -1,5 +1,5 @@
 import pygame
-import scripts.constants.constants as const
+import scripts.config.constants as const
 from scripts.enums.enums import Direction
 
 

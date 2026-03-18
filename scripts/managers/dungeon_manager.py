@@ -1,6 +1,6 @@
-from dungeon_generator import DungeonGenerator
+from scripts.generators.dungeon_generator import DungeonGenerator
 from scripts.enums.enums import Direction
-import scripts.constants.constants as const
+import scripts.config.constants as const
 
 
 class DungeonManager:

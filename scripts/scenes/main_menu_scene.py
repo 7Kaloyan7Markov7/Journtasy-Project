@@ -1,7 +1,7 @@
 from scripts.scenes.scene import Scene
 from scripts.building_blocks.button import Button
 from scripts.generators.background_generator import BackgroundGenerator
-import scripts.constants.constants as const
+import scripts.config.constants as const
 
 
 class MainMenu(Scene):
