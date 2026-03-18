@@ -9,7 +9,7 @@ class MainMenu(Scene):
     def __init__(self):
         self._start_button = Button(const.START_BUTTON_TEXT, const.START_BUTTON_ID)
         self._exit_button = Button(const.EXIT_BUTTON_TEXT, const.EXIT_BUTTON_ID)
-        self._background = BackgroundGenerator.generate()
+        self._background = BackgroundGenerator().generate() #generates random background
 
     @property
     def start_button(self):

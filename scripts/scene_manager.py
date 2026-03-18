@@ -1,12 +1,13 @@
 from game_scene import GameScene
 from main_menu_scene import MainMenu
+from character_selection_scene import CharacterSelection
 
 
 class SceneManager:
     def __init__(self):
         self._main_menu = MainMenu()
         self._game_scene = GameScene()
-        self._character_selection_scene = None
+        self._character_selection_scene = CharacterSelection()
         self._current_scene = self._main_menu
 
     @property

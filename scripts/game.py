@@ -3,7 +3,7 @@ import pygame
 from asset_manager import AssetManager
 from scene_manager import SceneManager
 from input_manager import InputManager
-from event_handler import EventHandler
+from event_handler import EventHandlerManager
 import constants as const
 
 
@@ -15,7 +15,23 @@ class Game:
         self._running = True
         self._scene_manager = SceneManager()
         self._input_manager = InputManager()
-        self._event_handler = EventHandler()
+        self._event_handler_manager = self._event_handler_manager()
+
+    @property
+    def scene_manager(self):
+        return self._scene_manager
+    
+    @property
+    def input_manager(self):
+        return self._scene_manager
+    
+    @property
+    def running(self):
+        return self._running
+    
+    @running.setter
+    def running(self, running):
+        self._running = running
 
     def main_loop(self):
 
@@ -32,7 +48,7 @@ class Game:
 
     def update_game(self):
         self._input_manager.update()
-        self._event_handler.handle(self)
+        self._event_handler_manager.handle(self)
         self._scene_manager.update_scene()
 
     def render_game(self):
