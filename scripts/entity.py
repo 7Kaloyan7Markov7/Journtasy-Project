@@ -35,6 +35,14 @@ class Entity(ABC):
         return self._hitbox
     
     @property
+    def width(self):
+        return self.hitbox.width
+    
+    @property
+    def height(self):
+        return self.hitbox.height
+    
+    @property
     def position(self):
         return self._position
 
