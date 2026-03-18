@@ -5,21 +5,27 @@ import scripts.config.constants as const
 
 class GameplayHandler(Handler):
     def handle(self, game):
-        ...
+        self.pause_event(game.scene_manager.current_scene, game.input_manager.pause_pressed)
+        self.player_stepped_bounds_event(self, game.dungeon_manager, game.scene_manager.scene.player)
 
-    def player_stepped_bounds_event(self, player):
+
+    def pause_event(self, scene, is_pause_clicked):
+        if is_pause_clicked:
+            scene.pause()
+
+    def player_stepped_bounds_event(self, dungeon_manager, player):
         if player.position.x <= const.SCREEN_LEFT_BOUNDARY:
             player.position.x = const.SCREEN_RIGHT_BOUNDARY - player.width
-            self.room_transition_event(Direction.LEFT)
+            dungeon_manager.transition_to_new_room(Direction.LEFT)
 
         elif player.position.x >= const.SCREEN_RIGHT_BOUNDARY - player.width:
             player.position.x = const.SCREEN_LEFT_BOUNDARY
-            self.room_transition_event(Direction.RIGHT)
+            dungeon_manager.transition_to_new_room(Direction.RIGHT)
 
         elif player.position.y <= const.SCREEN_UPPER_BOUNDARY:
             player.position.y = const.SCREEN_LOWER_BOUNDARY - player.height
-            self.room_transition_event(Direction.UP)
+            dungeon_manager.transition_to_new_room(Direction.UP)
 
         elif player.position.y >= const.SCREEN_LOWER_BOUNDARY - player.height:
             player.position.y = const.SCREEN_UPPER_BOUNDARY
-            self.room_transition_event(Direction.DOWN)
+            dungeon_manager.transition_to_new_room(Direction.DOWN)

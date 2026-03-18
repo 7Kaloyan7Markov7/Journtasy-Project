@@ -21,4 +21,4 @@ class GameScene(Scene):
         self._room.render(screen)
 
     def pause(self):
-        self.is_paused = not self.is_paused
+        self._is_paused = not self._is_paused

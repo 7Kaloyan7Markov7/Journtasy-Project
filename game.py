@@ -3,6 +3,7 @@ import pygame
 from scripts.managers.asset_manager import AssetManager
 from scripts.managers.scene_manager import SceneManager
 from scripts.managers.input_manager import InputManager
+from scripts.managers.dungeon_manager import DungeonManager
 from scripts.managers.event_handler_manager import EventHandlerManager
 import scripts.config.constants as const
 
@@ -13,9 +14,30 @@ class Game:
         self._screen = pygame.display.set_mode((const.SCREEN_WIDTH,const.SCREEN_HEIGHT))
         self._clock = pygame.time.Clock()
         self._running = True
+        self._dungeon_manager = DungeonManager()
         self._scene_manager = SceneManager()
         self._input_manager = InputManager()
         self._event_handler_manager = EventHandlerManager()
+
+    @property
+    def scene_manager   (self):
+        return self._scene_manager
+    
+    @property
+    def input_manager(self):
+        return self._input_manager
+    
+    @property
+    def event_handler_manager(self):
+        return self._event_handler_manager
+    
+    @property
+    def dungeon_manager(self):
+        return self._dungeon_manager
+    
+    @property
+    def event_handler_manager(self):
+        return self._event_handler_manager
  
     @property
     def running(self):
@@ -28,7 +50,7 @@ class Game:
     def main_loop(self):
 
         self.load_game()
-        while self.running:
+        while self._running:
             self.update_game()
             self.render_game()
             self._clock.tick(const.SIXTY_FPS)

@@ -13,7 +13,6 @@ class InputManager:
         self._attack_pressed = False
         self._pause_pressed = False
         self._quit_pressed = False
-        self._pressed_start_button = False
 
         self._left_click_position = None
         self._right_click_position = None

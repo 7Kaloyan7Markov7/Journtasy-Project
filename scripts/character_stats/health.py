@@ -1,6 +1,5 @@
+from scripts.character_stats.stat import Stat
 import scripts.config.constants as const
-from stat import Stat
-
 
 class Health(Stat):
     def __init__(self, entity_id, level):

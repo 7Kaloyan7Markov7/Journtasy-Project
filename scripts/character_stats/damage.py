@@ -1,4 +1,4 @@
-from stat import Stat
+from scripts.character_stats.stat import Stat
 import scripts.config.constants as const
 
 

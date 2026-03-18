@@ -1,6 +1,6 @@
 from random import randint
 
-from enemy_generator import EnemyGenerator
+from scripts.generators.enemy_generator import EnemyGenerator
 from scripts.generators.player_generator import PlayerGenerator
 from scripts.generators.obstacle_generator import ObstacleGenerator
 import scripts.config.constants as const
