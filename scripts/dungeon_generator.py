@@ -9,20 +9,17 @@ class DungeonGenerator(Generator):
     def __init__(self, player_choice):
         self._spawner = Spawner()
         self._background_generator = BackgroundGenerator()
-        self.spawned_player = self.spawner.spawn_player(player_choice)
+        self._player = self.spawner.spawn_player(player_choice)
 
     @property
-    def spawner(self):
-        return self._spawner
-    
+    def player(self):
+        return self._player
+
     def generate_first_room(self):
         background = self.background_generator.generate()
-        first_room = Room(background, [self.spawned_player])
-        return first_room
+        return Room(background, [], self.spawned_player)
 
     def generate(self):
         spawned_entities = self.spawner.spawn_entities()
         background = self.background_generator.generate()
-
-        new_room = Room(background, spawned_entities)
-        return new_room
+        return Room(background, spawned_entities, None)

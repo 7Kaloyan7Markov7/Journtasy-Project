@@ -1,5 +1,6 @@
 from input_manager import InputManager
 from dungeon_manager import DungeonManager
+from enums import Direction
 import constants as const
 
 
@@ -20,22 +21,22 @@ class EventHandler:
     def player_stepped_bounds_event(self, player):
         if player.position.x <= const.SCREEN_LEFT_BOUNDARY:
             player.position.x = const.SCREEN_RIGHT_BOUNDARY - player.width
-            self.change_room_event()
+            self.change_room_event(Direction.LEFT)
 
         elif player.position.x >= const.SCREEN_RIGHT_BOUNDARY - player.width:
             player.position.x = const.SCREEN_LEFT_BOUNDARY
-            self.change_room_event()
+            self.change_room_event(Direction.RIGHT)
 
         elif player.position.y <= const.SCREEN_UPPER_BOUNDARY:
             player.position.y = const.SCREEN_LOWER_BOUNDARY - player.height
-            self.change_room_event()
+            self.change_room_event(Direction.UP)
 
         elif player.position.y >= const.SCREEN_LOWER_BOUNDARY - player.height:
             player.position.y = const.SCREEN_UPPER_BOUNDARY
-            self.change_room_event()
+            self.change_room_event(Direction.DOWN)
 
-    def change_room_event(self, dungeon_manager):
-        dungeon_manager.create_new_room
+    def room_transition_event(self, dungeon_manager, direction):
+        dungeon_manager.transition_to_new_room(direction)
 
     def handle(self, game):
         ...
