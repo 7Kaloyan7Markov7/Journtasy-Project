@@ -5,9 +5,14 @@ class DungeonManager:
     def __init__(self, player_choice):
         self._generated_rooms = {}
         self._room_count = 0
-        self._dungeon_generator = DungeonGenerator()
-        self._current_room = self._dungeon_generator.generate_first_room(player_choice)
+        self._dungeon_generator = DungeonGenerator(player_choice)
+        self._current_room = self._dungeon_generator.generate_first_room()
         self.player_choice = player_choice
+        self._has_dungeon_started = False
+
+    @property
+    def has_dungeon_started(self):
+        return self._has_dungeon_started
 
     @property
     def room_count(self):
@@ -30,7 +35,7 @@ class DungeonManager:
         self.current_room.entity_list.remove(taken_player)
         new_room.entity_list.append(taken_player)
 
-    def create_room(self):
+    def create_new_room(self):
        new_room = self._dungeon_generator.generate()
        self._generated_rooms[self.room_count] = new_room
        self._room_count += 1
@@ -38,3 +43,7 @@ class DungeonManager:
     def change_room(self, new_room):
         self.move_player_to_room(new_room)
         self._current_room = new_room
+
+    def start_dungeon(self):
+        self._has_dungeon_started = True
+        self._generated_rooms.generate_first_room(self.player_choice)  

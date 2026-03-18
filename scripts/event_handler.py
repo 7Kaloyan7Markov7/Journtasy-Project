@@ -16,10 +16,27 @@ class EventHandler:
 
     def quit_game_menu_event(self, scene, user_input):
         ...
-    
-    def handle(self, game):
-        ...
 
-    def change_room_event(self):
+    def player_stepped_bounds_event(self, player):
+        if player.position.x <= const.SCREEN_LEFT_BOUNDARY:
+            player.position.x = const.SCREEN_RIGHT_BOUNDARY - player.width
+            self.change_room_event()
+
+        elif player.position.x >= const.SCREEN_RIGHT_BOUNDARY - player.width:
+            player.position.x = const.SCREEN_LEFT_BOUNDARY
+            self.change_room_event()
+
+        elif player.position.y <= const.SCREEN_UPPER_BOUNDARY:
+            player.position.y = const.SCREEN_LOWER_BOUNDARY - player.height
+            self.change_room_event()
+
+        elif player.position.y >= const.SCREEN_LOWER_BOUNDARY - player.height:
+            player.position.y = const.SCREEN_UPPER_BOUNDARY
+            self.change_room_event()
+
+    def change_room_event(self, dungeon_manager):
+        dungeon_manager.create_new_room
+
+    def handle(self, game):
         ...
     

@@ -11,4 +11,4 @@ class PlayerGenerator(Generator):
         chosen_character_id = const.PLAYABLE_CHARACTER_IDS[self._player_choice]
         speed = const.SPEED_DATA[const.PLAYER_ID][chosen_character_id]
 
-        return Player(chosen_character_id, (0, 0), speed, const.FIRST_LEVEL)
+        return Player(chosen_character_id, (100, 100), speed, const.FIRST_LEVEL)
