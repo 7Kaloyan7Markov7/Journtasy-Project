@@ -10,7 +10,7 @@ class MenuHandler(Handler):
         self.quit_game_menu_event(game, current_scene, left_click_position)
 
     def start_game_event(self, game, scene, left_click_position):
-        if left_click_position is False:
+        if left_click_position is None:
             return
 
         if scene.start_button.is_clicked(left_click_position):
@@ -20,7 +20,7 @@ class MenuHandler(Handler):
         game.scene_manager.open_character_selection()
 
     def quit_game_menu_event(self, game, scene, left_click_position):
-        if left_click_position is False:
+        if left_click_position is None:
             return
 
         if scene.exit_button.is_clicked(left_click_position):

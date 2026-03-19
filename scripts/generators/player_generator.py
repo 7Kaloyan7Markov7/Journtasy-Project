@@ -8,7 +8,6 @@ class PlayerGenerator(Generator):
         self._player_choice = player_choice
 
     def generate(self):
-        chosen_character_id = const.PLAYABLE_CHARACTER_IDS[self._player_choice]
-        speed = const.SPEED_DATA[const.PLAYER_ID][chosen_character_id]
+        speed = const.SPEED_DATA[const.PLAYER_ID][self._player_choice]
 
-        return Player(chosen_character_id, (100, 100), speed, const.FIRST_LEVEL)
+        return Player(self._player_choice, (100, 100), speed, const.FIRST_LEVEL)

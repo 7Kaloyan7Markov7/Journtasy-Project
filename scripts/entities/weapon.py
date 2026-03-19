@@ -53,7 +53,7 @@ class Weapon(AnimatedEntity):
         for entity in room.entity_list:
             if entity.entity_id in const.ENEMY_IDS:
                 if self.hitbox.is_colliding(entity.hitbox):
-                    entity.take_damage(player.stats.damage.current_damage)
+                    entity.take_damage(player.stats.damage.damage)
 
     def stop_attack(self):
         self._is_attacking = False
