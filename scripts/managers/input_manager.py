@@ -1,7 +1,5 @@
 import pygame 
 
-import scripts.config.constants as const
-
 
 class InputManager:
     def __init__(self):

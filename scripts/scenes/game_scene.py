@@ -12,6 +12,14 @@ class GameScene(Scene):
     @property
     def room(self):
         return self._room
+    
+    @property
+    def is_paused(self):
+        return self._is_paused
+    
+    @room.setter
+    def room(self, new_room):
+        self._room = new_room
 
     def update(self):
         if not self.is_paused:

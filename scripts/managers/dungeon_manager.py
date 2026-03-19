@@ -1,6 +1,5 @@
 from scripts.generators.dungeon_generator import DungeonGenerator
 from scripts.enums.enums import Direction
-import scripts.config.constants as const
 
 
 class DungeonManager:
@@ -8,11 +7,6 @@ class DungeonManager:
         self._dungeon_generator = DungeonGenerator(player_choice)
         self._current_room = self._dungeon_generator.generate_first_room()
         self._player = self._dungeon_generator.spawned_player
-        self._has_dungeon_started = False
-
-    @property
-    def has_dungeon_started(self):
-        return self._has_dungeon_started
 
     @property
     def current_room(self):
@@ -64,6 +58,3 @@ class DungeonManager:
 
         self.move_player_to_room(new_room)
         self._current_room = new_room
-
-    def start_dungeon(self):
-        self._has_dungeon_started = True

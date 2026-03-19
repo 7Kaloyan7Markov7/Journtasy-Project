@@ -14,7 +14,7 @@ class Game:
         self._screen = pygame.display.set_mode((const.SCREEN_WIDTH,const.SCREEN_HEIGHT))
         self._clock = pygame.time.Clock()
         self._running = True
-        self._dungeon_manager = DungeonManager()
+        self._dungeon_manager = None
         self._scene_manager = SceneManager()
         self._input_manager = InputManager()
         self._event_handler_manager = EventHandlerManager()
@@ -42,6 +42,10 @@ class Game:
     @property
     def running(self):
         return self._running
+    
+    @dungeon_manager.setter
+    def dungeon_manager(self, dungeon_manager):
+        self._dungeon_manager = dungeon_manager
     
     @running.setter
     def running(self, running):

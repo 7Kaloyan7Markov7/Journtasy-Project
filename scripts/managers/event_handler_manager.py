@@ -11,17 +11,6 @@ class EventHandlerManager(Handler):
         self._gameplay_handler = GameplayHandler()
         self._character_selection_handler = CharSelHandler()
         self._main_menu_handler = MenuHandler()
-    
-    def chosen_player_event(self, current_scene, user_click_position):
-        player_choice = self.choosing_character_event(current_scene, user_click_position) 
-        if player_choice is not None:
-            return player_choice
-        
-        return None
-
-
-    def start_game_event(self, current_scene, user_input):
-        ...
 
     def quit_game_event(self, game):
         if game.input_manager.quit_pressed:
