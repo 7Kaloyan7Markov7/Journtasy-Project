@@ -2,6 +2,8 @@ from scripts.entities.character import Character
 from scripts.managers.asset_manager import AssetManager
 from scripts.entities.weapon import Weapon
 from scripts.collisions.hitbox import HitBox
+from scripts.enums.enums import Direction, State
+import math
 import scripts.config.constants as const
 
 
@@ -33,8 +35,42 @@ class Player(Character):
         screen.blit(self.current_image, self.position)
         self.weapon.render(screen)
 
-    def attack(self):
-        pass
+    def attack(self, context=None):
+        room = context
+        self._state = State.ATTACKING
+        self._weapon.attack(room, self)
 
-    def move(self):
-        pass
+    def move(self, context=None):
+        input_manager = context
+        if input_manager is None:
+            return
+
+        dx = 0
+        dy = 0
+
+        if input_manager.move_left:
+            dx -= 1
+            self._direction = Direction.LEFT
+
+        if input_manager.move_right:
+            dx += 1
+            self._direction = Direction.RIGHT
+
+        if input_manager.move_up:
+            dy -= 1
+            self._direction = Direction.UP
+
+        if input_manager.move_down:
+            dy += 1
+            self._direction = Direction.DOWN
+
+        if dx == 0 and dy == 0:
+            return
+
+        length = math.sqrt(dx * dx + dy * dy)
+        dx = (dx / length) * self.speed
+        dy = (dy / length) * self.speed
+
+        self._position.x += dx
+        self._position.y += dy
+        self.hitbox.move(self.position)

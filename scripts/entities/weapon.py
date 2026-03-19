@@ -1,6 +1,7 @@
 from scripts.entities.entity import Entity
 from scripts.managers.asset_manager import AssetManager
 from scripts.collisions.hitbox import HitBox
+from scripts.enums.enums import State
 import scripts.config.constants as const
 
 
@@ -15,6 +16,17 @@ class Weapon(Entity):
     @property
     def current_image(self):
         return self._sprites[self.direction][self.current_frame_index]
+    
+    def attack(self, room, player):
+        self._state = State.ATTACKING
+
+        if len(room.entity_list) == 0:
+            return
+
+        for entity in room.entity_list:
+            if entity.entity_id in const.ENEMY_IDS:
+                if self._hitbox.is_colliding(entity.hitbox):
+                    entity.take_damage(player.stats.damage.value)
 
     def update(self):
         ...

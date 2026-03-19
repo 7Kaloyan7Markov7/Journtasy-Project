@@ -6,9 +6,21 @@ from scripts.character_stats.damage import Damage
 class Stats:
     def __init__(self, entity_id, level):
         self._level = int(level)
-        self.health = Health(entity_id, level)
-        self.armor = Armor(entity_id, level)
-        self.damage = Damage(entity_id, level)
+        self._health = Health(entity_id, level)
+        self._armor = Armor(entity_id, level)
+        self._damage = Damage(entity_id, level)
+
+    @property
+    def health(self):
+        return self._health  
+
+    @property
+    def armor(self):
+        return self._armor   
+
+    @property
+    def damage(self):
+        return self._damage      
 
     @property
     def level(self):
@@ -19,20 +31,21 @@ class Stats:
         self._level = new_level
 
     def take_damage(self, damage):
-        reduced_damage = self.armor.reduce_damage(damage)
-        self.health.take_damage(reduced_damage)
+        reduced_damage = self._armor.reduce_damage(damage)
+        self._health.take_damage(reduced_damage)
 
     def increase_stats(self):
-        self.health.increase(self.level)
-        self.armor.increase(self.level)
-        self.damage.increase(self.level)
+        self._health.increase(self.level)
+        self._armor.increase(self.level)
+        self._damage.increase(self.level)
 
     def level_up(self):
         self.level += 1
         self.increase_stats()
 
     def is_dead(self):
-        return self.health.current_health <= 0
+        return self._health.current_health <= 0
     
     def update(self):
         self.health.update()
+        self.is_dead()

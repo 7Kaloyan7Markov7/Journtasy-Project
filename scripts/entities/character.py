@@ -28,9 +28,9 @@ class Character(Entity):
         self._stats.take_damage(damage)
 
     @abstractmethod
-    def attack(self):
+    def attack(self, context = None):
         pass
 
     @abstractmethod
-    def move(self):
+    def move(self, context = None):
         pass
