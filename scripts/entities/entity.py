@@ -1,15 +1,13 @@
 from abc import ABC, abstractmethod
-
 from pygame import Vector2
 from scripts.enums.enums import Direction, State
+
 
 class Entity(ABC):
     def __init__(self, entity_id, position, speed):
         self._entity_id = str(entity_id)
         self._direction = Direction.DOWN
         self._state = State.NO_STATE
-        self._current_frame_index = 0
-        self._sprites = None
         self._position = Vector2(position)
         self._speed = int(speed)
         self._hitbox = None
@@ -17,10 +15,6 @@ class Entity(ABC):
     @property
     def direction(self):
         return self._direction
-    
-    @property
-    def current_frame_index(self):
-        return self._current_frame_index
     
     @property
     def state(self):
@@ -45,6 +39,10 @@ class Entity(ABC):
     @property
     def position(self):
         return self._position
+    
+    @property
+    def speed(self):
+        return self._speed
 
     @abstractmethod
     def update(self):

@@ -9,6 +9,7 @@ class Obstacle(Entity):
         super().__init__(entity_id, position, speed)
         self._image = AssetManager.get_obstacle_image(entity_id)
         self._is_blocking = is_blocking
+
         hitbox_data = const.HITBOX_DATA[const.OBSTACLE_ID][entity_id]
         self._hitbox = HitBox(position, hitbox_data[0], hitbox_data[1])
 
@@ -16,8 +17,12 @@ class Obstacle(Entity):
     def image(self):
         return self._image
 
+    @property
+    def is_blocking(self):
+        return self._is_blocking
+
     def update(self):
-        ...
+        pass
 
     def render(self, screen):
         screen.blit(self.image, self.position)

@@ -29,7 +29,6 @@ class Player(Character):
 
     def update(self):
         super().update()
-        self.hitbox.position = self.position
         self.weapon.update()
 
     def render(self, screen):
@@ -67,6 +66,8 @@ class Player(Character):
 
         if dx == 0 and dy == 0:
             return
+
+        self._previous_position = self.position.copy()
 
         length = math.sqrt(dx * dx + dy * dy)
         dx = (dx / length) * self.speed
