@@ -6,7 +6,7 @@ class DungeonManager:
     def __init__(self, player_choice):
         self._dungeon_generator = DungeonGenerator(player_choice)
         self._current_room = self._dungeon_generator.generate_first_room()
-        self._player = self._dungeon_generator.spawned_player
+        self._player = self._dungeon_generator.player
 
     @property
     def current_room(self):

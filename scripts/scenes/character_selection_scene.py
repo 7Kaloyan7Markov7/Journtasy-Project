@@ -38,9 +38,6 @@ class CharacterSelection(Scene):
     def caveman_button(self):
         return self._caveman_button
     
-    def update(self):
-        pass
-
     def render(self, screen):
         self.knight_button.render(screen)
         self.boxer_button.render(screen)

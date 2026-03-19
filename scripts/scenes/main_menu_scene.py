@@ -23,9 +23,6 @@ class MainMenu(Scene):
     def background(self):
         return self._background
     
-    def update(self):
-        ...
-
     def render(self, screen):
         self.background.render(screen)
         self.start_button.render(screen)
