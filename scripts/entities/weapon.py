@@ -1,7 +1,7 @@
 from scripts.entities.entity import Entity
 from scripts.managers.asset_manager import AssetManager
 from scripts.collisions.hitbox import HitBox
-from scripts.enums.enums import State
+from scripts.enums.enums import State, Direction
 import scripts.config.constants as const
 
 
@@ -26,10 +26,13 @@ class Weapon(Entity):
         for entity in room.entity_list:
             if entity.entity_id in const.ENEMY_IDS:
                 if self._hitbox.is_colliding(entity.hitbox):
-                    entity.take_damage(player.stats.damage.value)
+                    entity.take_damage(player.stats.damage.damage)
 
     def update(self):
         ...
 
-    def render(self, screen):
+    def render(self, screen, current_direction):
+        if current_direction == Direction.DOWN or current_direction == Direction.UP:
+            return 
+        
         screen.blit(self.current_image, self.position)

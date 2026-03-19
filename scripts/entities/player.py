@@ -29,11 +29,12 @@ class Player(Character):
 
     def update(self):
         super().update()
+        self.hitbox.position = self.position
         self.weapon.update()
 
     def render(self, screen):
         screen.blit(self.current_image, self.position)
-        self.weapon.render(screen)
+        self.weapon.render(screen, self.direction)
 
     def attack(self, context=None):
         room = context

@@ -14,6 +14,10 @@ class Character(Entity):
     def level(self):
         return self._stats.level
     
+    @property
+    def stats(self):
+        return self._stats
+    
     @level.setter
     def level(self, new_level):
         self._stats.level = new_level
