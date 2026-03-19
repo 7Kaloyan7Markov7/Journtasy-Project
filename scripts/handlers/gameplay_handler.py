@@ -39,6 +39,9 @@ class GameplayHandler(Handler):
     def player_attack_event(self, game):
         ...
 
+    def enemy_take_damage_event(self, game):
+        ...
+
     def player_take_damage_event(self, game):
         ...
     
