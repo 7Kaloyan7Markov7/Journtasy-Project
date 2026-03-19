@@ -1,6 +1,5 @@
 from scripts.generators.generator import Generator
 from scripts.entities.projectile import Projectile
-from scripts.entities.character import Character
 import scripts.config.constants as const
 
 

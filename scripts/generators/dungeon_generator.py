@@ -1,4 +1,3 @@
-from scripts.managers.asset_manager import AssetManager
 from scripts.building_blocks.room import Room
 from scripts.generators.background_generator import BackgroundGenerator
 from scripts.generators.generator import Generator

@@ -2,7 +2,6 @@ from random import randint
 
 from scripts.building_blocks.background import  Background
 from scripts.generators.generator import Generator
-from scripts.managers.asset_manager import AssetManager
 from scripts.config.constants import BACKGROUND_IDS
 
 
