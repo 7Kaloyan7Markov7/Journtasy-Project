@@ -32,21 +32,24 @@ class Player(Character):
         self.weapon.sync_with_player(self)
         self.weapon.update()
 
-    def update(self):
-        super().update()
-        self.weapon.sync_with_player(self)
-        self.weapon.update()
-
-        if not self.weapon.is_attacking and self._state == State.ATTACKING:
+        if not self.weapon.state != State.ATTACKING and self._state == State.ATTACKING:
             self._state = State.IDLE
 
     def attack(self, context=None):
         room = context
-        if self.weapon.is_attacking:
+        if self.weapon.state == State.ATTACKING:
             return
 
-        self._state = State.ATTACKING
-        self._weapon.attack(room, self)
+        self.weapon.attack(room, self)
+
+        if self.weapon.state == State.ATTACKING:
+            self._state = State.ATTACKING
+
+    def stop_attack(self):
+        self.weapon.stop_attack()
+
+        if self._state == State.ATTACKING:
+            self._state = State.IDLE
 
     def move(self, context=None):
         input_manager = context

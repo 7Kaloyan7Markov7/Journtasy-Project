@@ -15,10 +15,7 @@ class AnimatedEntity(Entity):
         if not frames:
             return
 
-        self._current_frame_index += 1
-
-        if self._current_frame_index >= len(frames):
-            self._current_frame_index = 0
+        self._current_frame_index += (self._current_frame_index + 1) % len(frames)
 
     def reset_animation(self):
         self._current_frame_index = 0
