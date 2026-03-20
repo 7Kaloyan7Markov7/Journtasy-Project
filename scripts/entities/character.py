@@ -7,7 +7,6 @@ class Character(AnimatedEntity):
     def __init__(self, entity_id, position, speed, level):
         super().__init__(entity_id, position, speed)
         self._stats = Stats(entity_id, level)
-        self._sprites = {}
         self._previous_position = self.position.copy()
 
     @property
@@ -27,6 +26,7 @@ class Character(AnimatedEntity):
         self._stats.level = new_level
 
     def update(self):
+        self._previous_position = self.position.copy() # Store before movement
         self._stats.update()
 
     def level_up(self):

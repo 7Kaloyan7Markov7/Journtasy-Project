@@ -5,7 +5,7 @@ class AnimatedEntity(Entity):
     def __init__(self, entity_id, position, speed):
         super().__init__(entity_id, position, speed)
         self._current_frame_index = 0
-        self._sprites = None
+        self._sprites = {}
 
     @property
     def current_frame_index(self):

@@ -10,7 +10,7 @@ import scripts.config.constants as const
 class Player(Character):
     def __init__(self, entity_id, position, speed, level):
         super().__init__(entity_id, position, speed, level)
-        self._experience = 0
+        self._experience_bar = 0
 
         weapon_id = const.PLAYER_WEAPON_MAP[entity_id]
         self._weapon = Weapon(weapon_id, position, speed)
@@ -29,14 +29,22 @@ class Player(Character):
 
     def update(self):
         super().update()
+        self.weapon.sync_with_player(self)
         self.weapon.update()
 
-    def render(self, screen):
-        screen.blit(self.current_image, self.position)
-        self.weapon.render(screen, self.direction)
+    def update(self):
+        super().update()
+        self.weapon.sync_with_player(self)
+        self.weapon.update()
+
+        if not self.weapon.is_attacking and self._state == State.ATTACKING:
+            self._state = State.IDLE
 
     def attack(self, context=None):
         room = context
+        if self.weapon.is_attacking:
+            return
+
         self._state = State.ATTACKING
         self._weapon.attack(room, self)
 
