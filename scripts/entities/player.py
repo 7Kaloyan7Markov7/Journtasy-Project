@@ -18,6 +18,7 @@ class Player(Character):
 
         hitbox_data = const.HITBOX_DATA[const.PLAYER_ID]
         self._hitbox = HitBox(position, hitbox_data[0], hitbox_data[1])
+    #ok
 
     @property
     def weapon(self):
@@ -26,13 +27,14 @@ class Player(Character):
     @property
     def current_image(self):
         return self._sprites[self.direction][self.current_frame_index]
+    #ok
 
     def update(self):
         super().update()
         self.weapon.sync_with_player(self)
         self.weapon.update()
 
-        if not self.weapon.state != State.ATTACKING and self._state == State.ATTACKING:
+        if self.weapon.state == State.IDLE and self._state == State.ATTACKING:
             self._state = State.IDLE
 
     def attack(self, context=None):
