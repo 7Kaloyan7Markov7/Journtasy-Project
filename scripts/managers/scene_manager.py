@@ -22,7 +22,7 @@ class SceneManager:
         self._current_scene = self._main_menu
 
     def open_character_selection(self):
-        self._character_selection_scene
+        self.current_scene.background.render(self._screen)
         self._current_scene = self._character_selection_scene
 
     def open_game_scene(self):
