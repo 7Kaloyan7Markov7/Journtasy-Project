@@ -4,9 +4,10 @@ from scripts.scenes.character_selection_scene import CharacterSelection
 from scripts.config.constants import GAME_SCENE_ID
 
 class SceneManager:
-    def __init__(self):
+    def __init__(self, screen):
         self._main_menu = MainMenu()
         self._character_selection_scene = CharacterSelection()
+        self._screen = screen
         self._game_scene = None
         self._current_scene = self._main_menu
 
@@ -21,6 +22,7 @@ class SceneManager:
         self._current_scene = self._main_menu
 
     def open_character_selection(self):
+        self._character_selection_scene
         self._current_scene = self._character_selection_scene
 
     def open_game_scene(self):
@@ -31,5 +33,5 @@ class SceneManager:
         if self._current_scene.scene_id == GAME_SCENE_ID:
             self._current_scene.update()
 
-    def render_scene(self, screen):
-        self._current_scene.render(screen)
+    def render_scene(self):
+        self._current_scene.render(self._screen)

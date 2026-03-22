@@ -40,9 +40,17 @@ class Entity(ABC):
     def position(self):
         return self._position
     
+    @position.setter
+    def position(self, new_position):
+        self._position = new_position
+    
     @property
     def speed(self):
         return self._speed
+    
+    @state.setter
+    def state(self, new_state):
+        self._state = new_state
 
     @abstractmethod
     def update(self):

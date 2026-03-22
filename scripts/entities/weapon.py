@@ -27,6 +27,8 @@ class Weapon(AnimatedEntity):
         if self._direction == Direction.UP or self._direction == Direction.DOWN:
             self._state = State.IDLE
             self.reset_animation()
+            self._position = player.position.copy()
+            self._hitbox.move(self._position)
             return
 
         if self._direction == Direction.LEFT:
@@ -36,17 +38,14 @@ class Weapon(AnimatedEntity):
 
         self._hitbox.move(self._position)
 
-    def attack(self, room, player):
+    def attack(self, target, player):
         if self.direction == Direction.UP or self.direction == Direction.DOWN:
             return
 
         self._state = State.ATTACKING
         self.reset_animation()
 
-        for entity in room.entity_list:
-            if entity.entity_id in const.ENEMY_IDS:
-                if self.hitbox.is_colliding(entity.hitbox):
-                    entity.take_damage(player.stats.damage.damage)
+        target.take_damage(player.stats.damage.damage)
 
     def stop_attack(self):
         self._state = State.IDLE
@@ -58,7 +57,13 @@ class Weapon(AnimatedEntity):
             self.reset_animation()
             return
 
-        self.animate(self._sprites[self.direction])
+        frame_count = len(self._sprites[self.direction])
+
+        if self._current_frame_index >= frame_count - 1:
+            self.stop_attack()
+            return
+
+        self.animate()
 
     def render(self, screen):
         if self.direction == Direction.UP or self.direction == Direction.DOWN:

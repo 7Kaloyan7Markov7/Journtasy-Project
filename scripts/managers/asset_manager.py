@@ -125,17 +125,17 @@ class AssetManager:
         for player_id in const.PLAYABLE_CHARACTER_IDS:
             AssetManager.player_animations[player_id] = AssetManager.load_player_animations(player_id)
 
-        for projectile_id in const.PROJECTILE_IDS:
-            AssetManager.projectile_animations[projectile_id] = AssetManager.load_projectile_animations(projectile_id)
+        # for projectile_id in const.PROJECTILE_IDS:
+        #     AssetManager.projectile_animations[projectile_id] = AssetManager.load_projectile_animations(projectile_id)
 
-        for enemy_id in const.ENEMY_IDS:
-            AssetManager.enemy_animations[enemy_id] = AssetManager.load_enemy_animations(enemy_id)
+        # for enemy_id in const.ENEMY_IDS:
+        #     AssetManager.enemy_animations[enemy_id] = AssetManager.load_enemy_animations(enemy_id)
 
-        for weapon_id in const.WEAPON_IDS:
-            AssetManager.weapon_animations[weapon_id] = AssetManager.load_weapon_animations(weapon_id)
+        # for weapon_id in const.WEAPON_IDS:
+        #     AssetManager.weapon_animations[weapon_id] = AssetManager.load_weapon_animations(weapon_id)
 
         AssetManager.load_backgrounds()
-        AssetManager.load_obstacle_images()
+        # AssetManager.load_obstacle_images()
 
 
     #getters

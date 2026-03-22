@@ -3,7 +3,6 @@ import pygame
 from scripts.managers.asset_manager import AssetManager
 from scripts.managers.scene_manager import SceneManager
 from scripts.managers.input_manager import InputManager
-from scripts.managers.dungeon_manager import DungeonManager
 from scripts.managers.event_handler_manager import EventHandlerManager
 import scripts.config.constants as const
 
@@ -13,9 +12,10 @@ class Game:
         pygame.init()
         self._screen = pygame.display.set_mode((const.SCREEN_WIDTH,const.SCREEN_HEIGHT))
         self._clock = pygame.time.Clock()
+        self.load_game()
         self._running = True
         self._dungeon_manager = None
-        self._scene_manager = SceneManager()
+        self._scene_manager = SceneManager(self._screen)
         self._input_manager = InputManager()
         self._event_handler_manager = EventHandlerManager()
 
@@ -53,7 +53,6 @@ class Game:
 
     def main_loop(self):
 
-        self.load_game()
         while self._running:
             self.update_game()
             self.render_game()
@@ -70,5 +69,5 @@ class Game:
         self._scene_manager.update_scene()
 
     def render_game(self):
-        self._scene_manager.render_scene(self.screen)
+        self._scene_manager.render_scene()
         pygame.display.flip()

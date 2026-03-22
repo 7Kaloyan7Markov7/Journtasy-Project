@@ -11,11 +11,9 @@ class AnimatedEntity(Entity):
     def current_frame_index(self):
         return self._current_frame_index
 
-    def animate(self, frames):
-        if not frames:
-            return
-
-        self._current_frame_index += (self._current_frame_index + 1) % len(frames)
+    def animate(self):
+       frame_count = len(self._sprites[self._direction])
+       self._current_frame_index = (self._current_frame_index + 1) % frame_count 
 
     def reset_animation(self):
         self._current_frame_index = 0

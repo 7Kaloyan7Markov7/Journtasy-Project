@@ -8,6 +8,7 @@ class Character(AnimatedEntity):
         super().__init__(entity_id, position, speed)
         self._stats = Stats(entity_id, level)
         self._previous_position = self.position.copy()
+        self._is_dead = False
 
     @property
     def previous_position(self):
