@@ -131,8 +131,8 @@ class AssetManager:
         # for enemy_id in const.ENEMY_IDS:
         #     AssetManager.enemy_animations[enemy_id] = AssetManager.load_enemy_animations(enemy_id)
 
-        # for weapon_id in const.WEAPON_IDS:
-        #     AssetManager.weapon_animations[weapon_id] = AssetManager.load_weapon_animations(weapon_id)
+        for weapon_id in const.WEAPON_IDS:
+            AssetManager.weapon_animations[weapon_id] = AssetManager.load_weapon_animations(weapon_id)
 
         AssetManager.load_backgrounds()
         # AssetManager.load_obstacle_images()
