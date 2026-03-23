@@ -130,35 +130,35 @@ PLAYABLE_CHARACTER_IDS = [
     CAVEMAN_ID
 ]
 
-KNIGHT_DOWN_SPRITES = "assets/knight_sprites/knight_down_sprites.png"
-KNIGHT_UP_SPRITES = "assets/knight_sprites/knight_up_sprites.png"
-KNIGHT_LEFT_SPRITES = "assets/knight_sprites/knight_left_sprites.png"
-KNIGHT_RIGHT_SPRITES = "assets/knight_sprites/knight_right_sprites.png"
+KNIGHT_DOWN_SPRITES = "assets/sprites/knight_sprites/knight_down_sprites.png"
+KNIGHT_UP_SPRITES = "assets/sprites/knight_sprites/knight_up_sprites.png"
+KNIGHT_LEFT_SPRITES = "assets/sprites/knight_sprites/knight_left_sprites.png"
+KNIGHT_RIGHT_SPRITES = "assets/sprites/knight_sprites/knight_right_sprites.png"
 
-MONK_DOWN_SPRITES = "assets/monk_sprites/monk_down_sprites.png"
-MONK_UP_SPRITES = "assets/monk_sprites/monk_up_sprites.png"
-MONK_LEFT_SPRITES = "assets/monk_sprites/monk_left_sprites.png"
-MONK_RIGHT_SPRITES = "assets/monk_sprites/monk_right_sprites.png"
+MONK_DOWN_SPRITES = "assets/sprites/monk_sprites/monk_down_sprites.png"
+MONK_UP_SPRITES = "assets/sprites/monk_sprites/monk_up_sprites.png"
+MONK_LEFT_SPRITES = "assets/sprites/monk_sprites/monk_left_sprites.png"
+MONK_RIGHT_SPRITES = "assets/sprites/monk_sprites/monk_right_sprites.png"
 
-KILLER_DOWN_SPRITES = "assets/killer_sprites/killer_down_sprites.png"
-KILLER_UP_SPRITES = "assets/killer_sprites/killer_up_sprites.png"
-KILLER_LEFT_SPRITES = "assets/killer_sprites/killer_left_sprites.png"
-KILLER_RIGHT_SPRITES = "assets/killer_sprites/killer_right_sprites.png"
+KILLER_DOWN_SPRITES = "assets/sprites/killer_sprites/killer_down_sprites.png"
+KILLER_UP_SPRITES = "assets/sprites/killer_sprites/killer_up_sprites.png"
+KILLER_LEFT_SPRITES = "assets/sprites/killer_sprites/killer_left_sprites.png"
+KILLER_RIGHT_SPRITES = "assets/sprites/killer_sprites/killer_right_sprites.png"
 
-WIZARD_DOWN_SPRITES = "assets/wizard_sprites/wizard_down_sprites.png"
-WIZARD_UP_SPRITES = "assets/wizard_sprites/wizard_up_sprites.png"
-WIZARD_LEFT_SPRITES = "assets/wizard_sprites/wizard_left_sprites.png"
-WIZARD_RIGHT_SPRITES = "assets/wizard_sprites/wizard_right_sprites.png"
+WIZARD_DOWN_SPRITES = "assets/sprites/wizard_sprites/wizard_down_sprites.png"
+WIZARD_UP_SPRITES = "assets/sprites/wizard_sprites/wizard_up_sprites.png"
+WIZARD_LEFT_SPRITES = "assets/sprites/wizard_sprites/wizard_left_sprites.png"
+WIZARD_RIGHT_SPRITES = "assets/sprites/wizard_sprites/wizard_right_sprites.png"
 
-BOXER_DOWN_SPRITES = "assets/boxer_sprites/boxer_down_sprites.png"
-BOXER_UP_SPRITES = "assets/boxer_sprites/boxer_up_sprites.png"
-BOXER_LEFT_SPRITES = "assets/boxer_sprites/boxer_left_sprites.png"
-BOXER_RIGHT_SPRITES = "assets/boxer_sprites/boxer_right_sprites.png"
+BOXER_DOWN_SPRITES = "assets/sprites/boxer_sprites/boxer_down_sprites.png"
+BOXER_UP_SPRITES = "assets/sprites/boxer_sprites/boxer_up_sprites.png"
+BOXER_LEFT_SPRITES = "assets/sprites/boxer_sprites/boxer_left_sprites.png"
+BOXER_RIGHT_SPRITES = "assets/sprites/boxer_sprites/boxer_right_sprites.png"
 
-CAVEMAN_DOWN_SPRITES = "assets/caveman_sprites/caveman_down_sprites.png"
-CAVEMAN_UP_SPRITES = "assets/caveman_sprites/caveman_up_sprites.png"
-CAVEMAN_LEFT_SPRITES = "assets/caveman_sprites/caveman_left_sprites.png"
-CAVEMAN_RIGHT_SPRITES = "assets/caveman_sprites/caveman_right_sprites.png"
+CAVEMAN_DOWN_SPRITES = "assets/sprites/caveman_sprites/caveman_down_sprites.png"
+CAVEMAN_UP_SPRITES = "assets/sprites/caveman_sprites/caveman_up_sprites.png"
+CAVEMAN_LEFT_SPRITES = "assets/sprites/caveman_sprites/caveman_left_sprites.png"
+CAVEMAN_RIGHT_SPRITES = "assets/sprites/caveman_sprites/caveman_right_sprites.png"
 
 PLAYER_SPRITE_FILES = {
     KNIGHT_ID: [
@@ -335,12 +335,12 @@ CAVEMAN_WEAPON_LEFT = ""
 CAVEMAN_WEAPON_RIGHT = ""
 
 WEAPON_SPRITE_FILES = {
-    KNIGHT_WEAPON_ID: [KNIGHT_WEAPON_LEFT, KNIGHT_WEAPON_RIGHT],
-    MONK_WEAPON_ID: [MONK_WEAPON_LEFT, MONK_WEAPON_RIGHT],
-    KILLER_WEAPON_ID: [KILLER_WEAPON_LEFT, KILLER_WEAPON_RIGHT],
-    WIZARD_WEAPON_ID: [WIZARD_WEAPON_LEFT, WIZARD_WEAPON_RIGHT],
-    BOXER_WEAPON_ID: [BOXER_WEAPON_LEFT, BOXER_WEAPON_RIGHT],
-    CAVEMAN_WEAPON_ID: [CAVEMAN_WEAPON_LEFT, CAVEMAN_WEAPON_RIGHT],
+    KNIGHT_ID: [KNIGHT_WEAPON_LEFT, KNIGHT_WEAPON_RIGHT],
+    MONK_ID: [MONK_WEAPON_LEFT, MONK_WEAPON_RIGHT],
+    KILLER_ID: [KILLER_WEAPON_LEFT, KILLER_WEAPON_RIGHT],
+    WIZARD_ID: [WIZARD_WEAPON_LEFT, WIZARD_WEAPON_RIGHT],
+    BOXER_ID: [BOXER_WEAPON_LEFT, BOXER_WEAPON_RIGHT],
+    CAVEMAN_ID: [CAVEMAN_WEAPON_LEFT, CAVEMAN_WEAPON_RIGHT],
 }
 
 
@@ -624,7 +624,7 @@ BOXER_BUTTON_TEXT = "Boxer"
 WIZARD_BUTTON_TEXT = "Wizard"
 MONK_BUTTON_TEXT = "Monk"
 KILLER_BUTTON_TEXT = "Killer"
-CAVEMAN_BUTTON_TEXT = "Caveman"
+CAVEMAN_BUTTON_TEXT = "Cave-\nman"
 
 EXIT_BUTTON_WIDTH = 500
 EXIT_BUTTON_HEIGHT = 200

@@ -74,3 +74,6 @@ class Player(Character):
         self._direction = Direction.DOWN
         self._position.y += self.speed
         self.hitbox.move(self.position)
+    
+    def render(self, screen):
+        screen.blit(self.current_image, self.position)
