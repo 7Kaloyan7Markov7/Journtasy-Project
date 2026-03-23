@@ -161,4 +161,4 @@ class AssetManager:
 
     @staticmethod
     def get_weapon_animations(weapon_id):
-        return AssetManager.weapon_animations[weapon_id]
+        return AssetManager.weapon_animations[weapon_id]   
