@@ -20,10 +20,10 @@ class EventHandlerManager(Handler):
         if game.scene_manager.current_scene.scene_id == const.MAIN_MENU_ID:
             self._main_menu_handler.handle(game)
 
-        if game.scene_manager.current_scene.scene_id == const.CHARACTER_SELECTION_ID:
+        elif game.scene_manager.current_scene.scene_id == const.CHARACTER_SELECTION_ID:
             self._character_selection_handler.handle(game)
 
-        if game.scene_manager.current_scene.scene_id == const.GAME_SCENE_ID:
+        elif game.scene_manager.current_scene.scene_id == const.GAME_SCENE_ID:
             self._gameplay_handler.handle(game)
 
         self.quit_game_event(game)   
