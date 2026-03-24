@@ -1,13 +1,16 @@
 from scripts.handlers.handler import Handler
-from scripts.enums.enums import Direction
+from scripts.enums.enums import Direction, State
 import scripts.config.constants as const
 
 
 class GameplayHandler(Handler):
     def handle(self, game):
         self.pause_event(game.scene_manager.current_scene, game.input_manager.pause_pressed)
+        if game.scene_manager.current_scene.is_paused:
+            return
+        
         self.player_stepped_bounds_event( game.scene_manager, game.dungeon_manager, game.scene_manager.current_scene.room.player)
-
+        self.player_movement_event(game.scene_manager.current_scene.room.player, game.input_manager)
 
     def pause_event(self, scene, is_pause_clicked):
         if is_pause_clicked:
@@ -32,6 +35,19 @@ class GameplayHandler(Handler):
             dungeon_manager.transition_to_new_room(Direction.DOWN)
         
         scene_manager.current_scene.room = dungeon_manager.current_room
+
+    
+    def player_movement_event(self, player, input_manager):
+        if input_manager.move_left:
+            player.move_left()
+        elif input_manager.move_right:
+            player.move_right()
+        elif input_manager.move_up:
+            player.move_up()
+        elif input_manager.move_down:
+            player.move_down()
+        else:
+            player.state = State.IDLE
 
     def enemy_attack_event(self, game):
         ...

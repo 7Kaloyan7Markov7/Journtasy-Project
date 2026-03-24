@@ -316,23 +316,23 @@ WEAPON_IDS = [
     CAVEMAN_WEAPON_ID,
 ]
 
-KNIGHT_WEAPON_LEFT = "assets/sprites/weapon_sprites/knight_weapon/knight_weapon_left"
-KNIGHT_WEAPON_RIGHT = "assets/sprites/weapon_sprites/knight_weapon/knight_weapon_right"
+KNIGHT_WEAPON_LEFT = "assets/sprites/weapon_sprites/knight_weapon/knight_weapon_left.png"
+KNIGHT_WEAPON_RIGHT = "assets/sprites/weapon_sprites/knight_weapon/knight_weapon_right.png"
 
-MONK_WEAPON_LEFT = "assets/sprites/weapon_sprites/monk_weapon/monk_weapon_left"
-MONK_WEAPON_RIGHT = "assets/sprites/weapon_sprites/monk_weapon/monk_weapon_right"
+MONK_WEAPON_LEFT = "assets/sprites/weapon_sprites/monk_weapon/monk_weapon_left.png"
+MONK_WEAPON_RIGHT = "assets/sprites/weapon_sprites/monk_weapon/monk_weapon_right.png"
 
-KILLER_WEAPON_LEFT = "assets/sprites/weapon_sprites/killer_weapon/killer_weapon_left"
-KILLER_WEAPON_RIGHT = "assets/sprites/weapon_sprites/killer_weapon/killer_weapon_right"
+KILLER_WEAPON_LEFT = "assets/sprites/weapon_sprites/killer_weapon/killer_weapon_left.png"
+KILLER_WEAPON_RIGHT = "assets/sprites/weapon_sprites/killer_weapon/killer_weapon_right.png"
 
-WIZARD_WEAPON_LEFT = "assets/sprites/weapon_sprites/wizard_weapon/wizard_weapon_left"
-WIZARD_WEAPON_RIGHT = "assets/sprites/weapon_sprites/wizard_weapon/wizard_weapon_right"
+WIZARD_WEAPON_LEFT = "assets/sprites/weapon_sprites/wizard_weapon/wizard_weapon_left.png"
+WIZARD_WEAPON_RIGHT = "assets/sprites/weapon_sprites/wizard_weapon/wizard_weapon_right.png"
 
-BOXER_WEAPON_LEFT = "assets/sprites/weapon_sprites/boxer_weapon/boxer_weapon_left"
-BOXER_WEAPON_RIGHT = "assets/sprites/weapon_sprites/boxer_weapon/boxer_weapon_right"
+BOXER_WEAPON_LEFT = "assets/sprites/weapon_sprites/boxer_weapon/boxer_weapon_left.png"
+BOXER_WEAPON_RIGHT = "assets/sprites/weapon_sprites/boxer_weapon/boxer_weapon_right.png"
 
-CAVEMAN_WEAPON_LEFT = "assets/sprites/weapon_sprites/caveman_weapon/caveman_weapon_left"
-CAVEMAN_WEAPON_RIGHT = "assets/sprites/weapon_sprites/caveman_weapon/caveman_weapon_right"
+CAVEMAN_WEAPON_LEFT = "assets/sprites/weapon_sprites/caveman_weapon/caveman_weapon_left.png"
+CAVEMAN_WEAPON_RIGHT = "assets/sprites/weapon_sprites/caveman_weapon/caveman_weapon_right.png"
 
 WEAPON_SPRITE_FILES = {
     KNIGHT_ID: [KNIGHT_WEAPON_LEFT, KNIGHT_WEAPON_RIGHT],

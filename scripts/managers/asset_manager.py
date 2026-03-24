@@ -16,8 +16,8 @@ class AssetManager:
         canvas = pygame.Surface((frame_width,frame_height)).convert_alpha() #creates a surface to draw on
         canvas.blit(frames, const.TOP_LEFT_CORNER , (frame_index * (frame_width + frame_space), 0, frame_width, frame_height)) #crops the n-th frame from the sprite sheet
         scaled_canvas = pygame.transform.scale(canvas, (frame_width * scale, frame_height * scale)) #makes additional sprite transformation
-       #image.set_colorkey(color)
-       # #makes the background transparent, so only the sprite is left
+        scaled_canvas.set_colorkey()
+        #makes the background transparent, so only the sprite is left
 
         return scaled_canvas
     
@@ -131,8 +131,9 @@ class AssetManager:
         # for enemy_id in const.ENEMY_IDS:
         #     AssetManager.enemy_animations[enemy_id] = AssetManager.load_enemy_animations(enemy_id)
 
-        for weapon_id in const.WEAPON_IDS:
-            AssetManager.weapon_animations[weapon_id] = AssetManager.load_weapon_animations(weapon_id)
+        for player_id in const.PLAYABLE_CHARACTER_IDS:
+            weapon_id = const.PLAYER_WEAPON_MAP[player_id]
+            AssetManager.weapon_animations[weapon_id] = AssetManager.load_weapon_animations(player_id)
 
         AssetManager.load_backgrounds()
         # AssetManager.load_obstacle_images()
