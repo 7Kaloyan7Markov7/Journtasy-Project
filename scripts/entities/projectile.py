@@ -34,7 +34,7 @@ class Projectile(AnimatedEntity):
             self._position.y += self.speed
 
         self._hitbox.move(self._position)
-        self.animate(self._sprites[self.direction])
+        self.animate()
 
     def render(self, screen):
         screen.blit(self.current_image, self.position)

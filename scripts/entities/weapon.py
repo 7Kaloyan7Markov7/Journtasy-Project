@@ -28,7 +28,7 @@ class Weapon(AnimatedEntity):
             self._state = State.IDLE
             self.reset_animation()
             self._position = player.position.copy()
-            self._hitbox.move(self._position)
+            self._hitbox.move((-9999, -9999))  # move off-screen to prevent ghost collisions
             return
 
         if self._direction == Direction.LEFT:

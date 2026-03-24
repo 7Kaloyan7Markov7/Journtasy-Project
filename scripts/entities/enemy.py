@@ -23,7 +23,7 @@ class Enemy(Character):
     def render(self, screen):
         screen.blit(self.current_image, self.position)
 
-    def attack(self):
+    def attack(self, target):
         pass
 
     def move(self):
