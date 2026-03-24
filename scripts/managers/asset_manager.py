@@ -13,7 +13,7 @@ class AssetManager:
 
     @staticmethod
     def crop_sprite(frames, frame_index, frame_width, frame_height, scale, frame_space):
-        canvas = pygame.Surface((frame_width,frame_height)).convert_alpha() #creates a surface to draw on
+        canvas = pygame.Surface((frame_width, frame_height), pygame.SRCALPHA) #creates a surface to draw on
         canvas.blit(frames, const.TOP_LEFT_CORNER , (frame_index * (frame_width + frame_space), 0, frame_width, frame_height)) #crops the n-th frame from the sprite sheet
         scaled_canvas = pygame.transform.scale(canvas, (frame_width * scale, frame_height * scale)) #makes additional sprite transformation
         scaled_canvas.set_colorkey()
@@ -146,7 +146,7 @@ class AssetManager:
 
     @staticmethod
     def get_obstacle_image(obstacle_id):
-        return AssetManager.obstacle_images[obstacle_id]
+        return AssetManager.obstacle_imagesa
 
     @staticmethod
     def get_player_animations(player_id):
@@ -158,7 +158,7 @@ class AssetManager:
 
     @staticmethod
     def get_enemy_animations(enemy_id):
-        return AssetManager.enemy_animations[enemy_id]
+        return AssetManager.enemy_animationsd
 
     @staticmethod
     def get_weapon_animations(weapon_id):

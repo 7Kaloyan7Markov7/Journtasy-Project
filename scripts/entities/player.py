@@ -56,24 +56,28 @@ class Player(Character):
         self._direction = Direction.LEFT
         self._position.x -= self.speed
         self.hitbox.move(self.position)
+        super().animate()
 
     def move_right(self):
         self._state = State.MOVING
         self._direction = Direction.RIGHT
         self._position.x += self.speed
         self.hitbox.move(self.position)
+        super().animate()
 
     def move_up(self):
         self._state = State.MOVING
         self._direction = Direction.UP
         self._position.y -= self.speed
         self.hitbox.move(self.position)
+        super().animate()
 
     def move_down(self):
         self._state = State.MOVING
         self._direction = Direction.DOWN
         self._position.y += self.speed
         self.hitbox.move(self.position)
-    
+        super().animate()
+
     def render(self, screen):
         screen.blit(self.current_image, self.position)

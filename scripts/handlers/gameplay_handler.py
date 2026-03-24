@@ -40,14 +40,15 @@ class GameplayHandler(Handler):
     def player_movement_event(self, player, input_manager):
         if input_manager.move_left:
             player.move_left()
-        elif input_manager.move_right:
+        if input_manager.move_right:
             player.move_right()
-        elif input_manager.move_up:
+        if input_manager.move_up:
             player.move_up()
-        elif input_manager.move_down:
+        if input_manager.move_down:
             player.move_down()
-        else:
-            player.state = State.IDLE
+        
+        player.state = State.IDLE
+
 
     def enemy_attack_event(self, game):
         ...
