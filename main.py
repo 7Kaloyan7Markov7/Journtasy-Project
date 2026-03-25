@@ -3,4 +3,4 @@ from scripts.managers.asset_manager import AssetManager
 
 
 game = Game()
-game.main_loop()
+game.main_loop()    

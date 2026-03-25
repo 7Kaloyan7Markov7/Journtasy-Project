@@ -20,6 +20,7 @@ class Enemy(Character):
 
     def update(self):
         super().update()
+        self.animate()
 
     def render(self, screen):
         screen.blit(self.current_image, self.position)

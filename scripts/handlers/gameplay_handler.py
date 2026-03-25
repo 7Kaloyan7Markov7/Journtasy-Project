@@ -20,19 +20,19 @@ class GameplayHandler(Handler):
     def player_stepped_bounds_event(self, scene_manager, dungeon_manager, player):
         
         if player.position.x <= const.SCREEN_LEFT_BOUNDARY:
-            player.position.x = const.SCREEN_RIGHT_BOUNDARY - player.width
+            player.position.x = const.SCREEN_RIGHT_BOUNDARY - player.width - 1
             dungeon_manager.transition_to_new_room(Direction.LEFT)
 
-        elif player.position.x >= const.SCREEN_RIGHT_BOUNDARY - player.width:
-            player.position.x = const.SCREEN_LEFT_BOUNDARY
+        elif player.position.x >= const.SCREEN_RIGHT_BOUNDARY - player.width :
+            player.position.x = const.SCREEN_LEFT_BOUNDARY + 1
             dungeon_manager.transition_to_new_room(Direction.RIGHT)
 
         elif player.position.y <= const.SCREEN_UPPER_BOUNDARY:
-            player.position.y = const.SCREEN_LOWER_BOUNDARY - player.height
+            player.position.y = const.SCREEN_LOWER_BOUNDARY - player.height - 1
             dungeon_manager.transition_to_new_room(Direction.UP)
 
         elif player.position.y >= const.SCREEN_LOWER_BOUNDARY - player.height:
-            player.position.y = const.SCREEN_UPPER_BOUNDARY
+            player.position.y = const.SCREEN_UPPER_BOUNDARY + 1
             dungeon_manager.transition_to_new_room(Direction.DOWN)
         
         scene_manager.current_scene.room = dungeon_manager.current_room
