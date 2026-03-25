@@ -26,16 +26,12 @@ class Spawner:
     def spawn_entities(self):
         entity_list = []
 
-        count_of_enemies = randint(1,5)
-        iter = 0
-        while(iter < count_of_enemies):
+        count_of_enemies = randint(1, 5)
+        for _ in range(count_of_enemies):
             entity_list.append(self.spawn_enemy())
-            iter += 1
 
-        count_of_obstacles = randint(1,5)
-        iter = 0
-        while(iter < count_of_obstacles):
+        count_of_obstacles = randint(1, 5)
+        for _ in range(count_of_obstacles):
             entity_list.append(self.spawn_obstacle())
-            iter += 1
 
         return entity_list

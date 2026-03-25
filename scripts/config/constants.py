@@ -112,7 +112,7 @@ PLAYER_SPRITE_HEIGHT = 32
 PLAYER_SPRITE_WIDTH = 18
 PLAYER_FRAME_COUNT = 5
 PLAYER_FRAME_SPACE = 14
-PLAYER_SCALE = 5
+PLAYER_SCALE = 4
 
 KNIGHT_ID = "!K"
 MONK_ID = "!M"
@@ -220,20 +220,20 @@ ENEMY_IDS = [
     THIRD_ENEMY_ID,
 ]
 
-FIRST_ENEMY_DOWN = ""
-FIRST_ENEMY_UP = ""
-FIRST_ENEMY_LEFT = ""
-FIRST_ENEMY_RIGHT = ""
+FIRST_ENEMY_DOWN = "assets/sprites/enemy_sprites/enemy1_sprite/enemy1_down_sprite.png"
+FIRST_ENEMY_UP = "assets/sprites/enemy_sprites/enemy1_sprite/enemy1_up_sprite.png"
+FIRST_ENEMY_LEFT = "assets/sprites/enemy_sprites/enemy1_sprite/enemy1_left_sprite.png"
+FIRST_ENEMY_RIGHT = "assets/sprites/enemy_sprites/enemy1_sprite/enemy1_right_sprite.png"
 
-SECOND_ENEMY_DOWN = ""
-SECOND_ENEMY_UP = ""
-SECOND_ENEMY_LEFT = ""
-SECOND_ENEMY_RIGHT = ""
+SECOND_ENEMY_DOWN = "assets/sprites/enemy_sprites/enemy2_prite/enemy2_down_sprite.png"
+SECOND_ENEMY_UP = "assets/sprites/enemy_sprites/enemy2_sprite/enemy2_up_sprite.png"
+SECOND_ENEMY_LEFT = "assets/sprites/enemy_sprites/enemy2_sprite/enemy2_left_sprite.png"
+SECOND_ENEMY_RIGHT = "assets/sprites/enemy_sprites/enemy2_sprite/enemy2_right_sprite.png"
 
-THIRD_ENEMY_DOWN = ""
-THIRD_ENEMY_UP = ""
-THIRD_ENEMY_LEFT = ""
-THIRD_ENEMY_RIGHT = ""
+THIRD_ENEMY_DOWN = "assets/sprites/enemy_sprites/enemy3_sprite/enemy3_down_sprite.png"
+THIRD_ENEMY_UP = "assets/sprites/enemy_sprites/enemy3_prite/enemy3_up_sprite.png"
+THIRD_ENEMY_LEFT = "assets/sprites/enemy_sprites/enemy3_sprite/enemy3_left_sprite.png"
+THIRD_ENEMY_RIGHT = "assets/sprites/enemy_sprites/enemy3_sprite/enemy3_right_sprite.png"
 
 ENEMY_SPRITE_FILES = {
     FIRST_ENEMY_ID: [
@@ -279,9 +279,9 @@ OBSTACLE_IDS = [
     THIRD_OBSTACLE_ID,
 ]
 
-FIRST_OBSTACLE_PATH = ""
-SECOND_OBSTACLE_PATH = ""
-THIRD_OBSTACLE_PATH = ""
+FIRST_OBSTACLE_PATH = "assets/obstacles/obstacle_1.png"
+SECOND_OBSTACLE_PATH = "assets/obstacles/obstacle_2.png"
+THIRD_OBSTACLE_PATH = "assets/obstacles/obstacle_3.png"
 
 OBSTACLE_IMAGE_FILES = {
     FIRST_OBSTACLE_ID: FIRST_OBSTACLE_PATH,

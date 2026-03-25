@@ -6,11 +6,12 @@ import scripts.config.constants as const
 class GameplayHandler(Handler):
     def handle(self, game):
         self.pause_event(game.scene_manager.current_scene, game.input_manager.pause_pressed)
+        player = game.scene_manager.current_scene.room.player
         if game.scene_manager.current_scene.is_paused:
             return
         
-        self.player_stepped_bounds_event( game.scene_manager, game.dungeon_manager, game.scene_manager.current_scene.room.player)
-        self.player_movement_event(game.scene_manager.current_scene.room.player, game.input_manager)
+        self.player_stepped_bounds_event( game.scene_manager, game.dungeon_manager, player)
+        self.player_movement_event(player, game.input_manager)
 
     def pause_event(self, scene, is_pause_clicked):
         if is_pause_clicked:

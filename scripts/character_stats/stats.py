@@ -35,7 +35,7 @@ class Stats:
         return self._health.current_health <= 0
 
     def take_damage(self, damage):
-        reduced_damage = max(0, self._armor.reduce_damage(damage))
+        reduced_damage = self._armor.reduce_damage(damage)
         self._health.take_damage(reduced_damage)
 
     def increase_stats(self):
