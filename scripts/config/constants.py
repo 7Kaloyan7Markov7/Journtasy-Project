@@ -51,10 +51,10 @@ BACKGROUND_SCALE = 3
 # PROJECTILES
 # =========================
 
-PROJECTILE_FRAME_SPACE = 0
-PROJECTILE_FRAME_COUNT = 0
-PROJECTILE_WIDTH = 0
-PROJECTILE_HEIGHT = 0
+PROJECTILE_FRAME_SPACE = 10
+PROJECTILE_FRAME_COUNT = 10
+PROJECTILE_WIDTH = 10
+PROJECTILE_HEIGHT = 10
 PROJECTILE_SCALE = 3
 
 FIRST_PROJECTILE_ID = "1p"
@@ -67,20 +67,20 @@ PROJECTILE_IDS = [
     THIRD_PROJECTILE_ID,
 ]
 
-FIRST_PROJECTILE_DOWN = ""
-FIRST_PROJECTILE_UP = ""
-FIRST_PROJECTILE_LEFT = ""
-FIRST_PROJECTILE_RIGHT = ""
+FIRST_PROJECTILE_DOWN = "assets/sprites/projectile_sprites/projectile1_sprites/projectile1_down.png"
+FIRST_PROJECTILE_UP = "assets/sprites/projectile_sprites/projectile1_sprites/projectile1_up.png"
+FIRST_PROJECTILE_LEFT = "assets/sprites/projectile_sprites/projectile1_sprites/projectile1_left.png"
+FIRST_PROJECTILE_RIGHT = "assets/sprites/projectile_sprites/projectile1_sprites/projectile1_right.png"
 
-SECOND_PROJECTILE_DOWN = ""
-SECOND_PROJECTILE_UP = ""
-SECOND_PROJECTILE_LEFT = ""
-SECOND_PROJECTILE_RIGHT = ""
+SECOND_PROJECTILE_DOWN = "assets/sprites/projectile_sprites/projectile2_sprites/projectile2_down.png"
+SECOND_PROJECTILE_UP = "assets/sprites/projectile_sprites/projectile2_sprites/projectile2_up.png"
+SECOND_PROJECTILE_LEFT = "assets/sprites/projectile_sprites/projectile2_sprites/projectile2_left.png"
+SECOND_PROJECTILE_RIGHT = "assets/sprites/projectile_sprites/projectile2_sprites/projectile2_right.png"
 
-THIRD_PROJECTILE_DOWN = ""
-THIRD_PROJECTILE_UP = ""
-THIRD_PROJECTILE_LEFT = ""
-THIRD_PROJECTILE_RIGHT = ""
+THIRD_PROJECTILE_DOWN = "assets/sprites/projectile_sprites/projectile3_sprites/projectile3_down.png"
+THIRD_PROJECTILE_UP = "assets/sprites/projectile_sprites/projectile3_sprites/projectile3_up.png"
+THIRD_PROJECTILE_LEFT = "assets/sprites/projectile_sprites/projectile3_sprites/projectile3_left.png"
+THIRD_PROJECTILE_RIGHT = "assets/sprites/projectile_sprites/projectile3_sprites/projectile3_right.png"
 
 PROJECTILE_SPRITE_FILES = {
     FIRST_PROJECTILE_ID: [
@@ -204,10 +204,10 @@ PLAYER_SPRITE_FILES = {
 # ENEMIES
 # =========================
 
-ENEMY_FRAME_SPACE = 0
-ENEMY_FRAME_COUNT = 0
-ENEMY_WIDTH = 0
-ENEMY_HEIGHT = 0
+ENEMY_FRAME_SPACE = 10
+ENEMY_FRAME_COUNT = 10
+ENEMY_WIDTH = 10
+ENEMY_HEIGHT = 10
 ENEMY_SCALE = 3
 
 FIRST_ENEMY_ID = "1e"
@@ -225,13 +225,13 @@ FIRST_ENEMY_UP = "assets/sprites/enemy_sprites/enemy1_sprite/enemy1_up_sprite.pn
 FIRST_ENEMY_LEFT = "assets/sprites/enemy_sprites/enemy1_sprite/enemy1_left_sprite.png"
 FIRST_ENEMY_RIGHT = "assets/sprites/enemy_sprites/enemy1_sprite/enemy1_right_sprite.png"
 
-SECOND_ENEMY_DOWN = "assets/sprites/enemy_sprites/enemy2_prite/enemy2_down_sprite.png"
+SECOND_ENEMY_DOWN = "assets/sprites/enemy_sprites/enemy2_sprite/enemy2_down_sprite.png"
 SECOND_ENEMY_UP = "assets/sprites/enemy_sprites/enemy2_sprite/enemy2_up_sprite.png"
 SECOND_ENEMY_LEFT = "assets/sprites/enemy_sprites/enemy2_sprite/enemy2_left_sprite.png"
 SECOND_ENEMY_RIGHT = "assets/sprites/enemy_sprites/enemy2_sprite/enemy2_right_sprite.png"
 
 THIRD_ENEMY_DOWN = "assets/sprites/enemy_sprites/enemy3_sprite/enemy3_down_sprite.png"
-THIRD_ENEMY_UP = "assets/sprites/enemy_sprites/enemy3_prite/enemy3_up_sprite.png"
+THIRD_ENEMY_UP = "assets/sprites/enemy_sprites/enemy3_sprite/enemy3_up_sprite.png"
 THIRD_ENEMY_LEFT = "assets/sprites/enemy_sprites/enemy3_sprite/enemy3_left_sprite.png"
 THIRD_ENEMY_RIGHT = "assets/sprites/enemy_sprites/enemy3_sprite/enemy3_right_sprite.png"
 
@@ -263,10 +263,10 @@ ENEMY_SPRITE_FILES = {
 
 ZERO_SPEED = 0
 
-OBSTACLE_FRAME_SPACE = 0
+OBSTACLE_FRAME_SPACE = 1
 OBSTACLE_FRAME_COUNT = 1
-OBSTACLE_WIDTH = 0
-OBSTACLE_HEIGHT = 0
+OBSTACLE_WIDTH = 1
+OBSTACLE_HEIGHT = 1
 OBSTACLE_SCALE = 3
 
 FIRST_OBSTACLE_ID = "1o"

@@ -4,6 +4,7 @@ from scripts.collisions.hitbox import HitBox
 import scripts.config.constants as const
 
 
+
 class Enemy(Character):
     def __init__(self, entity_id, position, speed, level):
         super().__init__(entity_id, position, speed, level)

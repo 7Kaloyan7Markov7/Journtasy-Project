@@ -125,18 +125,18 @@ class AssetManager:
         for player_id in const.PLAYABLE_CHARACTER_IDS:
             AssetManager.player_animations[player_id] = AssetManager.load_player_animations(player_id)
 
-        # for projectile_id in const.PROJECTILE_IDS:
-        #     AssetManager.projectile_animations[projectile_id] = AssetManager.load_projectile_animations(projectile_id)
+        for projectile_id in const.PROJECTILE_IDS:
+            AssetManager.projectile_animations[projectile_id] = AssetManager.load_projectile_animations(projectile_id)
 
-        # for enemy_id in const.ENEMY_IDS:
-        #     AssetManager.enemy_animations[enemy_id] = AssetManager.load_enemy_animations(enemy_id)
+        for enemy_id in const.ENEMY_IDS:
+            AssetManager.enemy_animations[enemy_id] = AssetManager.load_enemy_animations(enemy_id)
 
         for player_id in const.PLAYABLE_CHARACTER_IDS:
             weapon_id = const.PLAYER_WEAPON_MAP[player_id]
             AssetManager.weapon_animations[weapon_id] = AssetManager.load_weapon_animations(player_id)
 
         AssetManager.load_backgrounds()
-        # AssetManager.load_obstacle_images()
+        AssetManager.load_obstacle_images()
 
 
     #getters
@@ -146,7 +146,7 @@ class AssetManager:
 
     @staticmethod
     def get_obstacle_image(obstacle_id):
-        return AssetManager.obstacle_imagesa
+        return AssetManager.obstacle_images[obstacle_id]
 
     @staticmethod
     def get_player_animations(player_id):
@@ -158,7 +158,7 @@ class AssetManager:
 
     @staticmethod
     def get_enemy_animations(enemy_id):
-        return AssetManager.enemy_animationsd
+        return AssetManager.enemy_animations[enemy_id]
 
     @staticmethod
     def get_weapon_animations(weapon_id):
