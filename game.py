@@ -56,7 +56,7 @@ class Game:
         while self._running:
             self.update_game()
             self.render_game()
-            self._clock.tick(const.SIXTY_FPS / 1.5)
+            self._clock.tick(const.SIXTY_FPS / 2)
 
         pygame.quit()
 

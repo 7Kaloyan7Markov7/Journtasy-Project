@@ -16,3 +16,6 @@ class CollisionManager:
 
     def manage_enemy_obstacle_collisions(self, room):
         ...
+
+    def obstacle_colliding_obstacle(self, room):
+        ...
