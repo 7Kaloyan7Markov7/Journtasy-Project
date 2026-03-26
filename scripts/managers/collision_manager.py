@@ -1,21 +1,21 @@
+from scripts.entities.enemy import Enemy
+from scripts.enums.enums import State
+
+
 class CollisionManager:
     def manage_all_collisions(self, room):
-        self.manage_player_enemy_collisions(room)
         self.manage_weapon_enemy_collisions(room)
-        self.manage_player_obstacle_collisions(room)
-        self.manage_enemy_obstacle_collisions(room)
 
-    def manage_player_enemy_collisions(self, room):
-        ...
 
     def manage_weapon_enemy_collisions(self, room):
-        ...
+        entity_list = room.entity_list
+        weapon = room.player.weapon
 
-    def manage_player_obstacle_collisions(self, room):
-        ...
+        for entity in entity_list:
+            if not isinstance(entity, Enemy): continue
+            if not weapon.hitbox.is_colliding(entity.hitbox): continue
 
-    def manage_enemy_obstacle_collisions(self, room):
-        ...
+            weapon.attack(entity)
 
-    def obstacle_colliding_obstacle(self, room):
+    def manage_player_collisionxs(self, room):
         ...
