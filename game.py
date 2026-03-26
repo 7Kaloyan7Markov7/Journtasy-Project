@@ -11,6 +11,7 @@ class Game:
     def __init__(self):
         pygame.init()
         self._screen = pygame.display.set_mode((const.SCREEN_WIDTH,const.SCREEN_HEIGHT))
+        pygame.display.set_caption("Journtasy")
         self._clock = pygame.time.Clock()
         self.load_game()
         self._running = True
