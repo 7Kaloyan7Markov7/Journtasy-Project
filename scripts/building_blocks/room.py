@@ -1,7 +1,8 @@
 class Room:
-    def __init__(self, background, entity_list, player=None):
+    def __init__(self, background, entity_list, collision_manager, player=None):
         self._background = background
         self._entity_list = entity_list
+        self._collision_manager = collision_manager
         self._player = player
         self._left_room = None
         self._right_room = None

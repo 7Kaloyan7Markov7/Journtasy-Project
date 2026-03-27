@@ -2,7 +2,6 @@ from scripts.entities.character import Character
 from scripts.managers.asset_manager import AssetManager
 from scripts.collisions.hitbox import HitBox
 from scripts.enums.enums import Direction
-from pygame import Vector2
 import scripts.config.constants as const
 
 
@@ -31,5 +30,4 @@ class Enemy(Character):
         pass
 
     def move(self):
-        self.position += Vector2(-100, 0)
-        self._direction = Direction.LEFT
+        pass
