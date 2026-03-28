@@ -8,9 +8,9 @@ from scripts.managers.collision_manager import CollisionManager
 class DungeonGenerator(Generator):
     def __init__(self, player_choice):
         self._spawner = Spawner()
-        self._collision_manager = CollisionManager()
         self._background_generator = BackgroundGenerator()
         self._player = self._spawner.spawn_player(player_choice)
+        self._collision_manager = CollisionManager()
 
     @property
     def player(self):
@@ -18,7 +18,7 @@ class DungeonGenerator(Generator):
 
     def generate_first_room(self):
         background = self._background_generator.generate()
-        return Room(background, [], self._player)
+        return Room(background, [], self._collision_manager, self._player)
 
     def generate(self):
         spawned_entities = self._spawner.spawn_entities()

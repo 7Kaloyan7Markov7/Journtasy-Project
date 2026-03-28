@@ -2,8 +2,8 @@ class Room:
     def __init__(self, background, entity_list, collision_manager, player=None):
         self._background = background
         self._entity_list = entity_list
-        self._collision_manager = collision_manager
         self._player = player
+        self._collision_manager = collision_manager
         self._left_room = None
         self._right_room = None
         self._up_room = None
@@ -63,6 +63,7 @@ class Room:
             entity.render(screen)
 
     def update(self):
+        self._collision_manager.manage_all_collisions(self)
         if self.player is not None:
             self.player.update()
 
