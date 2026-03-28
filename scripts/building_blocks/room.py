@@ -53,6 +53,10 @@ class Room:
     def entity_list(self):
         return self._entity_list
     
+    @property
+    def collision_manager(self):
+        return self._collision_manager
+    
     def render(self, screen):
         self._background.render(screen)
 
@@ -68,5 +72,3 @@ class Room:
 
         for entity in self.entity_list:
             entity.update()
-
-        self._collision_manager.manage_all_collisions(self)

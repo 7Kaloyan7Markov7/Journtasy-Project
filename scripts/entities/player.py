@@ -4,7 +4,7 @@ from scripts.entities.weapon import Weapon
 from scripts.collisions.hitbox import HitBox
 from scripts.enums.enums import Direction, State
 import scripts.config.constants as const
-
+import pygame
 
 class Player(Character):
     def __init__(self, entity_id, position, speed, level):
@@ -81,3 +81,4 @@ class Player(Character):
 
     def render(self, screen):
         screen.blit(self.current_image, self.position)
+        pygame.draw.rect(screen, self._hitbox.width, self._hitbox._hitbox)

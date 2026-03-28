@@ -9,10 +9,11 @@ class GameplayHandler(Handler):
         player = game.scene_manager.current_scene.room.player
         if game.scene_manager.current_scene.is_paused:
             return
-        
-        self.player_stepped_bounds_event( game.scene_manager, game.dungeon_manager, player)
-        self.player_movement_event(player, game.input_manager)
 
+        self.player_stepped_bounds_event(game.scene_manager, game.dungeon_manager, player)
+        self.player_movement_event(player, game.input_manager)
+        game.scene_manager.current_scene.room.collision_manager.manage_all_collisions(game.scene_manager.current_scene.room)
+        
     def pause_event(self, scene, is_pause_clicked):
         if is_pause_clicked:
             scene.pause()
@@ -44,6 +45,8 @@ class GameplayHandler(Handler):
         move_up = input_manager.move_up
         move_down = input_manager.move_down
 
+        player._previous_position = player.position.copy()  # save before moving
+
         if move_left:
             player.move_left()
         if move_right:
@@ -52,8 +55,8 @@ class GameplayHandler(Handler):
             player.move_up()
         if move_down:
             player.move_down()
-        
-        if move_left or move_right or move_up or move_down: 
+
+        if move_left or move_right or move_up or move_down:
             player.state = State.MOVING
         else:
             player.state = State.IDLE

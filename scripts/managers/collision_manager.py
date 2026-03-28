@@ -22,29 +22,17 @@ class CollisionManager:
             player.attack(entity)  # pass player so damage calc works
 
     def manage_player_collisions(self, room):
-        if room.player.state != State.MOVING: return
-
         player = room.player
         entities = room.entity_list
 
         for entity in entities:
             if not player.hitbox.is_colliding(entity.hitbox): continue
 
-            if isinstance(entity, Obstacle):
+            if isinstance(entity, Obstacle) and player.state == State.MOVING:
                 self._push_back(player)
-
-            elif isinstance(entity, Enemy):
-                entity.attack(player)
     
 
     def _push_back(self, player):
-        if player.direction == Direction.DOWN:
-            player.position.y -= player.speed
-        elif player.direction == Direction.UP:
-            player.position.y += player.speed
-        elif player.direction == Direction.RIGHT:
-            player.position.x -= player.speed
-        elif player.direction == Direction.LEFT:
-            player.position.x += player.speed
-        
+        player.position.x = player.previous_position.x
+        player.position.y = player.previous_position.y
         player.hitbox.move(player.position)
