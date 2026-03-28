@@ -63,9 +63,10 @@ class Room:
             entity.render(screen)
 
     def update(self):
-        self._collision_manager.manage_all_collisions(self)
         if self.player is not None:
             self.player.update()
 
         for entity in self.entity_list:
             entity.update()
+
+        self._collision_manager.manage_all_collisions(self)

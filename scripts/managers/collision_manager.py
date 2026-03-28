@@ -39,10 +39,12 @@ class CollisionManager:
 
     def _push_back(self, player):
         if player.direction == Direction.DOWN:
-            player.position += Vector2(0, -player.speed)
+            player.position.y -= player.speed
         elif player.direction == Direction.UP:
-            player.position += Vector2(0, player.speed)
+            player.position.y += player.speed
         elif player.direction == Direction.RIGHT:
-            player.position += Vector2(-player.speed, 0)
+            player.position.x -= player.speed
         elif player.direction == Direction.LEFT:
-            player.position += Vector2(player.speed, 0)
+            player.position.x += player.speed
+        
+        player.hitbox.move(player.position)
