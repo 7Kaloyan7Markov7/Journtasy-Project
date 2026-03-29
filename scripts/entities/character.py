@@ -39,5 +39,5 @@ class Character(AnimatedEntity):
         self._stats.take_damage(damage)
 
     @abstractmethod
-    def attack(self, target):
+    def attack(self, target=None):
         pass

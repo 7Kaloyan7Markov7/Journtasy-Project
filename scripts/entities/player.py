@@ -36,11 +36,11 @@ class Player(Character):
         if self.weapon.state == State.IDLE and self._state == State.ATTACKING:
             self._state = State.IDLE
 
-    def attack(self, target):
+    def attack(self, target=None):
         if self.weapon.state == State.ATTACKING:
             return
 
-        self.weapon.attack(target, self)
+        self.weapon.attack()
 
         if self.weapon.state == State.ATTACKING:
             self._state = State.ATTACKING

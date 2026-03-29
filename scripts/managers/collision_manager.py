@@ -15,9 +15,12 @@ class CollisionManager:
         weapon = player.weapon
         enemies = [e for e in room.entity_list if isinstance(e, Enemy)]
 
+        if weapon.state != State.ATTACKING:
+            return
+
         for enemy in enemies:
             if weapon.hitbox.is_colliding(enemy.hitbox):
-                player.attack(enemy)
+                weapon.apply_damage(enemy, player.stats.damage.damage)
 
     def _manage_player_obstacle_collisions(self, room):
         player = room.player
@@ -29,7 +32,7 @@ class CollisionManager:
         for obstacle in obstacles:
             if player.hitbox.is_colliding(obstacle.hitbox):
                 self._push_back(player)
-                break 
+                break  # one pushback per frame is enough
 
     def _manage_projectile_collisions(self, room):
         projectiles = [e for e in room.entity_list if isinstance(e, Projectile)]

@@ -16,6 +16,7 @@ class Weapon(AnimatedEntity):
 
         self._left_offset = pygame.Vector2(-50, 0)
         self._right_offset = pygame.Vector2(50, 0)
+        self._hit_targets = set()
 
     @property
     def current_image(self):
@@ -28,7 +29,8 @@ class Weapon(AnimatedEntity):
             self._state = State.IDLE
             self.reset_animation()
             self._position = player.position.copy()
-            self._hitbox.move((-9999, -9999)) 
+            self._hitbox.move((-9999, -9999))
+            self._hit_targets.clear()
             return
 
         if self._direction == Direction.LEFT:
@@ -38,18 +40,25 @@ class Weapon(AnimatedEntity):
 
         self._hitbox.move(self._position)
 
-    def attack(self, target, player):
+    def attack(self):
         if self.direction == Direction.UP or self.direction == Direction.DOWN:
             return
 
         self._state = State.ATTACKING
         self.reset_animation()
+        self._hit_targets.clear()
 
-        target.take_damage(player.stats.damage.damage)
+    def apply_damage(self, target, damage):
+        if self._state != State.ATTACKING or target in self._hit_targets:
+            return
+
+        target.take_damage(damage)
+        self._hit_targets.add(target)
 
     def stop_attack(self):
         self._state = State.IDLE
         self.reset_animation()
+        self._hit_targets.clear()
 
     def update(self):
         if self._state != State.ATTACKING:
