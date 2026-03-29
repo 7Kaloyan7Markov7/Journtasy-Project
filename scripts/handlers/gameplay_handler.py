@@ -5,67 +5,68 @@ import scripts.config.constants as const
 
 class GameplayHandler(Handler):
     def handle(self, game):
-        player = game.scene_manager.current_scene.room.player
-        collision_manager = game.scene_manager.current_scene.room.collision_manager
-        input_manager = game.input_manager
-        scene_manager = game.scene_manager
+        scene = game.scene_manager.current_scene
+        room = scene.room
+        player = room.player
 
-        self.pause_event(scene_manager.current_scene, input_manager.pause_pressed)
-        if scene_manager.current_scene.is_paused:
+        self._handle_pause(scene, game.input_manager.pause_pressed)
+        if scene.is_paused:
             return
 
-        self.player_movement_event(player, input_manager)
-        self.player_stepped_bounds_event(scene_manager, game.dungeon_manager, player)
-        collision_manager.manage_all_collisions(scene_manager.current_scene.room)
-        
-    def pause_event(self, scene, is_pause_clicked):
-        if is_pause_clicked:
+        self._handle_player_movement(player, game.input_manager)
+        self._handle_boundary_transition(game.scene_manager, game.dungeon_manager, player)
+        room.collision_manager.manage_all_collisions(game.scene_manager.current_scene.room)
+
+    def _handle_pause(self, scene, is_pause_pressed):
+        if is_pause_pressed:
             scene.pause()
 
-    def player_stepped_bounds_event(self, scene_manager, dungeon_manager, player):
-        
-        if player.position.x <= const.SCREEN_LEFT_BOUNDARY:
-            player.position.x = const.SCREEN_RIGHT_BOUNDARY - player.width - 1
-            dungeon_manager.transition_to_new_room(Direction.LEFT)
+    def _handle_boundary_transition(self, scene_manager, dungeon_manager, player):
+        direction = self._get_boundary_direction(player)
+        if direction is None:
+            return
 
-        elif player.position.x >= const.SCREEN_RIGHT_BOUNDARY - player.width :
-            player.position.x = const.SCREEN_LEFT_BOUNDARY + 1
-            dungeon_manager.transition_to_new_room(Direction.RIGHT)
-
-        elif player.position.y <= const.SCREEN_UPPER_BOUNDARY:
-            player.position.y = const.SCREEN_LOWER_BOUNDARY - player.height - 1
-            dungeon_manager.transition_to_new_room(Direction.UP)
-
-        elif player.position.y >= const.SCREEN_LOWER_BOUNDARY - player.height:
-            player.position.y = const.SCREEN_UPPER_BOUNDARY + 1
-            dungeon_manager.transition_to_new_room(Direction.DOWN)
-        
+        self._wrap_player_position(player, direction)
+        dungeon_manager.transition_to_new_room(direction)
         scene_manager.current_scene.room = dungeon_manager.current_room
 
-    
-    def player_movement_event(self, player, input_manager):
-        move_left = input_manager.move_left
-        move_right = input_manager.move_right
-        move_up = input_manager.move_up
-        move_down = input_manager.move_down
+    def _get_boundary_direction(self, player):
+        x, y = player.position.x, player.position.y
+        if x <= const.SCREEN_LEFT_BOUNDARY:
+            return Direction.LEFT
+        if x >= const.SCREEN_RIGHT_BOUNDARY - player.width:
+            return Direction.RIGHT
+        if y <= const.SCREEN_UPPER_BOUNDARY:
+            return Direction.UP
+        if y >= const.SCREEN_LOWER_BOUNDARY - player.height:
+            return Direction.DOWN
+        return None
 
-        player._previous_position = player.position.copy()  # save before moving
+    def _wrap_player_position(self, player, direction):
+        if direction == Direction.LEFT:
+            player.position.x = const.SCREEN_RIGHT_BOUNDARY - player.width - 1
+        elif direction == Direction.RIGHT:
+            player.position.x = const.SCREEN_LEFT_BOUNDARY + 1
+        elif direction == Direction.UP:
+            player.position.y = const.SCREEN_LOWER_BOUNDARY - player.height - 1
+        elif direction == Direction.DOWN:
+            player.position.y = const.SCREEN_UPPER_BOUNDARY + 1
 
-        if move_left:
+    def _handle_player_movement(self, player, input_manager):
+        player.save_position()  # save before any movement for collision rollback
+
+        moved = False
+        if input_manager.move_left:
             player.move_left()
-        if move_right:
+            moved = True
+        if input_manager.move_right:
             player.move_right()
-        if move_up:
+            moved = True
+        if input_manager.move_up:
             player.move_up()
-        if move_down:
+            moved = True
+        if input_manager.move_down:
             player.move_down()
+            moved = True
 
-        if move_left or move_right or move_up or move_down:
-            player.state = State.MOVING
-        else:
-            player.state = State.IDLE
-    
-    def player_attack_event(self, input_manager, scene_manager):
-        if input_manager.attack_pressed:
-            player = scene_manager.current_scene.room.player
-            player.attack()
+        player.state = State.MOVING if moved else State.IDLE

@@ -8,7 +8,6 @@ SCREEN_LEFT_BOUNDARY = 0
 SCREEN_LOWER_BOUNDARY = 600
 SCREEN_RIGHT_BOUNDARY = 800
 
-
 # =========================
 # SCENES
 # =========================
@@ -32,20 +31,14 @@ BACKGROUND_IDS = [
     FOURTH_BACKGROUND_ID,
 ]
 
-FIRST_BACKGROUND_PATH = "assets/backgrounds/background_grass.png"
-SECOND_BACKGROUND_PATH = "assets/backgrounds/background_grass_dark.png"
-THIRD_BACKGROUND_PATH = "assets/backgrounds/background_bricks.png"
-FOURTH_BACKGROUND_PATH = "assets/backgrounds/background_panel.png"
-
 BACKGROUND_PATHS = {
-    FIRST_BACKGROUND_ID: FIRST_BACKGROUND_PATH,
-    SECOND_BACKGROUND_ID: SECOND_BACKGROUND_PATH,
-    THIRD_BACKGROUND_ID: THIRD_BACKGROUND_PATH,
-    FOURTH_BACKGROUND_ID: FOURTH_BACKGROUND_PATH,
+    FIRST_BACKGROUND_ID: "assets/backgrounds/background_grass.png",
+    SECOND_BACKGROUND_ID: "assets/backgrounds/background_grass_dark.png",
+    THIRD_BACKGROUND_ID: "assets/backgrounds/background_bricks.png",
+    FOURTH_BACKGROUND_ID: "assets/backgrounds/background_panel.png",
 }
 
 BACKGROUND_SCALE = 3
-
 
 # =========================
 # PROJECTILES
@@ -67,42 +60,26 @@ PROJECTILE_IDS = [
     THIRD_PROJECTILE_ID,
 ]
 
-FIRST_PROJECTILE_DOWN = "assets/sprites/projectile_sprites/projectile1_sprites/projectile1_down.png"
-FIRST_PROJECTILE_UP = "assets/sprites/projectile_sprites/projectile1_sprites/projectile1_up.png"
-FIRST_PROJECTILE_LEFT = "assets/sprites/projectile_sprites/projectile1_sprites/projectile1_left.png"
-FIRST_PROJECTILE_RIGHT = "assets/sprites/projectile_sprites/projectile1_sprites/projectile1_right.png"
-
-SECOND_PROJECTILE_DOWN = "assets/sprites/projectile_sprites/projectile2_sprites/projectile2_down.png"
-SECOND_PROJECTILE_UP = "assets/sprites/projectile_sprites/projectile2_sprites/projectile2_up.png"
-SECOND_PROJECTILE_LEFT = "assets/sprites/projectile_sprites/projectile2_sprites/projectile2_left.png"
-SECOND_PROJECTILE_RIGHT = "assets/sprites/projectile_sprites/projectile2_sprites/projectile2_right.png"
-
-THIRD_PROJECTILE_DOWN = "assets/sprites/projectile_sprites/projectile3_sprites/projectile3_down.png"
-THIRD_PROJECTILE_UP = "assets/sprites/projectile_sprites/projectile3_sprites/projectile3_up.png"
-THIRD_PROJECTILE_LEFT = "assets/sprites/projectile_sprites/projectile3_sprites/projectile3_left.png"
-THIRD_PROJECTILE_RIGHT = "assets/sprites/projectile_sprites/projectile3_sprites/projectile3_right.png"
-
 PROJECTILE_SPRITE_FILES = {
     FIRST_PROJECTILE_ID: [
-        FIRST_PROJECTILE_DOWN,
-        FIRST_PROJECTILE_UP,
-        FIRST_PROJECTILE_LEFT,
-        FIRST_PROJECTILE_RIGHT,
+        "assets/sprites/projectile_sprites/projectile1_sprites/projectile1_down.png",
+        "assets/sprites/projectile_sprites/projectile1_sprites/projectile1_up.png",
+        "assets/sprites/projectile_sprites/projectile1_sprites/projectile1_left.png",
+        "assets/sprites/projectile_sprites/projectile1_sprites/projectile1_right.png",
     ],
     SECOND_PROJECTILE_ID: [
-        SECOND_PROJECTILE_DOWN,
-        SECOND_PROJECTILE_UP,
-        SECOND_PROJECTILE_LEFT,
-        SECOND_PROJECTILE_RIGHT,
+        "assets/sprites/projectile_sprites/projectile2_sprites/projectile2_down.png",
+        "assets/sprites/projectile_sprites/projectile2_sprites/projectile2_up.png",
+        "assets/sprites/projectile_sprites/projectile2_sprites/projectile2_left.png",
+        "assets/sprites/projectile_sprites/projectile2_sprites/projectile2_right.png",
     ],
     THIRD_PROJECTILE_ID: [
-        THIRD_PROJECTILE_DOWN,
-        THIRD_PROJECTILE_UP,
-        THIRD_PROJECTILE_LEFT,
-        THIRD_PROJECTILE_RIGHT,
+        "assets/sprites/projectile_sprites/projectile3_sprites/projectile3_down.png",
+        "assets/sprites/projectile_sprites/projectile3_sprites/projectile3_up.png",
+        "assets/sprites/projectile_sprites/projectile3_sprites/projectile3_left.png",
+        "assets/sprites/projectile_sprites/projectile3_sprites/projectile3_right.png",
     ],
 }
-
 
 # =========================
 # PLAYERS SPRITES
@@ -130,75 +107,44 @@ PLAYABLE_CHARACTER_IDS = [
     CAVEMAN_ID
 ]
 
-KNIGHT_DOWN_SPRITES = "assets/sprites/player_sprites/knight_sprites/knight_down_sprites.png"
-KNIGHT_UP_SPRITES = "assets/sprites/player_sprites/knight_sprites/knight_up_sprites.png"
-KNIGHT_LEFT_SPRITES = "assets/sprites/player_sprites/knight_sprites/knight_left_sprites.png"
-KNIGHT_RIGHT_SPRITES = "assets/sprites/player_sprites/knight_sprites/knight_right_sprites.png"
-
-MONK_DOWN_SPRITES = "assets/sprites/player_sprites/monk_sprites/monk_down_sprites.png"
-MONK_UP_SPRITES = "assets/sprites/player_sprites/monk_sprites/monk_up_sprites.png"
-MONK_LEFT_SPRITES = "assets/sprites/player_sprites/monk_sprites/monk_left_sprites.png"
-MONK_RIGHT_SPRITES = "assets/sprites/player_sprites/monk_sprites/monk_right_sprites.png"
-
-KILLER_DOWN_SPRITES = "assets/sprites/player_sprites/killer_sprites/killer_down_sprites.png"
-KILLER_UP_SPRITES = "assets/sprites/player_sprites/killer_sprites/killer_up_sprites.png"
-KILLER_LEFT_SPRITES = "assets/sprites/player_sprites/killer_sprites/killer_left_sprites.png"
-KILLER_RIGHT_SPRITES = "assets/sprites/player_sprites/killer_sprites/killer_right_sprites.png"
-
-WIZARD_DOWN_SPRITES = "assets/sprites/player_sprites/wizard_sprites/wizard_down_sprites.png"
-WIZARD_UP_SPRITES = "assets/sprites/player_sprites/wizard_sprites/wizard_up_sprites.png"
-WIZARD_LEFT_SPRITES = "assets/sprites/player_sprites/wizard_sprites/wizard_left_sprites.png"
-WIZARD_RIGHT_SPRITES = "assets/sprites/player_sprites/wizard_sprites/wizard_right_sprites.png"
-
-BOXER_DOWN_SPRITES = "assets/sprites/player_sprites/boxer_sprites/boxer_down_sprites.png"
-BOXER_UP_SPRITES = "assets/sprites/player_sprites/boxer_sprites/boxer_up_sprites.png"
-BOXER_LEFT_SPRITES = "assets/sprites/player_sprites/boxer_sprites/boxer_left_sprites.png"
-BOXER_RIGHT_SPRITES = "assets/sprites/player_sprites/boxer_sprites/boxer_right_sprites.png"
-
-CAVEMAN_DOWN_SPRITES = "assets/sprites/player_sprites/caveman_sprites/caveman_down_sprites.png"
-CAVEMAN_UP_SPRITES = "assets/sprites/player_sprites/caveman_sprites/caveman_up_sprites.png"
-CAVEMAN_LEFT_SPRITES = "assets/sprites/player_sprites/caveman_sprites/caveman_left_sprites.png"
-CAVEMAN_RIGHT_SPRITES = "assets/sprites/player_sprites/caveman_sprites/caveman_right_sprites.png"
-
 PLAYER_SPRITE_FILES = {
     KNIGHT_ID: [
-        KNIGHT_DOWN_SPRITES,
-        KNIGHT_UP_SPRITES,
-        KNIGHT_LEFT_SPRITES,
-        KNIGHT_RIGHT_SPRITES,
+        "assets/sprites/player_sprites/knight_sprites/knight_down_sprites.png",
+        "assets/sprites/player_sprites/knight_sprites/knight_up_sprites.png",
+        "assets/sprites/player_sprites/knight_sprites/knight_left_sprites.png",
+        "assets/sprites/player_sprites/knight_sprites/knight_right_sprites.png",
     ],
     MONK_ID: [
-        MONK_DOWN_SPRITES,
-        MONK_UP_SPRITES,
-        MONK_LEFT_SPRITES,
-        MONK_RIGHT_SPRITES,
+        "assets/sprites/player_sprites/monk_sprites/monk_down_sprites.png",
+        "assets/sprites/player_sprites/monk_sprites/monk_up_sprites.png",
+        "assets/sprites/player_sprites/monk_sprites/monk_left_sprites.png",
+        "assets/sprites/player_sprites/monk_sprites/monk_right_sprites.png",
     ],
     KILLER_ID: [
-        KILLER_DOWN_SPRITES,
-        KILLER_UP_SPRITES,
-        KILLER_LEFT_SPRITES,
-        KILLER_RIGHT_SPRITES,
+        "assets/sprites/player_sprites/killer_sprites/killer_down_sprites.png",
+        "assets/sprites/player_sprites/killer_sprites/killer_up_sprites.png",
+        "assets/sprites/player_sprites/killer_sprites/killer_left_sprites.png",
+        "assets/sprites/player_sprites/killer_sprites/killer_right_sprites.png",
     ],
     WIZARD_ID: [
-        WIZARD_DOWN_SPRITES,
-        WIZARD_UP_SPRITES,
-        WIZARD_LEFT_SPRITES,
-        WIZARD_RIGHT_SPRITES,
+        "assets/sprites/player_sprites/wizard_sprites/wizard_down_sprites.png",
+        "assets/sprites/player_sprites/wizard_sprites/wizard_up_sprites.png",
+        "assets/sprites/player_sprites/wizard_sprites/wizard_left_sprites.png",
+        "assets/sprites/player_sprites/wizard_sprites/wizard_right_sprites.png",
     ],
     BOXER_ID: [
-        BOXER_DOWN_SPRITES,
-        BOXER_UP_SPRITES,
-        BOXER_LEFT_SPRITES,
-        BOXER_RIGHT_SPRITES,
+        "assets/sprites/player_sprites/boxer_sprites/boxer_down_sprites.png",
+        "assets/sprites/player_sprites/boxer_sprites/boxer_up_sprites.png",
+        "assets/sprites/player_sprites/boxer_sprites/boxer_left_sprites.png",
+        "assets/sprites/player_sprites/boxer_sprites/boxer_right_sprites.png",
     ],
     CAVEMAN_ID: [
-        CAVEMAN_DOWN_SPRITES,
-        CAVEMAN_UP_SPRITES,
-        CAVEMAN_LEFT_SPRITES,
-        CAVEMAN_RIGHT_SPRITES,
+        "assets/sprites/player_sprites/caveman_sprites/caveman_down_sprites.png",
+        "assets/sprites/player_sprites/caveman_sprites/caveman_up_sprites.png",
+        "assets/sprites/player_sprites/caveman_sprites/caveman_left_sprites.png",
+        "assets/sprites/player_sprites/caveman_sprites/caveman_right_sprites.png",
     ],
 }
-
 
 # =========================
 # ENEMIES
@@ -220,42 +166,26 @@ ENEMY_IDS = [
     THIRD_ENEMY_ID,
 ]
 
-FIRST_ENEMY_DOWN = "assets/sprites/enemy_sprites/enemy1_sprite/enemy1_down_sprite.png"
-FIRST_ENEMY_UP = "assets/sprites/enemy_sprites/enemy1_sprite/enemy1_up_sprite.png"
-FIRST_ENEMY_LEFT = "assets/sprites/enemy_sprites/enemy1_sprite/enemy1_left_sprite.png"
-FIRST_ENEMY_RIGHT = "assets/sprites/enemy_sprites/enemy1_sprite/enemy1_right_sprite.png"
-
-SECOND_ENEMY_DOWN = "assets/sprites/enemy_sprites/enemy2_sprite/enemy2_down_sprite.png"
-SECOND_ENEMY_UP = "assets/sprites/enemy_sprites/enemy2_sprite/enemy2_up_sprite.png"
-SECOND_ENEMY_LEFT = "assets/sprites/enemy_sprites/enemy2_sprite/enemy2_left_sprite.png"
-SECOND_ENEMY_RIGHT = "assets/sprites/enemy_sprites/enemy2_sprite/enemy2_right_sprite.png"
-
-THIRD_ENEMY_DOWN = "assets/sprites/enemy_sprites/enemy3_sprite/enemy3_down_sprite.png"
-THIRD_ENEMY_UP = "assets/sprites/enemy_sprites/enemy3_sprite/enemy3_up_sprite.png"
-THIRD_ENEMY_LEFT = "assets/sprites/enemy_sprites/enemy3_sprite/enemy3_left_sprite.png"
-THIRD_ENEMY_RIGHT = "assets/sprites/enemy_sprites/enemy3_sprite/enemy3_right_sprite.png"
-
 ENEMY_SPRITE_FILES = {
     FIRST_ENEMY_ID: [
-        FIRST_ENEMY_DOWN,
-        FIRST_ENEMY_UP,
-        FIRST_ENEMY_LEFT,
-        FIRST_ENEMY_RIGHT,
+        "assets/sprites/enemy_sprites/enemy1_sprite/enemy1_down_sprite.png",
+        "assets/sprites/enemy_sprites/enemy1_sprite/enemy1_up_sprite.png",
+        "assets/sprites/enemy_sprites/enemy1_sprite/enemy1_left_sprite.png",
+        "assets/sprites/enemy_sprites/enemy1_sprite/enemy1_right_sprite.png",
     ],
     SECOND_ENEMY_ID: [
-        SECOND_ENEMY_DOWN,
-        SECOND_ENEMY_UP,
-        SECOND_ENEMY_LEFT,
-        SECOND_ENEMY_RIGHT,
+        "assets/sprites/enemy_sprites/enemy2_sprite/enemy2_down_sprite.png",
+        "assets/sprites/enemy_sprites/enemy2_sprite/enemy2_up_sprite.png",
+        "assets/sprites/enemy_sprites/enemy2_sprite/enemy2_left_sprite.png",
+        "assets/sprites/enemy_sprites/enemy2_sprite/enemy2_right_sprite.png",
     ],
     THIRD_ENEMY_ID: [
-        THIRD_ENEMY_DOWN,
-        THIRD_ENEMY_UP,
-        THIRD_ENEMY_LEFT,
-        THIRD_ENEMY_RIGHT,
+        "assets/sprites/enemy_sprites/enemy3_sprite/enemy3_down_sprite.png",
+        "assets/sprites/enemy_sprites/enemy3_sprite/enemy3_up_sprite.png",
+        "assets/sprites/enemy_sprites/enemy3_sprite/enemy3_left_sprite.png",
+        "assets/sprites/enemy_sprites/enemy3_sprite/enemy3_right_sprite.png",
     ],
 }
-
 
 # =========================
 # OBSTACLES
@@ -279,16 +209,11 @@ OBSTACLE_IDS = [
     THIRD_OBSTACLE_ID,
 ]
 
-FIRST_OBSTACLE_PATH = "assets/obstacles/obstacle_1.png"
-SECOND_OBSTACLE_PATH = "assets/obstacles/obstacle_2.png"
-THIRD_OBSTACLE_PATH = "assets/obstacles/obstacle_3.png"
-
 OBSTACLE_IMAGE_FILES = {
-    FIRST_OBSTACLE_ID: FIRST_OBSTACLE_PATH,
-    SECOND_OBSTACLE_ID: SECOND_OBSTACLE_PATH,
-    THIRD_OBSTACLE_ID: THIRD_OBSTACLE_PATH,
+    FIRST_OBSTACLE_ID: "assets/obstacles/obstacle_1.png",
+    SECOND_OBSTACLE_ID: "assets/obstacles/obstacle_2.png",
+    THIRD_OBSTACLE_ID: "assets/obstacles/obstacle_3.png",
 }
-
 
 # =========================
 # WEAPONS
@@ -316,40 +241,20 @@ WEAPON_IDS = [
     CAVEMAN_WEAPON_ID,
 ]
 
-KNIGHT_WEAPON_LEFT = "assets/sprites/weapon_sprites/knight_weapon/knight_weapon_left.png"
-KNIGHT_WEAPON_RIGHT = "assets/sprites/weapon_sprites/knight_weapon/knight_weapon_right.png"
-
-MONK_WEAPON_LEFT = "assets/sprites/weapon_sprites/monk_weapon/monk_weapon_left.png"
-MONK_WEAPON_RIGHT = "assets/sprites/weapon_sprites/monk_weapon/monk_weapon_right.png"
-
-KILLER_WEAPON_LEFT = "assets/sprites/weapon_sprites/killer_weapon/killer_weapon_left.png"
-KILLER_WEAPON_RIGHT = "assets/sprites/weapon_sprites/killer_weapon/killer_weapon_right.png"
-
-WIZARD_WEAPON_LEFT = "assets/sprites/weapon_sprites/wizard_weapon/wizard_weapon_left.png"
-WIZARD_WEAPON_RIGHT = "assets/sprites/weapon_sprites/wizard_weapon/wizard_weapon_right.png"
-
-BOXER_WEAPON_LEFT = "assets/sprites/weapon_sprites/boxer_weapon/boxer_weapon_left.png"
-BOXER_WEAPON_RIGHT = "assets/sprites/weapon_sprites/boxer_weapon/boxer_weapon_right.png"
-
-CAVEMAN_WEAPON_LEFT = "assets/sprites/weapon_sprites/caveman_weapon/caveman_weapon_left.png"
-CAVEMAN_WEAPON_RIGHT = "assets/sprites/weapon_sprites/caveman_weapon/caveman_weapon_right.png"
-
 WEAPON_SPRITE_FILES = {
-    KNIGHT_ID: [KNIGHT_WEAPON_LEFT, KNIGHT_WEAPON_RIGHT],
-    MONK_ID: [MONK_WEAPON_LEFT, MONK_WEAPON_RIGHT],
-    KILLER_ID: [KILLER_WEAPON_LEFT, KILLER_WEAPON_RIGHT],
-    WIZARD_ID: [WIZARD_WEAPON_LEFT, WIZARD_WEAPON_RIGHT],
-    BOXER_ID: [BOXER_WEAPON_LEFT, BOXER_WEAPON_RIGHT],
-    CAVEMAN_ID: [CAVEMAN_WEAPON_LEFT, CAVEMAN_WEAPON_RIGHT],
+    KNIGHT_ID: ["assets/sprites/weapon_sprites/knight_weapon/knight_weapon_left.png", "assets/sprites/weapon_sprites/knight_weapon/knight_weapon_right.png"],
+    MONK_ID: ["assets/sprites/weapon_sprites/monk_weapon/monk_weapon_left.png", "assets/sprites/weapon_sprites/monk_weapon/monk_weapon_right.png"],
+    KILLER_ID: ["assets/sprites/weapon_sprites/killer_weapon/killer_weapon_left.png", "assets/sprites/weapon_sprites/killer_weapon/killer_weapon_right.png"],
+    WIZARD_ID: ["assets/sprites/weapon_sprites/wizard_weapon/wizard_weapon_left.png", "assets/sprites/weapon_sprites/wizard_weapon/wizard_weapon_right.png"],
+    BOXER_ID: ["assets/sprites/weapon_sprites/boxer_weapon/boxer_weapon_left.png", "assets/sprites/weapon_sprites/boxer_weapon/boxer_weapon_right.png"],
+    CAVEMAN_ID: ["assets/sprites/weapon_sprites/caveman_weapon/caveman_weapon_left.png", "assets/sprites/weapon_sprites/caveman_weapon/caveman_weapon_right.png"],
 }
-
 
 # =========================
 # GENERAL
 # =========================
 
 SIXTY_FPS = 60
-
 
 # =========================
 # STATS KEYS
@@ -358,7 +263,6 @@ SIXTY_FPS = 60
 HEALTH = "health"
 ARMOR = "armor"
 DAMAGE = "damage"
-
 
 # =========================
 # PLAYER STATS
@@ -412,7 +316,6 @@ CAVEMAN_BASE_ARMOR = 0
 CAVEMAN_ARMOR_GROWTH = 0
 CAVEMAN_HEALING = 0
 
-
 # =========================
 # ENEMY STATS
 # =========================
@@ -440,7 +343,6 @@ THIRD_ENEMY_ARMOR_GROWTH = 0
 THIRD_ENEMY_BASE_DAMAGE = 0
 THIRD_ENEMY_DAMAGE_GROWTH = 0
 THIRD_ENEMY_HEALING = 0
-
 
 # =========================
 # CHARACTER STATS MAP
@@ -494,7 +396,6 @@ CHARACTER_STATS = {
     },
 }
 
-
 # =========================
 # FAMILY IDS
 # =========================
@@ -504,7 +405,6 @@ WEAPON_ID = "w"
 ENEMY_ID = "e"
 OBSTACLE_ID = "o"
 PROJECTILE_ID = "p"
-
 
 # =========================
 # HITBOX DATA
@@ -643,32 +543,14 @@ KILLER_BUTTON_HEIGHT = 400
 CAVEMAN_BUTTON_WIDTH = 100
 CAVEMAN_BUTTON_HEIGHT = 400
 
-EXIT_BUTTON_X = 150
-START_BUTTON_X = 150
-KNIGHT_BUTTON_X = 0
-BOXER_BUTTON_X = 140
-WIZARD_BUTTON_X = 280
-MONK_BUTTON_X = 420
-KILLER_BUTTON_X = 560
-CAVEMAN_BUTTON_X = 700
-
-EXIT_BUTTON_Y = 350
-START_BUTTON_Y = 50
-KNIGHT_BUTTON_Y = 100
-BOXER_BUTTON_Y = 100
-WIZARD_BUTTON_Y = 100
-MONK_BUTTON_Y = 100
-KILLER_BUTTON_Y = 100
-CAVEMAN_BUTTON_Y = 100
-
-EXIT_BUTTON_POSITION = (EXIT_BUTTON_X, EXIT_BUTTON_Y)
-START_BUTTON_POSITION = (START_BUTTON_X, START_BUTTON_Y)
-KNIGHT_BUTTON_POSITION = (KNIGHT_BUTTON_X, KNIGHT_BUTTON_Y)
-BOXER_BUTTON_POSITION = (BOXER_BUTTON_X, BOXER_BUTTON_Y)
-WIZARD_BUTTON_POSITION = (WIZARD_BUTTON_X, WIZARD_BUTTON_Y)
-MONK_BUTTON_POSITION = (MONK_BUTTON_X, MONK_BUTTON_Y)
-KILLER_BUTTON_POSITION = (KILLER_BUTTON_X, KILLER_BUTTON_Y)
-CAVEMAN_BUTTON_POSITION = (CAVEMAN_BUTTON_X, CAVEMAN_BUTTON_Y)
+EXIT_BUTTON_POSITION = (150, 350)
+START_BUTTON_POSITION = (150, 50)
+KNIGHT_BUTTON_POSITION = (0, 100)
+BOXER_BUTTON_POSITION = (140, 100)
+WIZARD_BUTTON_POSITION = (280, 100)
+MONK_BUTTON_POSITION = (420, 100)
+KILLER_BUTTON_POSITION = (560, 100)
+CAVEMAN_BUTTON_POSITION = (700, 100)
 
 BUTTONS_DATA = {
     EXIT_BUTTON_ID: [EXIT_BUTTON_POSITION, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT],
@@ -695,3 +577,12 @@ BUTTON_FONT_SIZE = 32
 
 CHARACTER_SELECTION_ID = "CHARACTER_SELECTION"
 PAUSED_TEXT = "PAUSED"
+
+BUTTON_CHARACTER_MAP = {
+    "knight_button": KNIGHT_ID,
+    "boxer_button": BOXER_ID,
+    "wizard_button": WIZARD_ID,
+    "monk_button": MONK_ID,
+    "killer_button": KILLER_ID,
+    "caveman_button": CAVEMAN_ID,
+}

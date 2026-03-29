@@ -17,17 +17,19 @@ class Character(AnimatedEntity):
     @property
     def level(self):
         return self._stats.level
-    
+
     @property
     def stats(self):
         return self._stats
-    
+
     @level.setter
     def level(self, new_level):
         self._stats.level = new_level
 
+    def save_position(self):
+        self._previous_position = self.position.copy()
+
     def update(self):
-        self._previous_position = self.position.copy() # Store before movement
         self._stats.update()
 
     def level_up(self):

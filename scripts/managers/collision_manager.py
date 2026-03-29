@@ -1,36 +1,46 @@
-from pygame import Vector2
-
 from scripts.entities.enemy import Enemy
 from scripts.entities.obstacle import Obstacle
-from scripts.enums.enums import Direction, State
+from scripts.entities.projectile import Projectile
+from scripts.enums.enums import State
 
 
 class CollisionManager:
     def manage_all_collisions(self, room):
-        self.manage_weapon_enemy_collisions(room)
-        self.manage_player_collisions(room)
+        self._manage_weapon_enemy_collisions(room)
+        self._manage_player_obstacle_collisions(room)
+        self._manage_projectile_collisions(room)
 
-    def manage_weapon_enemy_collisions(self, room):
+    def _manage_weapon_enemy_collisions(self, room):
         player = room.player
         weapon = player.weapon
-        entity_list = room.entity_list
+        enemies = [e for e in room.entity_list if isinstance(e, Enemy)]
 
-        for entity in entity_list:
-            if not isinstance(entity, Enemy): continue
-            if not weapon.hitbox.is_colliding(entity.hitbox): continue
+        for enemy in enemies:
+            if weapon.hitbox.is_colliding(enemy.hitbox):
+                player.attack(enemy)
 
-            player.attack(entity)
-
-    def manage_player_collisions(self, room):
+    def _manage_player_obstacle_collisions(self, room):
         player = room.player
-        entities = room.entity_list
+        obstacles = [e for e in room.entity_list if isinstance(e, Obstacle)]
 
-        for entity in entities:
-            if not player.hitbox.is_colliding(entity.hitbox): continue
+        if player.state != State.MOVING:
+            return
 
-            if isinstance(entity, Obstacle) and player.state == State.MOVING:
+        for obstacle in obstacles:
+            if player.hitbox.is_colliding(obstacle.hitbox):
                 self._push_back(player)
-    
+                break 
+
+    def _manage_projectile_collisions(self, room):
+        projectiles = [e for e in room.entity_list if isinstance(e, Projectile)]
+        enemies = [e for e in room.entity_list if isinstance(e, Enemy)]
+
+        for projectile in projectiles:
+            for enemy in enemies:
+                if projectile.hitbox.is_colliding(enemy.hitbox):
+                    enemy.take_damage(projectile.damage)
+                    room.entity_list.remove(projectile)
+                    break
 
     def _push_back(self, player):
         player.position.x = player.previous_position.x

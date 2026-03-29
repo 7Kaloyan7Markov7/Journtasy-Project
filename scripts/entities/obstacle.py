@@ -2,7 +2,6 @@ from scripts.entities.entity import Entity
 from scripts.managers.asset_manager import AssetManager
 from scripts.collisions.hitbox import HitBox
 import scripts.config.constants as const
-import pygame
 
 
 class Obstacle(Entity):
@@ -22,4 +21,3 @@ class Obstacle(Entity):
 
     def render(self, screen):
         screen.blit(self.image, self.position)
-        pygame.draw.rect(screen, self._hitbox.width, self._hitbox._hitbox)
