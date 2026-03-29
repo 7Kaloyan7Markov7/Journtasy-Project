@@ -60,11 +60,11 @@ class Room:
     def render(self, screen):
         self._background.render(screen)
 
-        if self.player is not None:
-            self.player.render(screen)
-
         for entity in self.entity_list:
             entity.render(screen)
+
+        if self.player is not None:
+            self.player.render(screen)
 
     def update(self):
         if self.player is not None:

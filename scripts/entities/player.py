@@ -81,4 +81,4 @@ class Player(Character):
 
     def render(self, screen):
         screen.blit(self.current_image, self.position)
-        pygame.draw.rect(screen, self._hitbox.width, self._hitbox._hitbox)
+        self._weapon.render(screen)

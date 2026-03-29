@@ -5,14 +5,18 @@ import scripts.config.constants as const
 
 class GameplayHandler(Handler):
     def handle(self, game):
-        self.pause_event(game.scene_manager.current_scene, game.input_manager.pause_pressed)
         player = game.scene_manager.current_scene.room.player
-        if game.scene_manager.current_scene.is_paused:
+        collision_manager = game.scene_manager.current_scene.room.collision_manager
+        input_manager = game.input_manager
+        scene_manager = game.scene_manager
+
+        self.pause_event(scene_manager.current_scene, input_manager.pause_pressed)
+        if scene_manager.current_scene.is_paused:
             return
 
-        self.player_stepped_bounds_event(game.scene_manager, game.dungeon_manager, player)
-        self.player_movement_event(player, game.input_manager)
-        game.scene_manager.current_scene.room.collision_manager.manage_all_collisions(game.scene_manager.current_scene.room)
+        self.player_movement_event(player, input_manager)
+        self.player_stepped_bounds_event(scene_manager, game.dungeon_manager, player)
+        collision_manager.manage_all_collisions(scene_manager.current_scene.room)
         
     def pause_event(self, scene, is_pause_clicked):
         if is_pause_clicked:
@@ -60,19 +64,8 @@ class GameplayHandler(Handler):
             player.state = State.MOVING
         else:
             player.state = State.IDLE
-
-
-    def enemy_attack_event(self, game):
-        ...
     
-    def player_attack_event(self, game):
-        ...
-
-    def enemy_take_damage_event(self, game):
-        ...
-
-    def player_take_damage_event(self, game):
-        ...
-    
-    def player_shoot_event(self, game):
-        ...    
+    def player_attack_event(self, input_manager, scene_manager):
+        if input_manager.attack_pressed:
+            player = scene_manager.current_scene.room.player
+            player.attack()

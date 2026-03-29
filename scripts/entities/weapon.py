@@ -14,8 +14,8 @@ class Weapon(AnimatedEntity):
         hitbox_data = const.HITBOX_DATA[const.WEAPON_ID][entity_id]
         self._hitbox = HitBox(position, hitbox_data[0], hitbox_data[1])
 
-        self._left_offset = pygame.Vector2(-20, 0)
-        self._right_offset = pygame.Vector2(20, 0)
+        self._left_offset = pygame.Vector2(-50, 0)
+        self._right_offset = pygame.Vector2(50, 0)
 
     @property
     def current_image(self):
@@ -28,7 +28,7 @@ class Weapon(AnimatedEntity):
             self._state = State.IDLE
             self.reset_animation()
             self._position = player.position.copy()
-            self._hitbox.move((-9999, -9999))  # move off-screen to prevent ghost collisions
+            self._hitbox.move((-9999, -9999)) 
             return
 
         if self._direction == Direction.LEFT:

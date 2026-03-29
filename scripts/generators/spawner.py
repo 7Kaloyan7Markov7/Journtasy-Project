@@ -43,8 +43,6 @@ class Spawner:
             self._reposition(entity)
         return None
 
-        return entity
-
     def spawn_entities(self):
         entity_list = []
 

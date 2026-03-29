@@ -19,7 +19,7 @@ class CollisionManager:
             if not isinstance(entity, Enemy): continue
             if not weapon.hitbox.is_colliding(entity.hitbox): continue
 
-            player.attack(entity)  # pass player so damage calc works
+            player.attack(entity)
 
     def manage_player_collisions(self, room):
         player = room.player

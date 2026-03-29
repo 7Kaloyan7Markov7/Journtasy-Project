@@ -17,10 +17,6 @@ class Obstacle(Entity):
     def image(self):
         return self._image
 
-    @property
-    def is_blocking(self):
-        return self._is_blocking
-
     def update(self):
         pass
 

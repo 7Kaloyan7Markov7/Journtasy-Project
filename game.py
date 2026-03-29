@@ -39,7 +39,7 @@ class Game:
     @property
     def event_handler_manager(self):
         return self._event_handler_manager
- 
+    
     @property
     def running(self):
         return self._running
@@ -57,7 +57,7 @@ class Game:
         while self._running:
             self.update_game()
             self.render_game()
-            self._clock.tick(const.SIXTY_FPS / 2)
+            self._clock.tick(const.SIXTY_FPS / 3)
 
         pygame.quit()
 
