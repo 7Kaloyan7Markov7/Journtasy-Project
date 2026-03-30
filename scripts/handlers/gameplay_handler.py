@@ -14,12 +14,17 @@ class GameplayHandler(Handler):
             return
 
         self._handle_player_movement(player, game.input_manager)
+        self._handle_player_attack(player, game.input_manager.attack_pressed)
         self._handle_boundary_transition(game.scene_manager, game.dungeon_manager, player)
         room.collision_manager.manage_all_collisions(game.scene_manager.current_scene.room)
 
     def _handle_pause(self, scene, is_pause_pressed):
         if is_pause_pressed:
             scene.pause()
+
+    def _handle_player_attack(self, player, is_attack_pressed):
+        if is_attack_pressed:
+            player.attack()
 
     def _handle_boundary_transition(self, scene_manager, dungeon_manager, player):
         direction = self._get_boundary_direction(player)
@@ -53,7 +58,7 @@ class GameplayHandler(Handler):
             player.position.y = const.SCREEN_UPPER_BOUNDARY + 1
 
     def _handle_player_movement(self, player, input_manager):
-        player.save_position()  # save before any movement for collision rollback
+        player.save_position()
 
         moved = False
         if input_manager.move_left:
@@ -69,4 +74,7 @@ class GameplayHandler(Handler):
             player.move_down()
             moved = True
 
-        player.state = State.MOVING if moved else State.IDLE
+        if moved:
+            player.state = State.MOVING
+        elif player.weapon.state != State.ATTACKING:
+            player.state = State.IDLE

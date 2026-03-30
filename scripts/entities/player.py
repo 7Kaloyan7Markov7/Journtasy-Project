@@ -30,6 +30,7 @@ class Player(Character):
         super().update()
         if self.state == State.MOVING:
             self.animate()
+
         self.weapon.sync_with_player(self)
         self.weapon.update()
 

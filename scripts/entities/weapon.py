@@ -18,15 +18,25 @@ class Weapon(AnimatedEntity):
         self._right_offset = pygame.Vector2(50, 0)
         self._hit_targets = set()
 
+        self._attack_direction = Direction.RIGHT
+
     @property
     def current_image(self):
         return self._sprites[self.direction][self.current_frame_index]
 
     def sync_with_player(self, player):
-        self._direction = player.direction
+        player_direction = player.direction
 
-        if self._direction == Direction.UP or self._direction == Direction.DOWN:
-            self._state = State.IDLE
+        if player_direction in (Direction.LEFT, Direction.RIGHT):
+            self._attack_direction = player_direction
+
+        if self._state == State.ATTACKING:
+            self._direction = self._attack_direction
+        else:
+            self._direction = player_direction
+
+        # hide weapon when idle and player faces up/down
+        if self._state != State.ATTACKING and player_direction in (Direction.UP, Direction.DOWN):
             self.reset_animation()
             self._position = player.position.copy()
             self._hitbox.move((-9999, -9999))
@@ -35,16 +45,17 @@ class Weapon(AnimatedEntity):
 
         if self._direction == Direction.LEFT:
             self._position = player.position + self._left_offset
-        elif self._direction == Direction.RIGHT:
+        else:
             self._position = player.position + self._right_offset
 
         self._hitbox.move(self._position)
 
     def attack(self):
-        if self.direction == Direction.UP or self.direction == Direction.DOWN:
+        if self._state == State.ATTACKING:
             return
 
         self._state = State.ATTACKING
+        self._direction = self._attack_direction
         self.reset_animation()
         self._hit_targets.clear()
 
@@ -75,7 +86,7 @@ class Weapon(AnimatedEntity):
         self.animate()
 
     def render(self, screen):
-        if self.direction == Direction.UP or self.direction == Direction.DOWN:
+        if self._state != State.ATTACKING and self.direction in (Direction.UP, Direction.DOWN):
             return
 
         screen.blit(self.current_image, self.position)

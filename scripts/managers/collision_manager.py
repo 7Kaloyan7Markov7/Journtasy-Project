@@ -32,7 +32,7 @@ class CollisionManager:
         for obstacle in obstacles:
             if player.hitbox.is_colliding(obstacle.hitbox):
                 self._push_back(player)
-                break  # one pushback per frame is enough
+                break
 
     def _manage_projectile_collisions(self, room):
         projectiles = [e for e in room.entity_list if isinstance(e, Projectile)]
