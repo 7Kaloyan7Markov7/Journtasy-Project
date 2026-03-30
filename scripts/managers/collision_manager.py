@@ -26,9 +26,6 @@ class CollisionManager:
         player = room.player
         obstacles = [e for e in room.entity_list if isinstance(e, Obstacle)]
 
-        if player.state != State.MOVING:
-            return
-
         for obstacle in obstacles:
             if player.hitbox.is_colliding(obstacle.hitbox):
                 self._push_back(player)

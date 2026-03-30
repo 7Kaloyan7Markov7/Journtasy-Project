@@ -1,3 +1,6 @@
+from scripts.entities.enemy import Enemy
+
+
 class Room:
     def __init__(self, background, entity_list, collision_manager, player=None):
         self._background = background
@@ -57,6 +60,12 @@ class Room:
     def collision_manager(self):
         return self._collision_manager
     
+    def _clean_dead_entities(self):
+        self._entity_list = [
+        entity for entity in self._entity_list
+        if not (isinstance(entity, Enemy) and entity.stats.is_dead)
+    ]
+                    
     def render(self, screen):
         self._background.render(screen)
 
@@ -67,6 +76,7 @@ class Room:
             self.player.render(screen)
 
     def update(self):
+        self._clean_dead_entities()
         if self.player is not None:
             self.player.update()
 

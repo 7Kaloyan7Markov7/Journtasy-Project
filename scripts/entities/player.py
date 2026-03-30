@@ -4,12 +4,13 @@ from scripts.entities.weapon import Weapon
 from scripts.collisions.hitbox import HitBox
 from scripts.enums.enums import Direction, State
 import scripts.config.constants as const
-import pygame
+
 
 class Player(Character):
     def __init__(self, entity_id, position, speed, level):
         super().__init__(entity_id, position, speed, level)
         self._experience_bar = 0
+        self._exp_threshhold = 100
 
         weapon_id = const.PLAYER_WEAPON_MAP[entity_id]
         self._weapon = Weapon(weapon_id, position, speed)
@@ -28,6 +29,7 @@ class Player(Character):
 
     def update(self):
         super().update()
+        self._level_up()
         if self.state == State.MOVING:
             self.animate()
 
@@ -37,14 +39,27 @@ class Player(Character):
         if self.weapon.state == State.IDLE and self._state == State.ATTACKING:
             self._state = State.IDLE
 
+    
+
     def attack(self, target=None):
-        if self.weapon.state == State.ATTACKING:
+        if self.direction == Direction.DOWN or self.direction == Direction.UP:
             return
+        
+        if self.weapon.state == State.ATTACKING: return
 
         self.weapon.attack()
 
         if self.weapon.state == State.ATTACKING:
             self._state = State.ATTACKING
+        
+        if target is not None and target.stats.is_dead:
+            self._experience_bar += target.exp_on_kill 
+    
+    def _level_up(self):
+        if self._experience_bar >= self._exp_threshhold:
+            self.stats.level_up
+            self._experience_bar = 0
+
 
     def stop_attack(self):
         self.weapon.stop_attack()
