@@ -7,7 +7,7 @@ class Entity(ABC):
     def __init__(self, entity_id, position, speed):
         self._entity_id = str(entity_id)
         self._direction = Direction.DOWN
-        self._state = State.NO_STATE
+        self._state = State.IDLE
         self._position = Vector2(position)
         self._speed = int(speed)
         self._hitbox = None

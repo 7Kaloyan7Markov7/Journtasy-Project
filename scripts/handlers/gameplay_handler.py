@@ -1,5 +1,6 @@
 from scripts.handlers.handler import Handler
 from scripts.enums.enums import Direction, State
+from scripts.entities.enemy import Enemy
 import scripts.config.constants as const
 
 
@@ -16,7 +17,24 @@ class GameplayHandler(Handler):
         self._handle_player_movement(player, game.input_manager)
         self._handle_player_attack(player, game.input_manager.attack_pressed)
         self._handle_boundary_transition(game.scene_manager, game.dungeon_manager, player)
+        self._handle_enemies(room)
         room.collision_manager.manage_all_collisions(game.scene_manager.current_scene.room)
+
+    def _handle_enemies(self, room):
+        player = room.player
+        if player is None:
+            return
+        
+        enemies = [e for e in room.entity_list if isinstance(e, Enemy)]
+
+        for enemy in enemies:
+            if enemy.stats.is_dead:
+                continue
+
+            if enemy.is_aggroed:
+                enemy.move(player)
+
+            enemy.update()
 
     def _handle_pause(self, scene, is_pause_pressed):
         if is_pause_pressed:

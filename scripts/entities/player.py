@@ -16,6 +16,9 @@ class Player(Character):
         self._weapon = Weapon(weapon_id, position, speed)
         self._sprites = AssetManager.get_player_animations(entity_id)
 
+        self._invulnerability_timer = 0
+        self._invulnerability_duration = 30
+
         hitbox_data = const.HITBOX_DATA[const.PLAYER_ID]
         self._hitbox = HitBox(position, hitbox_data[0], hitbox_data[1])
 
@@ -30,6 +33,10 @@ class Player(Character):
     def update(self):
         super().update()
         self._level_up()
+
+        if self._invulnerability_timer > 0:
+            self._invulnerability_timer -= 1
+
         if self.state == State.MOVING:
             self.animate()
 
@@ -39,26 +46,35 @@ class Player(Character):
         if self.weapon.state == State.IDLE and self._state == State.ATTACKING:
             self._state = State.IDLE
 
-    
+    def take_damage(self, damage):
+        if self._invulnerability_timer > 0 or self.stats.is_dead:
+            return
+
+        self.stats.take_damage(damage)
+        self._invulnerability_timer = self._invulnerability_duration
 
     def attack(self, target=None):
-        if self.direction == Direction.DOWN or self.direction == Direction.UP:
-            return
-        
-        if self.weapon.state == State.ATTACKING: return
+        if target is None:
+            # Initiate the swing
+            if self.direction == Direction.DOWN or self.direction == Direction.UP:
+                return
+            if self.weapon.state == State.ATTACKING:
+                return
+            self.weapon.attack()
+            if self.weapon.state == State.ATTACKING:
+                self._state = State.ATTACKING
+        else:
+            # Apply hit to a target
+            self.weapon.apply_damage(target, self.stats.damage.damage)
+            if target.stats.is_dead:
+                self._experience_bar += target.exp_on_kill
 
-        self.weapon.attack()
-
-        if self.weapon.state == State.ATTACKING:
-            self._state = State.ATTACKING
-        
-        if target is not None and target.stats.is_dead:
-            self._experience_bar += target.exp_on_kill 
-    
     def _level_up(self):
         if self._experience_bar >= self._exp_threshhold:
             self.stats.level_up()
             self._experience_bar = 0
+            print(f"Leveled up to level {self.stats.level}!")
+
 
     def stop_attack(self):
         self.weapon.stop_attack()

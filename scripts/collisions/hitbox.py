@@ -2,11 +2,15 @@ import pygame
 
 
 class HitBox:
-    def __init__(self, position, width, height):
+    def __init__(self, position, width, height, center = False):
         self._width = width
         self._height = height
         self._position = position
         self._hitbox = pygame.Rect(position, (width, height))
+        self._is_center = center
+
+        if center:
+            self._hitbox.center = position
 
     @property
     def width(self):
@@ -30,7 +34,14 @@ class HitBox:
 
     def move(self, new_position):
         self._position = new_position
-        self._hitbox.topleft = new_position
+
+        if not self._is_center:
+            self._hitbox.topleft = new_position
+            return
+
+        self._hitbox.center = new_position
+        
+        
 
     def is_colliding(self, other_hitbox):
         return self.hitbox.colliderect(other_hitbox.hitbox)
