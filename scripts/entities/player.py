@@ -16,6 +16,9 @@ class Player(Character):
         self._weapon = Weapon(weapon_id, position, speed)
         self._sprites = AssetManager.get_player_animations(entity_id)
 
+        self._invulnerability_timer = 0
+        self._invulnerability_duration = 30
+
         hitbox_data = const.HITBOX_DATA[const.PLAYER_ID]
         self._hitbox = HitBox(position, hitbox_data[0], hitbox_data[1])
 
@@ -30,6 +33,10 @@ class Player(Character):
     def update(self):
         super().update()
         self._level_up()
+
+        if self._invulnerability_timer > 0:
+            self._invulnerability_timer -= 1
+
         if self.state == State.MOVING:
             self.animate()
 
@@ -39,7 +46,12 @@ class Player(Character):
         if self.weapon.state == State.IDLE and self._state == State.ATTACKING:
             self._state = State.IDLE
 
-    
+    def take_damage(self, damage):
+        if self._invulnerability_timer > 0 or self.stats.is_dead:
+            return
+
+        self.stats.take_damage(damage)
+        self._invulnerability_timer = self._invulnerability_duration
 
     def attack(self, target=None):
         if target is None:

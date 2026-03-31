@@ -17,6 +17,9 @@ class Enemy(Character):
         hitbox_data = const.HITBOX_DATA[const.ENEMY_ID][entity_id]
         self._hitbox = HitBox(position, hitbox_data[0], hitbox_data[1])
 
+        self._attack_cooldown = 0
+        self._attack_delay = 30
+
         self._is_aggroed = False
         self._aggro_box = HitBox(self._hitbox.hitbox.center, 300, 300, True)
 
@@ -51,6 +54,9 @@ class Enemy(Character):
         self.hitbox.move(self.position)
         self._update_aggro_box()
 
+        if self._attack_cooldown > 0:
+            self._attack_cooldown -= 1
+
         if self.state != State.IDLE:
             self.animate()
 
@@ -60,7 +66,11 @@ class Enemy(Character):
         screen.blit(self.current_image, self.position)
 
     def attack(self, target):
-        pass
+        if self._attack_cooldown > 0:
+            return
+
+        target.take_damage(self.stats.damage.damage)
+        self._attack_cooldown = self._attack_delay
 
     def _update_aggro_box(self):
         self._aggro_box.move(self._hitbox.hitbox.center)

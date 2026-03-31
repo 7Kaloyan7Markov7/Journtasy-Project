@@ -7,6 +7,7 @@ from scripts.enums.enums import State
 class CollisionManager:
     def manage_all_collisions(self, room):
         self._manage_weapon_enemy_collisions(room)
+        self._manage_enemy_player_collisions(room)
         self._manage_player_obstacle_collisions(room)
         self._manage_enemy_obstacle_collisions(room)
         self._manage_projectile_collisions(room)
@@ -24,6 +25,17 @@ class CollisionManager:
                     enemy.hitbox.move(enemy.position)
                     enemy.aggro_box.move(enemy.position)
                     break
+
+    def _manage_enemy_player_collisions(self, room):
+        player = room.player
+        enemies = [e for e in room.entity_list if isinstance(e, Enemy)]
+
+        for enemy in enemies:
+            if enemy.stats.is_dead:
+                continue
+
+            if enemy.hitbox.is_colliding(player.hitbox):
+                enemy.attack(player)
 
     def _manage_weapon_enemy_collisions(self, room):
         player = room.player
