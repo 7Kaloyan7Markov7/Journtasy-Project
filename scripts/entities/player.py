@@ -10,7 +10,7 @@ class Player(Character):
     def __init__(self, entity_id, position, speed, level):
         super().__init__(entity_id, position, speed, level)
         self._experience_bar = 0
-        self._exp_threshhold = 100
+        self._exp_threshhold = 1
 
         weapon_id = const.PLAYER_WEAPON_MAP[entity_id]
         self._weapon = Weapon(weapon_id, position, speed)
@@ -57,9 +57,8 @@ class Player(Character):
     
     def _level_up(self):
         if self._experience_bar >= self._exp_threshhold:
-            self.stats.level_up
+            self.stats.level_up()
             self._experience_bar = 0
-
 
     def stop_attack(self):
         self.weapon.stop_attack()
