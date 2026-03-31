@@ -42,24 +42,26 @@ class Player(Character):
     
 
     def attack(self, target=None):
-        if self.direction == Direction.DOWN or self.direction == Direction.UP:
-            return
-        
-        if self.weapon.state == State.ATTACKING: return
+        if target is None:
+            # Initiate the swing
+            if self.direction == Direction.DOWN or self.direction == Direction.UP:
+                return
+            if self.weapon.state == State.ATTACKING:
+                return
+            self.weapon.attack()
+            if self.weapon.state == State.ATTACKING:
+                self._state = State.ATTACKING
+        else:
+            # Apply hit to a target
+            self.weapon.apply_damage(target, self.stats.damage.damage)
+            if target.stats.is_dead:
+                self._experience_bar += target.exp_on_kill
 
-        self.weapon.attack()
-
-        if self.weapon.state == State.ATTACKING:
-            self._state = State.ATTACKING
-        
-        if target is not None and target.stats.is_dead:
-            self._experience_bar += target.exp_on_kill 
-    
     def _level_up(self):
         if self._experience_bar >= self._exp_threshhold:
-            self.stats.level_up
+            self.stats.level_up()
             self._experience_bar = 0
-
+            print(f"Leveled up to level {self.stats.level}!")
 
     def stop_attack(self):
         self.weapon.stop_attack()
