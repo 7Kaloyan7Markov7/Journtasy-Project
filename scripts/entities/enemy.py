@@ -44,7 +44,7 @@ class Enemy(Character):
     
     @property
     def exp_on_kill(self):
-        return self._exp_base + self.stats.level * self._exp_base * self._exp_base
+        return self._exp_base + self.stats.level * self._exp_growth * self._exp_base
 
     def update(self):
         if self.stats.is_dead:

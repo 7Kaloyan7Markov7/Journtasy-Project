@@ -1,21 +1,21 @@
 from scripts.entities.character import Character
+from scripts.gui.health_bar_ui import HealthBarUI
 
 
 class GUI:
     def __init__(self):
-        self._health_bar = 0
+        self._health_bar = HealthBarUI()
+
+    def _get_entities(self, room):
+        entities = []
+        if room.player is not None:
+            entities.append(room.player)
+        for entity in room.entity_list:
+            if isinstance(entity, Character) and entity not in entities:
+                entities.append(entity)
+        return entities
 
     def render(self, screen, room):
-        entities_to_draw = []
-
-        if room.player is not None:
-            entities_to_draw.append(room.player)
-
-        for entity in room.entity_list:
-            if isinstance(entity, Character) and entity not in entities_to_draw:
-                entities_to_draw.append(entity)
-
-        for entity in entities_to_draw:
-            if entity.stats.is_dead:
-                continue
-            self._health_bar.render(screen, entity)
+        for entity in self._get_entities(room):
+            self._health_bar.update(entity)
+            self._health_bar.render(screen)

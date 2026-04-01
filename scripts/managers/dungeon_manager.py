@@ -16,6 +16,7 @@ class DungeonManager:
         old_room = self.current_room
         old_room.player = None
         new_room.player = self._player
+        self._player.just_transitioned = True
 
     def create_new_room(self):
         new_room = self._dungeon_generator.generate()

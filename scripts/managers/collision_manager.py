@@ -1,7 +1,8 @@
 from scripts.entities.enemy import Enemy
 from scripts.entities.obstacle import Obstacle
 from scripts.entities.projectile import Projectile
-from scripts.enums.enums import State
+from scripts.enums.enums import Direction, State
+import scripts.config.constants as const
 
 
 class CollisionManager:
@@ -12,6 +13,32 @@ class CollisionManager:
         self._manage_enemy_obstacle_collisions(room)
         self._manage_projectile_collisions(room)
         self._manage_enemy_aggro_box(room)
+
+    def manage_boundary_transition(self, room, dungeon_manager, scene_manager):
+        player = room.player
+        x, y = player.position.x, player.position.y
+
+        if x <= const.SCREEN_LEFT_BOUNDARY:
+            player.position.x = const.SCREEN_RIGHT_BOUNDARY - player.width - 1
+            direction = Direction.LEFT
+        elif x >= const.SCREEN_RIGHT_BOUNDARY - player.width:
+            player.position.x = const.SCREEN_LEFT_BOUNDARY + 1
+            direction = Direction.RIGHT
+        elif y <= const.SCREEN_UPPER_BOUNDARY:
+            player.position.y = const.SCREEN_LOWER_BOUNDARY - player.height - 1
+            direction = Direction.UP
+        elif y >= const.SCREEN_LOWER_BOUNDARY - player.height:
+            player.position.y = const.SCREEN_UPPER_BOUNDARY + 1
+            direction = Direction.DOWN
+        else:
+            return
+
+        player.hitbox.move(player.position)
+        dungeon_manager.transition_to_new_room(direction)
+        scene_manager.current_scene.room = dungeon_manager.current_room
+
+
+        
 
     def _manage_enemy_obstacle_collisions(self, room):
         enemies = [e for e in room.entity_list if isinstance(e, Enemy)]
@@ -71,8 +98,11 @@ class CollisionManager:
 
     def _manage_enemy_aggro_box(self, room):
         player = room.player
+        if player.just_transitioned:
+            return
+
         enemies = [e for e in room.entity_list if isinstance(e, Enemy) and not e.is_aggroed]
-        
+
         for enemy in enemies:
             if enemy.aggro_box.is_colliding(player.hitbox):
                 enemy.is_aggroed = True
