@@ -62,6 +62,7 @@ class Enemy(Character):
 
     def render(self, screen):
         if self.stats.is_dead: return 
+        pygame.draw.rect(screen, (255, 0, 0), self.hitbox.hitbox)
         pygame.draw.rect(screen, (255, 0, 0), self.aggro_box.hitbox, 2)
         screen.blit(self.current_image, self.position)
 
