@@ -28,13 +28,13 @@ class Spawner:
         )
 
     def _reposition(self, entity):
-        new_x = randint(200 + entity.width, const.SCREEN_WIDTH - entity.width - 200)
-        new_y = randint(200 + entity.height, const.SCREEN_HEIGHT - entity.height - 200)
+        new_x = randint(const.SPAWN_MARGIN + entity.width, const.SCREEN_WIDTH - entity.width - const.SPAWN_MARGIN)
+        new_y = randint(const.SPAWN_MARGIN + entity.height, const.SCREEN_HEIGHT - entity.height - const.SPAWN_MARGIN)
         new_pos = Vector2(new_x, new_y)
         entity.position = new_pos
         entity.hitbox.move(new_pos)
 
-    def _spawn_without_overlap(self, spawn_fn, existing_entities, max_attempts=100):
+    def _spawn_without_overlap(self, spawn_fn, existing_entities, max_attempts=const.MAX_SPAWN_ATTEMPTS):
         entity = spawn_fn()
         for _ in range(max_attempts):
             if self._is_position_free(entity, existing_entities):
@@ -45,12 +45,12 @@ class Spawner:
     def spawn_entities(self):
         entity_list = []
 
-        for _ in range(randint(1, 5)):
+        for _ in range(randint(1, const.MAX_ENEMIES_PER_ROOM)):
             enemy = self._spawn_without_overlap(self.spawn_enemy, entity_list)
             if enemy is not None:
                 entity_list.append(enemy)
 
-        for _ in range(randint(1, 3)):
+        for _ in range(randint(1, const.MAX_OBSTACLES_PER_ROOM)):
             obstacle = self._spawn_without_overlap(self.spawn_obstacle, entity_list)
             if obstacle is not None:
                 entity_list.append(obstacle)

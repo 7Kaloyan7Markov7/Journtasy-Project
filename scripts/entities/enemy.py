@@ -1,5 +1,3 @@
-from random import choice
-
 from scripts.entities.character import Character
 from scripts.managers.asset_manager import AssetManager
 from scripts.collisions.hitbox import HitBox
@@ -18,10 +16,10 @@ class Enemy(Character):
         self._hitbox = HitBox(position, hitbox_data[0], hitbox_data[1])
 
         self._attack_cooldown = 0
-        self._attack_delay = 30
+        self._attack_delay = const.ENEMY_ATTACK_DELAY
 
         self._is_aggroed = False
-        self._aggro_box = HitBox(self._hitbox.hitbox.center, 300, 300, True)
+        self._aggro_box = HitBox(self._hitbox.hitbox.center, const.ENEMY_AGGRO_SIZE, const.ENEMY_AGGRO_SIZE, True)
 
         self._exp_base = const.ENEMY_EXP_DROPS[entity_id][0]
         self._exp_growth = const.ENEMY_EXP_DROPS[entity_id][1]

@@ -21,7 +21,7 @@ class Game:
         self._event_handler_manager = EventHandlerManager()
 
     @property
-    def scene_manager   (self):
+    def scene_manager(self):
         return self._scene_manager
     
     @property
@@ -35,11 +35,7 @@ class Game:
     @property
     def dungeon_manager(self):
         return self._dungeon_manager
-    
-    @property
-    def event_handler_manager(self):
-        return self._event_handler_manager
-    
+
     @property
     def running(self):
         return self._running

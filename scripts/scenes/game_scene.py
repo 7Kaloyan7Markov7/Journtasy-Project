@@ -12,7 +12,7 @@ class GameScene(Scene):
         self._room = room
         self._is_paused = False
         self._gui = GUI()
-        self._font = pygame.font.SysFont(None, 64)
+        self._font = pygame.font.SysFont(None, const.GAME_FONT_SIZE)
 
     @property
     def room(self):
@@ -35,7 +35,7 @@ class GameScene(Scene):
         self._gui.render(screen, self._room)
 
         if self._is_paused:
-            text_surface = self._font.render(const.PAUSED_TEXT, True, (0, 255, 0))
+            text_surface = self._font.render(const.PAUSED_TEXT, True, const.PAUSE_TEXT_COLOR)
             text_rect = text_surface.get_rect(center=screen.get_rect().center)
             screen.blit(text_surface, text_rect)
 

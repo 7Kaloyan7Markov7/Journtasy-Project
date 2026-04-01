@@ -9,6 +9,7 @@ class AssetManager:
     player_animations = {}
     projectile_animations = {}
     enemy_animations = {}
+    enemy_attack_animations = {}
     weapon_animations = {}
 
     @staticmethod
@@ -16,8 +17,6 @@ class AssetManager:
         canvas = pygame.Surface((frame_width, frame_height), pygame.SRCALPHA) #creates a surface to draw on
         canvas.blit(frames, const.TOP_LEFT_CORNER , (frame_index * (frame_width + frame_space), 0, frame_width, frame_height)) #crops the n-th frame from the sprite sheet
         scaled_canvas = pygame.transform.scale(canvas, (frame_width * scale, frame_height * scale)) #makes additional sprite transformation
-        scaled_canvas.set_colorkey()
-        #makes the background transparent, so only the sprite is left
 
         return scaled_canvas
     
@@ -26,7 +25,7 @@ class AssetManager:
         frames = pygame.image.load(file_path).convert_alpha()
         direction_sprites = []
 
-        for i in range(0, frame_count):
+        for i in range(frame_count):
             direction_sprites.append(AssetManager.crop_sprite(frames, i, frame_width, frame_height, scale , frame_space))
     
         return direction_sprites
@@ -124,16 +123,14 @@ class AssetManager:
     def load():
         for player_id in const.PLAYABLE_CHARACTER_IDS:
             AssetManager.player_animations[player_id] = AssetManager.load_player_animations(player_id)
+            weapon_id = const.PLAYER_WEAPON_MAP[player_id]
+            AssetManager.weapon_animations[weapon_id] = AssetManager.load_weapon_animations(player_id)
 
         for projectile_id in const.PROJECTILE_IDS:
             AssetManager.projectile_animations[projectile_id] = AssetManager.load_projectile_animations(projectile_id)
 
         for enemy_id in const.ENEMY_IDS:
             AssetManager.enemy_animations[enemy_id] = AssetManager.load_enemy_animations(enemy_id)
-
-        for player_id in const.PLAYABLE_CHARACTER_IDS:
-            weapon_id = const.PLAYER_WEAPON_MAP[player_id]
-            AssetManager.weapon_animations[weapon_id] = AssetManager.load_weapon_animations(player_id)
 
         AssetManager.load_backgrounds()
         AssetManager.load_obstacle_images()
