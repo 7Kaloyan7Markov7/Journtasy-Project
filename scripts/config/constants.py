@@ -599,6 +599,28 @@ BUTTONS_DATA = {
 }
 
 # =========================
+# HEALTH BAR UI
+# =========================
+
+HEALTH_BAR_WIDTH = 40
+HEALTH_BAR_HEIGHT = 7
+HEALTH_BAR_Y_OFFSET = 8
+HEALTH_BAR_BORDER_COLOR = (0, 0, 0)
+HEALTH_BAR_BACKGROUND_COLOR = (120, 0, 0)
+HEALTH_BAR_FILL_COLOR = (0, 200, 0)
+
+# =========================
+# EXP BAR UI
+# =========================
+
+EXP_BAR_WIDTH = 40
+EXP_BAR_HEIGHT = 5
+EXP_BAR_Y_OFFSET = 1
+EXP_BAR_BORDER_COLOR = (0, 0, 0)
+EXP_BAR_BACKGROUND_COLOR = (20, 20, 100)
+EXP_BAR_FILL_COLOR = (50, 100, 255)
+
+# =========================
 # BUTTON STYLE
 # =========================
 

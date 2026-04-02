@@ -27,8 +27,9 @@ class GameScene(Scene):
         self._room = new_room
 
     def update(self):
-        if not self.is_paused:
-            self._room.update()
+        if self.is_paused: return 
+
+        self._room.update()
 
     def render(self, screen):
         self._room.render(screen)

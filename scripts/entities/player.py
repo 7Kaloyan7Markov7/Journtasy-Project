@@ -5,13 +5,11 @@ from scripts.collisions.hitbox import HitBox
 from scripts.enums.enums import Direction, State
 import scripts.config.constants as const
 
-import pygame
-
 
 class Player(Character):
     def __init__(self, entity_id, position, speed, level):
         super().__init__(entity_id, position, speed, level)
-        self._experience_bar = 0
+        self._current_experience = 0
         self._exp_threshold = const.PLAYER_EXP_THRESHOLD
 
         weapon_id = const.PLAYER_WEAPON_MAP[entity_id]
@@ -24,6 +22,14 @@ class Player(Character):
 
         hitbox_data = const.HITBOX_DATA[const.PLAYER_ID]
         self._hitbox = HitBox(position, hitbox_data[0], hitbox_data[1])
+
+    @property
+    def current_experience(self):
+        return self._current_experience
+    
+    @property
+    def exp_threshold(self):
+        return self._exp_threshold
 
     @property
     def weapon(self):
@@ -80,12 +86,12 @@ class Player(Character):
             # Apply hit to a target
             self.weapon.apply_damage(target, self.stats.damage.damage)
             if target.stats.is_dead:
-                self._experience_bar += target.exp_on_kill
+                self._current_experience += target.exp_on_kill
 
     def _level_up(self):
-        while self._experience_bar >= self._exp_threshold:
+        while self._current_experience >= self._exp_threshold:
             self.stats.level_up()
-            self._experience_bar -= self._exp_threshold
+            self._current_experience -= self._exp_threshold
             print(f"Leveled up to level {self.stats.level}!")
 
 
