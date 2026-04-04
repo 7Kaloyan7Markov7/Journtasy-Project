@@ -10,7 +10,7 @@ class Player(Character):
     def __init__(self, entity_id, position, speed, level):
         super().__init__(entity_id, position, speed, level)
         self._current_experience = 0
-        self._exp_threshold = const.PLAYER_EXP_THRESHOLD
+        self._exp_threshold = const.PLAYER_EXP_THRESHOLD - 99
 
         weapon_id = const.PLAYER_WEAPON_MAP[entity_id]
         self._weapon = Weapon(weapon_id, position, speed)
