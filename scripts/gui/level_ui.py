@@ -12,7 +12,7 @@ class LevelUI:
 
         entity_rect = entity.hitbox.hitbox
         level_x = int(entity_rect.centerx - const.HEALTH_BAR_WIDTH / 2 - 10)
-        level_y = int(entity_rect.top - const.HEALTH_BAR_Y_OFFSET - 10)
+        level_y = int(entity_rect.top - const.HEALTH_BAR_Y_OFFSET + const.HEALTH_BAR_HEIGHT // 2)
 
         text_surface = self._font.render(_text, True, (255, 215, 0))
         text_rect = text_surface.get_rect(center = (level_x, level_y))

@@ -2,6 +2,7 @@ from scripts.entities.character import Character
 from scripts.gui.health_bar_ui import HealthBarUI
 from scripts.gui.exp_bar_ui import ExpBar
 from scripts.gui.level_ui import LevelUI
+from scripts.gui.stats_texts import StatsUI
 
 
 class GUI:
@@ -9,6 +10,7 @@ class GUI:
         self._health_bar = HealthBarUI()
         self._exp_bar = ExpBar()
         self._level_ui = LevelUI()
+        self._stats_ui = StatsUI()
 
     def _get_entities(self, room):
         entities = []
@@ -26,4 +28,6 @@ class GUI:
             self._health_bar.update(entity)
             self._health_bar.render(screen)
             self._level_ui.render(screen, entity)
+        self._stats_ui.update(room.player)
+        self._stats_ui.render(screen)
             

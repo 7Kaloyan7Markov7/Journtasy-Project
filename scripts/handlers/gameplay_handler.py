@@ -60,3 +60,7 @@ class GameplayHandler(Handler):
 
         if input_manager.move_down:
             player.move_down()
+
+    def _handle_player_death(self, player, is_attack_pressed)):
+        if player.stats.is_dead:
+            ...
