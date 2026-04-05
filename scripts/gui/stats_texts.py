@@ -23,6 +23,7 @@ class StatsUI:
         ]
 
         self._surfaces = [self._font.render(line, True, const.STATS_UI_TEXT_COLOR) for line in lines]
+
         line_h = self._surfaces[0].get_height()
         box_w = max(s.get_width() for s in self._surfaces) + const.STATS_UI_PADDING * 2
         box_h = len(self._surfaces) * (line_h + const.STATS_UI_LINE_SPACING) - const.STATS_UI_LINE_SPACING + const.STATS_UI_PADDING * 2

@@ -10,8 +10,10 @@ class GameplayHandler(Handler):
         player = room.player
 
         self._handle_pause(scene, game.input_manager.pause_pressed)
-        if scene.is_paused:
-            return
+        if scene.is_paused: return
+
+        self._handle_player_death(player, scene)
+        if scene.is_game_over: return
 
         self._handle_player_movement(player, game.input_manager)
         self._handle_player_attack(player, game.input_manager.attack_pressed)
@@ -61,6 +63,6 @@ class GameplayHandler(Handler):
         if input_manager.move_down:
             player.move_down()
 
-    def _handle_player_death(self, player, is_attack_pressed)):
+    def _handle_player_death(self, player, scene):
         if player.stats.is_dead:
-            ...
+            scene.game_over()
