@@ -34,7 +34,7 @@ class AssetManager:
     def load_image(file_path, scale=1):
         image = pygame.image.load(file_path).convert_alpha()
 
-        if scale != 1:
+        if scale != 1:  
             image = pygame.transform.scale(image, (image.get_width() * scale, image.get_height() * scale))
 
         return image
@@ -98,6 +98,18 @@ class AssetManager:
         )
 
     @staticmethod
+    def load_enemy_attack_animations(entity_id):
+        return AssetManager.load_four_direction_animations(
+            entity_id,
+            const.ENEMY_ATTACK_SPRITE_FILES,
+            const.ENEMY_ATTACK_WIDTH,
+            const.ENEMY_ATTACK_HEIGHT,
+            const.ENEMY_ATTACK_SCALE,
+            const.ENEMY_ATTACK_FRAME_COUNT,
+            const.ENEMY_ATTACK_FRAME_SPACE
+        )
+
+    @staticmethod
     def load_weapon_animations(entity_id):
         return AssetManager.load_two_direction_animations(
             entity_id,
@@ -131,6 +143,7 @@ class AssetManager:
 
         for enemy_id in const.ENEMY_IDS:
             AssetManager.enemy_animations[enemy_id] = AssetManager.load_enemy_animations(enemy_id)
+            AssetManager.enemy_attack_animations[enemy_id] = AssetManager.load_enemy_attack_animations(enemy_id)
 
         AssetManager.load_backgrounds()
         AssetManager.load_obstacle_images()
@@ -156,6 +169,10 @@ class AssetManager:
     @staticmethod
     def get_enemy_animations(enemy_id):
         return AssetManager.enemy_animations[enemy_id]
+
+    @staticmethod
+    def get_enemy_attack_animations(enemy_id):
+        return AssetManager.enemy_attack_animations[enemy_id]
 
     @staticmethod
     def get_weapon_animations(weapon_id):

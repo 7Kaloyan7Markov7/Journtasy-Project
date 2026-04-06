@@ -11,12 +11,15 @@ class Enemy(Character):
         super().__init__(entity_id, position, speed, level)
 
         self._sprites = AssetManager.get_enemy_animations(entity_id)
+        self._attack_sprites = AssetManager.get_enemy_attack_animations(entity_id)
 
         hitbox_data = const.HITBOX_DATA[const.ENEMY_ID][entity_id]
         self._hitbox = HitBox(position, hitbox_data[0], hitbox_data[1])
 
         self._attack_cooldown = 0
         self._attack_delay = const.ENEMY_ATTACK_DELAY
+        self._is_attacking = False
+        self._attack_frame_index = 0
 
         self._is_aggroed = False
         self._aggro_box = HitBox(self._hitbox.hitbox.center, const.ENEMY_AGGRO_SIZE, const.ENEMY_AGGRO_SIZE, True)
@@ -38,6 +41,8 @@ class Enemy(Character):
 
     @property
     def current_image(self):
+        if self._is_attacking:
+            return self._attack_sprites[self.direction][self._attack_frame_index]
         return self._sprites[self.direction][self.current_frame_index]
     
     @property
@@ -55,7 +60,9 @@ class Enemy(Character):
         if self._attack_cooldown > 0:
             self._attack_cooldown -= 1
 
-        if self.state != State.IDLE:
+        if self._is_attacking:
+            self.animate_attack()
+        elif self.state != State.IDLE:
             self.animate()
 
     def render(self, screen):
@@ -64,12 +71,21 @@ class Enemy(Character):
         pygame.draw.rect(screen, (255, 0, 0), self.aggro_box.hitbox, 2)
         screen.blit(self.current_image, self.position)
 
+    def animate_attack(self):
+        frame_count = len(self._attack_sprites[self.direction])
+        self._attack_frame_index += 1
+        if self._attack_frame_index >= frame_count:
+            self._attack_frame_index = 0
+            self._is_attacking = False
+
     def attack(self, target):
         if self._attack_cooldown > 0:
             return
 
         target.take_damage(self.stats.damage.damage)
         self._attack_cooldown = self._attack_delay
+        self._is_attacking = True
+        self._attack_frame_index = 0
 
     def _update_aggro_box(self):
         self._aggro_box.move(self._hitbox.hitbox.center)

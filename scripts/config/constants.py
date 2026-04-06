@@ -187,6 +187,33 @@ ENEMY_SPRITE_FILES = {
     ],
 }
 
+ENEMY_ATTACK_FRAME_SPACE = 0
+ENEMY_ATTACK_FRAME_COUNT = 8
+ENEMY_ATTACK_WIDTH = 64
+ENEMY_ATTACK_HEIGHT = 64
+ENEMY_ATTACK_SCALE = 3
+
+ENEMY_ATTACK_SPRITE_FILES = {
+    FIRST_ENEMY_ID: [
+        "assets/sprites/enemy_sprites/enemy1_sprite/enemy1_down_attack.png",
+        "assets/sprites/enemy_sprites/enemy1_sprite/enemy1_up_attack.png",
+        "assets/sprites/enemy_sprites/enemy1_sprite/enemy1_left_attack.png",
+        "assets/sprites/enemy_sprites/enemy1_sprite/enemy1_right_attack.png",
+    ],
+    SECOND_ENEMY_ID: [
+        "assets/sprites/enemy_sprites/enemy2_sprite/enemy2_down_attack.png",
+        "assets/sprites/enemy_sprites/enemy2_sprite/enemy2_up_attack.png",
+        "assets/sprites/enemy_sprites/enemy2_sprite/enemy2_left_attack.png",
+        "assets/sprites/enemy_sprites/enemy2_sprite/enemy2_right_attack.png",
+    ],
+    THIRD_ENEMY_ID: [
+        "assets/sprites/enemy_sprites/enemy3_sprite/enemy3_down_attack.png",
+        "assets/sprites/enemy_sprites/enemy3_sprite/enemy3_up_attack.png",
+        "assets/sprites/enemy_sprites/enemy3_sprite/enemy3_left_attack.png",
+        "assets/sprites/enemy_sprites/enemy3_sprite/enemy3_right_attack.png",
+    ],
+}
+
 # =========================
 # OBSTACLES
 # =========================
