@@ -65,8 +65,8 @@ class Player(Character):
             self._state = State.IDLE
 
     def take_damage(self, damage):
-        if self._invulnerability_timer > 0 or self.stats.is_dead:
-            return
+        #if self._invulnerability_timer > 0 or self.stats.is_dead:
+            #return
 
         self.stats.take_damage(damage)
         self._invulnerability_timer = self._invulnerability_duration
@@ -92,7 +92,6 @@ class Player(Character):
         while self._current_experience >= self._exp_threshold:
             self.stats.level_up()
             self._current_experience -= self._exp_threshold
-            print(f"Leveled up to level {self.stats.level}!")
 
 
     def stop_attack(self):

@@ -40,6 +40,14 @@ class Enemy(Character):
         return self._aggro_box
 
     @property
+    def attack_cooldown(self):
+        return self._attack_cooldown
+
+    @property
+    def is_attacking(self):
+        return self._is_attacking
+
+    @property
     def current_image(self):
         if self._is_attacking:
             return self._attack_sprites[self.direction][self._attack_frame_index]
@@ -60,16 +68,22 @@ class Enemy(Character):
         if self._attack_cooldown > 0:
             self._attack_cooldown -= 1
 
-        if self._is_attacking:
+        if self.state == State.ATTACKING and self._is_attacking:
             self.animate_attack()
-        elif self.state != State.IDLE:
+        elif self.state == State.MOVING:
             self.animate()
+        
 
     def render(self, screen):
         if self.stats.is_dead: return 
         pygame.draw.rect(screen, (255, 0, 0), self.hitbox.hitbox)
         pygame.draw.rect(screen, (255, 0, 0), self.aggro_box.hitbox, 2)
-        screen.blit(self.current_image, self.position)
+        if self.is_attacking:
+            screen.blit(self.current_image, self.position + (-34,-32))
+        else:
+            screen.blit(self.current_image, self.position)
+        
+            
 
     def animate_attack(self):
         frame_count = len(self._attack_sprites[self.direction])
@@ -79,8 +93,7 @@ class Enemy(Character):
             self._is_attacking = False
 
     def attack(self, target):
-        if self._attack_cooldown > 0:
-            return
+        if self._attack_cooldown > 0: return
 
         target.take_damage(self.stats.damage.damage)
         self._attack_cooldown = self._attack_delay
@@ -91,6 +104,8 @@ class Enemy(Character):
         self._aggro_box.move(self._hitbox.hitbox.center)
 
     def move(self, player):
+        if self.hitbox.is_colliding(player.hitbox): return 
+
         dx = player.position.x - self.position.x
         dy = player.position.y - self.position.y
 

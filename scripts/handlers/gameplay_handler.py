@@ -33,7 +33,12 @@ class GameplayHandler(Handler):
                 continue
 
             if enemy.is_aggroed:
-                enemy.move(player)
+                if enemy.attack_cooldown == 0:
+                    enemy.move(player)
+                elif not enemy.is_attacking:
+                    enemy.state = State.IDLE
+            elif not enemy.is_attacking:
+                enemy.state = State.IDLE
 
             enemy.update()
 

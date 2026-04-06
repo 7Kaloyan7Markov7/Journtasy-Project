@@ -62,7 +62,11 @@ class CollisionManager:
                 continue
 
             if enemy.hitbox.is_colliding(player.hitbox):
-                enemy.attack(player)
+                if enemy.attack_cooldown == 0:
+                    enemy.state = State.ATTACKING
+                    enemy.attack(player)
+                elif not enemy.is_attacking:
+                    enemy.state = State.IDLE
 
     def _manage_weapon_enemy_collisions(self, room):
         player = room.player
