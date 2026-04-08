@@ -36,8 +36,6 @@ Three enemy tiers with escalating difficulty:
 | Type 2  | 120    | 20     | 7     |
 | Type 3  | 170    | 27     | 11    |
 
-Enemies patrol until aggroed (300-unit radius), then chase and attack the player. Defeated enemies drop experience scaled to their type and level.
-
 ### Dungeon Generation
 - Rooms are procedurally generated and connected in all 4 directions
 - Each room contains 1–5 randomly spawned enemies and 1–3 obstacles
