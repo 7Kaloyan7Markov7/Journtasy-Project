@@ -58,41 +58,15 @@ Enemies patrol until aggroed (300-unit radius), then chase and attack the player
 
 ---
 
-## Project Structure
-
-```
-Journtasy/
-├── main.py                        # Entry point
-├── game.py                        # Main game loop and initialization
-├── assets/
-│   ├── sprites/                   # Player, enemy, weapon, and projectile sheets
-│   ├── obstacles/                 # Obstacle images
-│   └── backgrounds/               # Background images
-└── scripts/
-    ├── config/constants.py        # All game configuration constants
-    ├── enums/enums.py             # Direction and State enums
-    ├── entities/                  # Player, Enemy, Weapon, Obstacle
-    ├── character_stats/           # Health, Damage, Armor stat classes
-    ├── collisions/                # AABB hitbox collision detection
-    ├── building_blocks/           # Room, Background, Button
-    ├── generators/                # Dungeon, enemy, obstacle, and spawn logic
-    ├── managers/                  # Scene, Dungeon, Collision, Input, Asset managers
-    ├── handlers/                  # Input handlers per scene (menu, game, selection)
-    ├── scenes/                    # MainMenu, CharacterSelection, GameScene
-    ├── gui/                       # HUD components (bars, level, stats)
-    └── tiles/                     # Tile and TileGrid (20×15 grid)
-```
-
----
 
 ## Getting Started
 
 ### Requirements
-- Python 3.x
-- [Pygame](https://www.pygame.org/)
+- Python 3.14
+- [Pygame](https://pypi.org/project/pygame-ce/)
 
 ```bash
-pip install pygame
+pip install pygame-ce
 ```
 
 ### Run
