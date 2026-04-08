@@ -31,5 +31,8 @@ class TileGrid:
                 if down_pos in self.tile_list:
                     self.tile_list[down_pos].tile_up = tile
                     tile.tile_down = self.tile_list[down_pos]
+
+        def set_tile_is_blocking(self, entity_list):
+            ...
                 
 
