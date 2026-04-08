@@ -4,6 +4,14 @@ A top-down 2D dungeon crawler built with Python and Pygame. Navigate procedurall
 
 ---
 
+## Environments
+
+| Bricks | Grass | Dark Grass | Panel |
+|--------|-------|------------|-------|
+| ![](assets/backgrounds/background_bricks.png) | ![](assets/backgrounds/background_grass.png) | ![](assets/backgrounds/background_grass_dark.png) | ![](assets/backgrounds/background_panel.png) |
+
+---
+
 ## Gameplay
 
 - **Real-time combat** — Attack with left-click, move with WASD
@@ -18,6 +26,10 @@ A top-down 2D dungeon crawler built with Python and Pygame. Navigate procedurall
 ### Characters
 Choose from 6 playable characters, each with unique base stats and a dedicated weapon:
 
+| Knight | Monk | Killer | Wizard | Boxer | Caveman |
+|--------|------|--------|--------|-------|---------|
+| ![](assets/sprites/player_sprites/knight_sprites/knight_down_sprites.png) | ![](assets/sprites/player_sprites/monk_sprites/monk_down_sprites.png) | ![](assets/sprites/player_sprites/killer_sprites/killer_down_sprites.png) | ![](assets/sprites/player_sprites/wizard_sprites/wizard_down_sprites.png) | ![](assets/sprites/player_sprites/boxer_sprites/boxer_down_sprites.png) | ![](assets/sprites/player_sprites/caveman_sprites/caveman_down_sprites.png) |
+
 | Character | Health | Damage | Armor | Speed |
 |-----------|--------|--------|-------|-------|
 | Knight    | 180    | 40     | 14    | 20    |
@@ -30,11 +42,23 @@ Choose from 6 playable characters, each with unique base stats and a dedicated w
 ### Enemies
 Three enemy tiers with escalating difficulty:
 
+| Type 1 | Type 2 | Type 3 |
+|--------|--------|--------|
+| ![](assets/sprites/enemy_sprites/enemy1_sprite/enemy1_down_sprite.png) | ![](assets/sprites/enemy_sprites/enemy2_sprite/enemy2_down_sprite.png) | ![](assets/sprites/enemy_sprites/enemy3_sprite/enemy3_down_sprite.png) |
+
 | Enemy   | Health | Damage | Armor |
 |---------|--------|--------|-------|
 | Type 1  | 75     | 14     | 3     |
 | Type 2  | 120    | 20     | 7     |
 | Type 3  | 170    | 27     | 11    |
+
+Enemies patrol until aggroed (300-unit radius), then chase and attack the player. Defeated enemies drop experience scaled to their type and level.
+
+### Obstacles
+
+| Obstacle 1 | Obstacle 2 | Obstacle 3 |
+|------------|------------|------------|
+| ![](assets/obstacles/obstacle_1.png) | ![](assets/obstacles/obstacle_2.png) | ![](assets/obstacles/obstacle_3.png) |
 
 ### Dungeon Generation
 - Rooms are procedurally generated and connected in all 4 directions
@@ -55,7 +79,6 @@ Three enemy tiers with escalating difficulty:
 - **Stats panel** — Live display of player health, damage, and armor (bottom-left)
 
 ---
-
 
 ## Getting Started
 
