@@ -1,4 +1,5 @@
 from scripts.tiles.tile import Tile
+from scripts.entities.obstacle import Obstacle
 
 
 class TileGrid:
@@ -32,7 +33,10 @@ class TileGrid:
                     self.tile_list[down_pos].tile_up = tile
                     tile.tile_down = self.tile_list[down_pos]
 
-        def set_tile_is_blocking(self, entity_list):
-            ...
+    def set_tile_is_blocking(self, entity_list):
+            for position, tile in self.tile_list.items():
+                for entity in entity_list:
+                    if isinstance(entity, Obstacle) and entity.hitbox.is_colliding(tile.hitbox):
+                        tile.is_blocked = True
                 
 
