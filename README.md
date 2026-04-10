@@ -30,15 +30,6 @@ Choose from 6 playable characters, each with unique base stats and a dedicated w
 |--------|------|--------|--------|-------|---------|
 | ![](assets/sprites/player_sprites/knight_sprites/knight_down_sprites.png) | ![](assets/sprites/player_sprites/monk_sprites/monk_down_sprites.png) | ![](assets/sprites/player_sprites/killer_sprites/killer_down_sprites.png) | ![](assets/sprites/player_sprites/wizard_sprites/wizard_down_sprites.png) | ![](assets/sprites/player_sprites/boxer_sprites/boxer_down_sprites.png) | ![](assets/sprites/player_sprites/caveman_sprites/caveman_down_sprites.png) |
 
-| Character | Health | Damage | Armor | Speed |
-|-----------|--------|--------|-------|-------|
-| Knight    | 180    | 40     | 14    | 20    |
-| Monk      | —      | —      | —     | 5     |
-| Killer    | —      | —      | —     | 5     |
-| Wizard    | —      | —      | —     | 5     |
-| Boxer     | —      | —      | —     | 5     |
-| Caveman   | —      | —      | —     | 5     |
-
 ### Enemies
 Three enemy tiers with escalating difficulty:
 
@@ -46,13 +37,7 @@ Three enemy tiers with escalating difficulty:
 |--------|--------|--------|
 | ![](assets/sprites/enemy_sprites/enemy1_sprite/enemy1_down_sprite.png) | ![](assets/sprites/enemy_sprites/enemy2_sprite/enemy2_down_sprite.png) | ![](assets/sprites/enemy_sprites/enemy3_sprite/enemy3_down_sprite.png) |
 
-| Enemy   | Health | Damage | Armor |
-|---------|--------|--------|-------|
-| Type 1  | 75     | 14     | 3     |
-| Type 2  | 120    | 20     | 7     |
-| Type 3  | 170    | 27     | 11    |
-
-Enemies patrol until aggroed (300-unit radius), then chase and attack the player. Defeated enemies drop experience scaled to their type and level.
+Enemies patrol until aggroed, then chase and attack the player. Defeated enemies drop experience scaled to their type and level.
 
 ### Obstacles
 
@@ -61,22 +46,22 @@ Enemies patrol until aggroed (300-unit radius), then chase and attack the player
 | ![](assets/obstacles/obstacle_1.png) | ![](assets/obstacles/obstacle_2.png) | ![](assets/obstacles/obstacle_3.png) |
 
 ### Dungeon Generation
-- Rooms are procedurally generated and connected in all 4 directions
-- Each room contains 1–5 randomly spawned enemies and 1–3 obstacles
-- Backgrounds are randomly selected from 4 variants
-- Entities spawn with overlap avoidance (up to 100 placement attempts)
+- Rooms are procedurally generated and connected in all directions
+- Each room contains randomly spawned enemies and obstacles
+- Backgrounds are randomly selected from available variants
+- Entities spawn with overlap avoidance
 
 ### Combat
 - Melee weapon attacks triggered by left-click
 - Armor reduces incoming damage
-- Player has a 30-frame invulnerability window after being hit
-- Enemies have a 30-frame cooldown between attacks
+- Player has an invulnerability window after being hit
+- Enemies have a cooldown between attacks
 
 ### HUD
 - **Health bar** — Displayed above every character
 - **Experience bar** — Shows progress toward the next level
 - **Level indicator** — Visible on all entities
-- **Stats panel** — Live display of player health, damage, and armor (bottom-left)
+- **Stats panel** — Live display of player health, damage, and armor
 
 ---
 
