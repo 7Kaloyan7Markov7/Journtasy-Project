@@ -15,7 +15,7 @@ class Bar(ABC):
 
     @abstractmethod
     def update(self, entity):
-        ...
+        raise NotImplementedError
 
     def render(self, screen):
         pygame.draw.rect(screen, self._background_color, self._background_rect)

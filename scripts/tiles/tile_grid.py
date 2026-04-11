@@ -1,5 +1,6 @@
 from scripts.tiles.tile import Tile
 from scripts.entities.obstacle import Obstacle
+from scripts.enums.enums import Direction
 
 
 class TileGrid:
@@ -9,34 +10,26 @@ class TileGrid:
         for i in range(20):
             for j in range(15):
                 position = (i * 40, j * 40)
-                tile = Tile(position)
+                self.tile_list[position] = Tile(position)
 
-                self.tile_list[position] = tile
+        for i in range(20):
+            for j in range(15):
+                position = (i * 40, j * 40)
+                tile = self.tile_list[position]
 
-                left_pos = ((i - 1) * 40, j * 40)
-                if left_pos in self.tile_list:
-                    self.tile_list[left_pos].tile_right = tile
-                    tile.tile_left = self.tile_list[left_pos]
+                neighbors = {
+                    Direction.LEFT:  ((i - 1) * 40, j * 40),
+                    Direction.RIGHT: ((i + 1) * 40, j * 40),
+                    Direction.UP:    (i * 40, (j - 1) * 40),
+                    Direction.DOWN:  (i * 40, (j + 1) * 40),
+                }
 
-                right_pos = ((i + 1) * 40, j * 40)
-                if right_pos in self.tile_list:
-                    self.tile_list[right_pos].tile_left = tile
-                    tile.tile_right = self.tile_list[right_pos]
-
-                up_pos = (i * 40, (j - 1) * 40)
-                if up_pos in self.tile_list:
-                    self.tile_list[up_pos].tile_down = tile
-                    tile.tile_up = self.tile_list[up_pos]
-
-                down_pos = (i * 40, (j + 1) * 40)
-                if down_pos in self.tile_list:
-                    self.tile_list[down_pos].tile_up = tile
-                    tile.tile_down = self.tile_list[down_pos]
+                for direction, pos in neighbors.items():
+                    if pos in self.tile_list:
+                        tile.adjacent_tiles[direction] = self.tile_list[pos]
 
     def set_tile_is_blocking(self, entity_list):
-            for position, tile in self.tile_list.items():
-                for entity in entity_list:
-                    if isinstance(entity, Obstacle) and entity.hitbox.is_colliding(tile.hitbox):
-                        tile.is_blocked = True
-                
-
+        for _, tile in self.tile_list.items():
+            for entity in entity_list:
+                if isinstance(entity, Obstacle) and entity.hitbox.is_colliding(tile.hitbox):
+                    tile.is_blocked = True
