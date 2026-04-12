@@ -20,6 +20,7 @@ class TileGrid:
                 tile = Tile(position)
                 self.tile_list[position] = tile
 
+                #potentially add adjacent tiles to the tile's adjacent_tiles dictionary
                 neighbors = {
                     Direction.LEFT:  ((i - 1) * 40, j * 40),
                     Direction.RIGHT: ((i + 1) * 40, j * 40),
@@ -32,6 +33,7 @@ class TileGrid:
                         tile.adjacent_tiles[direction] = self.tile_list[pos]
                         self.tile_list[pos].adjacent_tiles[opposites[direction]] = tile
 
+    # This method checks if any of the tiles in the grid are colliding with any of the entities
     def set_tile_is_blocking(self, entity_list):
         for _, tile in self.tile_list.items():
             for entity in entity_list:
