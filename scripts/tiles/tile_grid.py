@@ -7,15 +7,18 @@ class TileGrid:
     def __init__(self):
         self.tile_list = {}
 
-        for i in range(20):
-            for j in range(15):
-                position = (i * 40, j * 40)
-                self.tile_list[position] = Tile(position)
+        opposites = {
+            Direction.LEFT: Direction.RIGHT,
+            Direction.RIGHT: Direction.LEFT,
+            Direction.UP: Direction.DOWN,
+            Direction.DOWN: Direction.UP,
+        }
 
         for i in range(20):
             for j in range(15):
                 position = (i * 40, j * 40)
-                tile = self.tile_list[position]
+                tile = Tile(position)
+                self.tile_list[position] = tile
 
                 neighbors = {
                     Direction.LEFT:  ((i - 1) * 40, j * 40),
@@ -27,6 +30,7 @@ class TileGrid:
                 for direction, pos in neighbors.items():
                     if pos in self.tile_list:
                         tile.adjacent_tiles[direction] = self.tile_list[pos]
+                        self.tile_list[pos].adjacent_tiles[opposites[direction]] = tile
 
     def set_tile_is_blocking(self, entity_list):
         for _, tile in self.tile_list.items():
