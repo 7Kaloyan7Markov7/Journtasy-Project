@@ -7,6 +7,7 @@ class Room:
         self._entity_list = entity_list
         self._player = player
         self._collision_manager = collision_manager
+        
         self._left_room = None
         self._right_room = None
         self._up_room = None
