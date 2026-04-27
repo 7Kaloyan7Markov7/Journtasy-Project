@@ -6,17 +6,6 @@ class Tile:
     def __init__(self, position):
         self._hitbox = HitBox(position, 40, 40)
         self._is_blocked = False
-        
-        self._adjacent_tiles = {
-            Direction.LEFT: None,
-            Direction.RIGHT: None,
-            Direction.UP: None,
-            Direction.DOWN: None,
-        }
-
-    @property
-    def adjacent_tiles(self):
-        return self._adjacent_tiles
 
     @property
     def is_blocked(self):
