@@ -4,6 +4,7 @@ from scripts.managers.asset_manager import AssetManager
 from scripts.managers.scene_manager import SceneManager
 from scripts.managers.input_manager import InputManager
 from scripts.managers.event_handler_manager import EventHandlerManager
+from scripts.managers.sound_manager import SoundManager
 import scripts.config.constants as const
 
 
@@ -49,7 +50,7 @@ class Game:
         self._running = running
 
     def main_loop(self):
-
+        SoundManager.play_music()
         while self._running:
             self.update_game()
             self.render_game()

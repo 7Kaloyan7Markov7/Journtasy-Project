@@ -686,3 +686,22 @@ BUTTON_CHARACTER_MAP = {
     "killer_button": KILLER_ID,
     "caveman_button": CAVEMAN_ID,
 }
+
+# =========================
+# SOUND_FILES
+# =========================
+
+MUSIC1_PATH = "assets/sounds/music1.mp3"
+MUSIC2_PATH = "assets/sounds/music2.mp3"
+MUSIC1_NAME = "MUSIC1"
+MUSIC2_NAME = "MUSIC2"
+
+MUSIC = {MUSIC1_NAME : MUSIC1_PATH,
+         MUSIC2_NAME : MUSIC2_PATH,
+         }
+
+SWORD_ATTACK_PATH = "assets/sounds/sword_attack.mp3"
+SWORD_ATTACK = "SWORD_ATTACK"
+
+SOUNDS = {SWORD_ATTACK : SWORD_ATTACK_PATH,
+          } 
