@@ -2,6 +2,7 @@ from scripts.entities.enemy import Enemy
 from scripts.entities.obstacle import Obstacle
 from scripts.entities.projectile import Projectile
 from scripts.enums.enums import Direction, State
+from scripts.managers.sound_manager import SoundManager
 import scripts.config.constants as const
 
 
@@ -36,10 +37,7 @@ class CollisionManager:
         player.hitbox.move(player.position)
         dungeon_manager.transition_to_new_room(direction)
         scene_manager.current_scene.room = dungeon_manager.current_room
-
-
         
-
     def _manage_enemy_obstacle_collisions(self, room):
         enemies = [e for e in room.entity_list if isinstance(e, Enemy)]
         obstacles = [e for e in room.entity_list if isinstance(e, Obstacle)]
@@ -109,6 +107,7 @@ class CollisionManager:
 
         for enemy in enemies:
             if enemy.aggro_box.is_colliding(player.hitbox):
+                SoundManager.play_sound(const.ORC_SOUND)
                 enemy.is_aggroed = True
 
     def _push_back(self, player):

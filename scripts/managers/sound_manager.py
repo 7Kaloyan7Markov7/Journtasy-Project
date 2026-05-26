@@ -2,14 +2,27 @@ from pygame import mixer
 
 import scripts.config.constants as const
 
-class SoundManager:
-    def __init__(self):
-        mixer.init(frequency=44100, size=-16, channels=2, buffer=512)
-        sounds = {}
+mixer.init(frequency=44100, size=-16, channels=2, buffer=512)
 
-    def _load_sounds(self):
-        for sound_name, sound_path in const.SOUNDS:
+class SoundManager:
+    sounds = {}
+
+    @staticmethod
+    def load_sounds():
+        for sound_name, sound_path in const.SOUNDS.items():
             SoundManager.sounds[sound_name] = mixer.Sound(sound_path)
+
+    @staticmethod
+    def pause_music():
+        mixer.music.pause()
+
+    @staticmethod
+    def unpause_music():
+        mixer.music.unpause()
+
+    @staticmethod
+    def stop_music():
+        mixer.music.fadeout(1)
 
     @staticmethod
     def play_sound(sound):

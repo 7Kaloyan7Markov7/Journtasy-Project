@@ -2,6 +2,7 @@ from scripts.entities.character import Character
 from scripts.managers.asset_manager import AssetManager
 from scripts.collisions.hitbox import HitBox
 from scripts.enums.enums import Direction, State
+from scripts.managers.sound_manager import SoundManager
 import scripts.config.constants as const
 import pygame
 

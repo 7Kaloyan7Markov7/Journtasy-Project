@@ -1,6 +1,9 @@
 from scripts.handlers.handler import Handler
 from scripts.entities.enemy import Enemy
 from scripts.enums.enums import State
+from scripts.managers.sound_manager import SoundManager
+
+import pygame
 
 
 class GameplayHandler(Handler):
@@ -10,8 +13,11 @@ class GameplayHandler(Handler):
         player = room.player
 
         self._handle_pause(scene, game.input_manager.pause_pressed)
-        if scene.is_paused: return
-
+        if scene.is_paused:
+            SoundManager.pause_music()
+            return
+        
+        SoundManager.unpause_music()
         self._handle_player_death(player, scene)
         if scene.is_game_over: return
 
@@ -70,4 +76,5 @@ class GameplayHandler(Handler):
 
     def _handle_player_death(self, player, scene):
         if player.stats.is_dead:
+            SoundManager.stop_music()
             scene.game_over()

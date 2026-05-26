@@ -59,7 +59,8 @@ class Game:
         pygame.quit()
 
     def load_game(self):
-        AssetManager.load()    
+        AssetManager.load()
+        SoundManager.load_sounds() 
 
     def update_game(self):
         self._input_manager.update()

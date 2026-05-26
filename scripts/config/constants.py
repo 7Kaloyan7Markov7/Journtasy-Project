@@ -700,8 +700,11 @@ MUSIC = {MUSIC1_NAME : MUSIC1_PATH,
          MUSIC2_NAME : MUSIC2_PATH,
          }
 
+ORC_SOUND = "ORC_SOUND"
 SWORD_ATTACK_PATH = "assets/sounds/sword_attack.mp3"
-SWORD_ATTACK = "SWORD_ATTACK"
+ORC_SOUND_PATH = "assets/sounds/orc1_sound.mp3"
 
-SOUNDS = {SWORD_ATTACK : SWORD_ATTACK_PATH,
-          } 
+SOUNDS = {KNIGHT_WEAPON_ID : SWORD_ATTACK_PATH,
+          ORC_SOUND : ORC_SOUND_PATH}
+
+
