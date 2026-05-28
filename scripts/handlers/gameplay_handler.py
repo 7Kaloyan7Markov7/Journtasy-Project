@@ -23,8 +23,8 @@ class GameplayHandler(Handler):
 
         self._handle_player_movement(player, game.input_manager)
         self._handle_player_attack(player, game.input_manager.attack_pressed)
-        room.collision_manager.manage_boundary_transition(room, game.dungeon_manager, game.scene_manager)
         self._handle_enemies(room)
+        room.collision_manager.manage_boundary_transition(room, game.dungeon_manager, game.scene_manager)
         room.collision_manager.manage_all_collisions(game.scene_manager.current_scene.room)
 
     def _handle_enemies(self, room):

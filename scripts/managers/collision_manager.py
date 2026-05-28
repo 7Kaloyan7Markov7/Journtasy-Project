@@ -90,8 +90,26 @@ class CollisionManager:
     def _manage_projectile_collisions(self, room):
         projectiles = [e for e in room.entity_list if isinstance(e, Projectile)]
         enemies = [e for e in room.entity_list if isinstance(e, Enemy)]
+        obstacles = [e for e in room.entity_list if isinstance(e, Obstacle)]
 
         for projectile in projectiles:
+            pos = projectile.position
+            if (pos.x <= const.SCREEN_LEFT_BOUNDARY or
+                    pos.x + projectile.width >= const.SCREEN_RIGHT_BOUNDARY or
+                    pos.y <= const.SCREEN_UPPER_BOUNDARY or
+                    pos.y + projectile.height >= const.SCREEN_LOWER_BOUNDARY):
+                room.entity_list.remove(projectile)
+                continue
+
+            removed = False
+            for obstacle in obstacles:
+                if projectile.hitbox.is_colliding(obstacle.hitbox):
+                    room.entity_list.remove(projectile)
+                    removed = True
+                    break
+
+            if removed: continue
+
             for enemy in enemies:
                 if projectile.hitbox.is_colliding(enemy.hitbox):
                     enemy.take_damage(projectile.damage)
