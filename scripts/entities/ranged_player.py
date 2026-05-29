@@ -6,3 +6,6 @@ class RangedPlayer(Player):
 
     def attack():
         ...
+
+    def fire():
+        ...
