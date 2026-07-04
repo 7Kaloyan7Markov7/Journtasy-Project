@@ -16,8 +16,6 @@ class Weapon(AnimatedEntity):
         hitbox_data = const.HITBOX_DATA[const.WEAPON_ID][entity_id]
         self._hitbox = HitBox(position, hitbox_data[0], hitbox_data[1])
 
-        self._left_offset = pygame.Vector2(const.WEAPON_LEFT_OFFSET_X, 0)
-        self._right_offset = pygame.Vector2(const.WEAPON_RIGHT_OFFSET_X, 0)
         self._hit_targets = set()
 
         self._attack_direction = Direction.RIGHT
@@ -45,10 +43,15 @@ class Weapon(AnimatedEntity):
             self._hit_targets.clear()
             return
 
+        left_extra_x, right_extra_x, extra_y = const.WEAPON_OFFSET_DATA.get(self._id, (0, 0, 0))
+        vertical_offset = (player.height - self.height) / 2 + extra_y
+
         if self._direction == Direction.LEFT:
-            self._position = player.position + self._left_offset
+            horizontal_offset = -self.width + left_extra_x
         else:
-            self._position = player.position + self._right_offset
+            horizontal_offset = player.width - right_extra_x
+
+        self._position = player.position + pygame.Vector2(horizontal_offset, vertical_offset)
 
         self._hitbox.move(self._position)
 
@@ -67,10 +70,11 @@ class Weapon(AnimatedEntity):
 
     def apply_damage(self, target, damage):
         if self._state != State.ATTACKING or target in self._hit_targets:
-            return
+            return False
 
         target.take_damage(damage)
         self._hit_targets.add(target)
+        return True
 
     def stop_attack(self):
         self._state = State.IDLE

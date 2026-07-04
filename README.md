@@ -14,10 +14,10 @@ A top-down 2D dungeon crawler built with Python and Pygame. Navigate procedurall
 ---
 ## Features
 ### Characters
-Choose from 4 playable characters, each with unique base stats and a dedicated weapon:
-| Knight | Monk | Killer | Wizard |
-|--------|------|--------|--------|
-| ![](assets/sprites/player_sprites/knight_sprites/knight_down_sprites.png) | ![](assets/sprites/player_sprites/monk_sprites/monk_down_sprites.png) | ![](assets/sprites/player_sprites/killer_sprites/killer_down_sprites.png) | ![](assets/sprites/player_sprites/wizard_sprites/wizard_down_sprites.png) |
+Choose from 3 playable characters, each with unique base stats and a dedicated weapon:
+| Knight | Killer | Wizard |
+|--------|--------|--------|
+| ![](assets/sprites/player_sprites/knight_sprites/knight_down_sprites.png) | ![](assets/sprites/player_sprites/killer_sprites/killer_down_sprites.png) | ![](assets/sprites/player_sprites/wizard_sprites/wizard_down_sprites.png) |
 ### Enemies
 Three enemy tiers with escalating difficulty:
 | Type 1 | Type 2 | Type 3 |

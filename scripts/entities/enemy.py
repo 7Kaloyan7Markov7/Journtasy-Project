@@ -76,11 +76,12 @@ class Enemy(Character):
         
 
     def render(self, screen):
-        if self.stats.is_dead: return 
-        pygame.draw.rect(screen, (255, 0, 0), self.hitbox.hitbox)
-        pygame.draw.rect(screen, (255, 0, 0), self.aggro_box.hitbox, 2)
+        if self.stats.is_dead: return
+        # debug visuals - uncomment to see hitbox/aggro range
+        # pygame.draw.rect(screen, (255, 0, 0), self.hitbox.hitbox)
+        # pygame.draw.rect(screen, (255, 0, 0), self.aggro_box.hitbox, 2)
         if self.is_attacking:
-            screen.blit(self.current_image, self.position + (-34,-32))
+            screen.blit(self.current_image, self.position + const.ENEMY_ATTACK_OFFSET)
         else:
             screen.blit(self.current_image, self.position)
         
@@ -92,6 +93,13 @@ class Enemy(Character):
         if self._attack_frame_index >= frame_count:
             self._attack_frame_index = 0
             self._is_attacking = False
+
+    def take_damage(self, damage):
+        if not self._is_aggroed:
+            SoundManager.play_sound(const.ORC_SOUND)
+            self._is_aggroed = True
+
+        super().take_damage(damage)
 
     def attack(self, target):
         if self._attack_cooldown > 0: return

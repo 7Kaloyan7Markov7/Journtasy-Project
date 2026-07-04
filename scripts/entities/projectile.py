@@ -1,23 +1,28 @@
-from scripts.entities.animated_entity import AnimatedEntity
+from scripts.entities.entity import Entity
 from scripts.managers.asset_manager import AssetManager
 from scripts.collisions.hitbox import HitBox
 from scripts.enums.enums import Direction
 import scripts.config.constants as const
 
 
-class Projectile(AnimatedEntity):
+class Projectile(Entity):
     def __init__(self, entity_id, position, speed, direction, owner):
         super().__init__(entity_id, position, speed)
         self._sprites = AssetManager.get_projectile_animations(entity_id)
         self._direction = direction
         self._owner = owner
+        self._current_frame_index = 0
 
         hitbox_data = const.HITBOX_DATA[const.PROJECTILE_ID][entity_id]
         self._hitbox = HitBox(position, hitbox_data[0], hitbox_data[1])
 
     @property
     def current_image(self):
-        return self._sprites[self.direction][self.current_frame_index]
+        return self._sprites[self.direction][self._current_frame_index]
+
+    @property
+    def owner(self):
+        return self._owner
 
     @property
     def damage(self):
@@ -34,7 +39,9 @@ class Projectile(AnimatedEntity):
             self._position.y += self.speed
 
         self._hitbox.move(self._position)
-        self.animate()
+
+        frame_count = len(self._sprites[self._direction])
+        self._current_frame_index = (self._current_frame_index + 1) % frame_count
 
     def render(self, screen):
         screen.blit(self.current_image, self.position)

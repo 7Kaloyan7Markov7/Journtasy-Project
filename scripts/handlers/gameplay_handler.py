@@ -22,7 +22,7 @@ class GameplayHandler(Handler):
         if scene.is_game_over: return
 
         self._handle_player_movement(player, game.input_manager)
-        self._handle_player_attack(player, game.input_manager.attack_pressed)
+        self._handle_player_attack(player, game.input_manager.attack_pressed, room)
         self._handle_enemies(room)
         room.collision_manager.manage_boundary_transition(room, game.dungeon_manager, game.scene_manager)
         room.collision_manager.manage_all_collisions(game.scene_manager.current_scene.room)
@@ -52,9 +52,11 @@ class GameplayHandler(Handler):
         if is_pause_pressed:
             scene.pause()
 
-    def _handle_player_attack(self, player, is_attack_pressed):
+    def _handle_player_attack(self, player, is_attack_pressed, room):
         if is_attack_pressed:
-            player.attack()
+            result = player.attack()
+            if result is not None:
+                room.entity_list.append(result)
 
     def _handle_player_movement(self, player, input_manager):
         player.save_position()

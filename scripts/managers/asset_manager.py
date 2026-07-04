@@ -111,14 +111,17 @@ class AssetManager:
 
     @staticmethod
     def load_weapon_animations(entity_id):
+        frame_width, frame_height, frame_space, scale = const.WEAPON_SIZE_DATA.get(
+            entity_id, (const.WEAPON_WIDTH, const.WEAPON_HEIGHT, const.WEAPON_FRAME_SPACE, const.WEAPON_SCALE)
+        )
         return AssetManager.load_two_direction_animations(
             entity_id,
             const.WEAPON_SPRITE_FILES,
-            const.WEAPON_WIDTH,
-            const.WEAPON_HEIGHT,
-            const.WEAPON_SCALE,
+            frame_width,
+            frame_height,
+            scale,
             const.WEAPON_FRAME_COUNT,
-            const.WEAPON_FRAME_SPACE
+            frame_space
         )
 
     @staticmethod

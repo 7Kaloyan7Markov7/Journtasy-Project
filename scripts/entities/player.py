@@ -65,28 +65,14 @@ class Player(Character):
             self._state = State.IDLE
 
     def take_damage(self, damage):
-        #if self._invulnerability_timer > 0 or self.stats.is_dead:
-            #return
+        if self._invulnerability_timer > 0 or self.stats.is_dead:
+            return
 
         self.stats.take_damage(damage)
         self._invulnerability_timer = self._invulnerability_duration
 
-    def attack(self, target=None):
-        if target is None:
-
-            # Initiate the swing
-            if self.direction == Direction.DOWN or self.direction == Direction.UP:
-                return
-            if self.weapon.state == State.ATTACKING:
-                return
-            self.weapon.attack()
-            if self.weapon.state == State.ATTACKING:
-                self._state = State.ATTACKING
-        else:
-            # Apply hit to a target
-            self.weapon.apply_damage(target, self.stats.damage.damage)
-            if target.stats.is_dead:
-                self._current_experience += target.exp_on_kill
+    def gain_experience(self, amount):
+        self._current_experience += amount
 
     def _level_up(self):
         while self._current_experience >= self._exp_threshold:
@@ -131,4 +117,3 @@ class Player(Character):
     def render(self, screen):
         screen.blit(self.current_image, self.position)
         self._weapon.render(screen)
-        #pygame.draw.rect(screen,(0,0,0), self.hitbox.hitbox)

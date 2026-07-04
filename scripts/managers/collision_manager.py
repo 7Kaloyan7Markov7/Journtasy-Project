@@ -113,6 +113,8 @@ class CollisionManager:
             for enemy in enemies:
                 if projectile.hitbox.is_colliding(enemy.hitbox):
                     enemy.take_damage(projectile.damage)
+                    if enemy.stats.is_dead:
+                        projectile.owner.gain_experience(enemy.exp_on_kill)
                     room.entity_list.remove(projectile)
                     break
 
